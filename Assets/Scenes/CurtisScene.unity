@@ -410,6 +410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2249140822492217233, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5595395723984597824, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_TagString
       value: Untagged
