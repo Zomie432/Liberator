@@ -2,31 +2,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private Player m_PlayerScript;
-    public Player Player
-    {
-        get
-        {
-            return m_PlayerScript;
-        }
+    [HideInInspector]
+    public PlayerMotor playerMoveScript;
 
-        private set
-        {
-            m_PlayerScript = value;
-        }
-    }
+    private GameObject player;
+    public Transform playerTransform;
 
-    private static GameManager m_Instance;
+    private static GameManager instance;
     public static GameManager Instance
     { 
         get
         {
-            return m_Instance;
+            return instance;
         }
 
         private set
         {
-            m_Instance = value;
+            instance = value;
         }
     }
 
@@ -41,11 +33,22 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-        m_PlayerScript = FindObjectOfType<Player>();
+        player = GameObject.FindGameObjectWithTag("Player");
 
-        if(Player == null)
+        if(player == null)
         {
             Debug.LogError("Player class cannot be found, does not exist");
+
+            playerMoveScript = player.GetComponent<PlayerMotor>();
         }
+
+        
+        
+    }
+
+    private void Update()
+    {
+        
+        playerTransform = player.transform;
     }
 }
