@@ -5,7 +5,6 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHealth;
-
     [HideInInspector]
     public float currentHealth;
     Ragdoll ragdoll;
