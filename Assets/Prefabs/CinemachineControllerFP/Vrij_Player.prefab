@@ -1019,20 +1019,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522521766890090645, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522521766890090645, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.1429999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522521766890090645, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.10900022
       objectReference: {fileID: 0}
     - target: {fileID: 8291300734312020672, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8291300734312020672, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291300734312020672, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291300734312020672, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.109
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874351374818912474, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 8874351374818912474, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.5999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874351374818912474, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000022351742
       objectReference: {fileID: 0}
     - target: {fileID: 8874351374818912475, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
