@@ -21,8 +21,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
 
         //we want to make sure there is only ever one input manager instance
         if (_instance != null && _instance != this)

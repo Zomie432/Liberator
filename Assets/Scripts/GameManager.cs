@@ -5,10 +5,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public PlayerMotor playerMoveScript;
 
+    public GameObject pauseMenu;
+    public ButtonFunctionality btnFuncScript;
+
     private GameObject player;
     public Transform playerTransform;
 
     private static GameManager instance;
+
     public static GameManager Instance
     { 
         get
@@ -24,7 +28,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null)
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        if (Instance != null)
         {
             Debug.LogError("Multiple GameManagers! Destroying the newest one: " + this.name);
             Destroy(this.gameObject);
@@ -42,8 +49,6 @@ public class GameManager : MonoBehaviour
             playerMoveScript = player.GetComponent<PlayerMotor>();
         }
 
-        
-        
     }
 
     private void Update()
