@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Transform playerTransform;
 
     private static GameManager instance;
+
     public static GameManager Instance
     { 
         get
@@ -24,7 +25,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null)
+
+        if (Instance != null)
         {
             Debug.LogError("Multiple GameManagers! Destroying the newest one: " + this.name);
             Destroy(this.gameObject);
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-
+      
         player = GameObject.FindGameObjectWithTag("Player");
 
         if(player == null)
@@ -42,13 +44,10 @@ public class GameManager : MonoBehaviour
             playerMoveScript = player.GetComponent<PlayerMotor>();
         }
 
-        
-        
     }
 
     private void Update()
     {
-        
         playerTransform = player.transform;
     }
 }

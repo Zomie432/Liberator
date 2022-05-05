@@ -31,14 +31,11 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     /* time when weapon was last fired */
     protected float m_LastAttackTime;
-
-    public BaseWeapon()
-    {
-        m_LastAttackTime = 0.0f;
-    }
      
     public virtual void Start() 
     {
+        m_LastAttackTime = 0.0f;
+
         m_Animator = GetComponent<Animator>();
     }
 

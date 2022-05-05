@@ -66,16 +66,20 @@ public class BaseGun : BaseWeapon
 
     public BaseGun()
     {
-        m_CurrentNumOfBullets = maxNumOfBullets;
-
-        UpdateAmmoGUI();
+       
     }
 
     /*
     * Creates the bullet pool 
     */
-    private void Awake()
+    public override void Start()
     {
+        base.Start();
+
+        m_CurrentNumOfBullets = maxNumOfBullets;
+
+        UpdateAmmoGUI();
+
         m_BulletPool = new ObjectPool(bulletPrefab, maxNumOfBullets);
     }
 
