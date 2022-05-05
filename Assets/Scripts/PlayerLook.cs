@@ -6,7 +6,7 @@ public class PlayerLook : MonoBehaviour
 {
     [SerializeField] private Transform cam;
     [SerializeField] private CinemachineVirtualCamera FPcam;
-    private float xRotation = 0f;
+    //private float xRotation = 0f;
     [Header("For ySens, go to the FPVirtualCam and find the aim drop down")]
     [SerializeField] private float xSensitivity = 30f;
     

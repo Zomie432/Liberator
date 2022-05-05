@@ -16,12 +16,13 @@ public class PlayerMotor : MonoBehaviour
     private bool waitingToLandAndCrouch = false;
     private bool waitingToLandAndShiftWalk = false;
     [Header("Player Speed in Worldspace(for animation states)")]
-    [SerializeField] private bool track3dSpeed = false;
     [SerializeField] private bool track2dSpeed = true;
+    //[SerializeField] private bool track3dSpeed = false;
 
     [Header("Speed Variables (do not modify active speed 2d or 3d)")]
-    [SerializeField] private float currentActiveSpeed3D = 0f;
+    
     [SerializeField] public float currentActiveSpeed2D = 0f;
+    //[SerializeField] private float currentActiveSpeed3D = 0f;
 
     //property to access for animation states
     public float CurrentActiveSpeed2D { get { return currentActiveSpeed2D; } }
@@ -39,7 +40,7 @@ public class PlayerMotor : MonoBehaviour
     private Vector2 lastPlayerPostion2d;
 
     //previous position used for 3D speed calculation
-    private Vector3 lastPlayerPostion3d;
+    //private Vector3 lastPlayerPostion3d;
 
     [Header("Player Movement Regarding WASD Input")]
     [Tooltip("This value will adjust the max speed of the player, but also note that the time it takes to accelerate to that max speed will be the same as before(so you may need to bump up or down the rate of acceleration")]
@@ -109,7 +110,7 @@ public class PlayerMotor : MonoBehaviour
             else if (lastPlayerPostion2d != null)
             {
                 //reset timer
-                speedCheckTimer = 0.1f;
+                speedCheckTimer = speedCheckTimerMax;
 
                 //calculate distance between the previous and current transform
                 currentActiveSpeed2D = Vector2.Distance(currentPlayerPosition2d, lastPlayerPostion2d);
