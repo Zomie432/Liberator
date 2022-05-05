@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AIDeathState : AIState
 {
+    public Vector3 direction;
     //TO DO: Implement combat, health, and ragdoll death animation. ONce done, Death state
     //can be completed afterwards. Animators not initialized as this is just AI testing.
     public AIStateID GetId()
@@ -13,7 +14,9 @@ public class AIDeathState : AIState
 
     public void Enter(AIAgent agent)
     {
-
+        agent.ragdoll.ActivateRagdoll();
+        agent.ragdoll.ApplyForce(direction * agent.config.dieForce);
+        agent.mesh.updateWhenOffscreen = true;
     }
 
     public void Update(AIAgent agent)

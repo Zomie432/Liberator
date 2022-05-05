@@ -10,6 +10,9 @@ public class AIAgent : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public AIAgentConfig config;
     public Transform playerTransform;
+    public SkinnedMeshRenderer mesh;
+    public Ragdoll ragdoll;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,7 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIChasePlayerScript());
         stateMachine.RegisterState(new AIDeathState());
         stateMachine.RegisterState(new AIIdleState());
+        stateMachine.RegisterState(new AIFlashState());
         //sets state to initial state.
         stateMachine.ChangeState(initialState);
     }

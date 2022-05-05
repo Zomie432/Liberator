@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     public float maxHealth;
     [HideInInspector]
     public float currentHealth;
-    Ragdoll ragdoll;
+    AIAgent agent;
     SkinnedMeshRenderer skinnedMeshRenderer;
 
     public float blinkIntensity;
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ragdoll = GetComponent<Ragdoll>();
+       agent = GetComponent<AIAgent>();
         currentHealth = maxHealth;
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
         skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
@@ -31,16 +31,19 @@ public class Health : MonoBehaviour
    public void TakeDamage(float _amount, Vector3 direction)
    {
         currentHealth -= _amount;
-        if(currentHealth <= 0.0f)
+        if (currentHealth <= 0.0f)
         {
-            Die();
+            Die(direction);
         }
         blinkTimer = blinkDuration;
    }
 
-    private void Die()
+    private void Die(Vector3 direction)
     {
-        ragdoll.ActivateRagdoll();
+        //changes agent into death state when the agent is dead.
+        AIDeathState deathState = agent.stateMachine.GetState(AIStateID.Death) as AIDeathState;
+        deathState.direction = direction;
+        agent.stateMachine.ChangeState(AIStateID.Death);
     }
 
     private void Update()

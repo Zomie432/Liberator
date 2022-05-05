@@ -28,4 +28,13 @@ public class Ragdoll : MonoBehaviour
             rigidBody.isKinematic = false;
         }
     }
+
+    public void ApplyForce(Vector3 force)
+    {
+        //applies force to all
+        foreach (var rigidBody in rigidBodies)
+        {
+            rigidBody.AddForce(force, ForceMode.VelocityChange);
+        }
+    }
 }
