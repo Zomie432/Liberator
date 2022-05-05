@@ -14,9 +14,6 @@ public class AIAgent : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        //sets the player transform to look for the player tagged object
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        //GameManager.instance.playerPosition
         //creates a new state machine for this agent type. 
         stateMachine = new AIStateMachine(this);
         //adds the chase player to the enum for AIState
@@ -30,6 +27,8 @@ public class AIAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //sets the player transform to look for the player tagged object
+        playerTransform = GameManager.Instance.playerTransform;
         //constantly updates the machine
         stateMachine.Update();
     }
