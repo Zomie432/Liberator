@@ -97,7 +97,8 @@ public class AmmoManager : MonoBehaviour
     */
     public void ShowAmmoGUI()
     {
-        ammoGUI.enabled = true;
+        if(ammoGUI != null)
+            ammoGUI.enabled = true;
     }
 
     /*

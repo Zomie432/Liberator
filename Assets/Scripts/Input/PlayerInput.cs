@@ -89,6 +89,96 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AttackPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""75b531c2-9c8d-4f6f-aaf3-77a1dfe69a97"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AttackHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""501de5ae-db77-4ff1-bfd9-5515f1a2c79a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ADSPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""142dc3c3-dd21-4225-9a71-28a97baa7c94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ADSReleased"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b7d9e1f-50ea-448d-aa3e-ad38d4804b9a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReloadPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""074b5756-0042-4f71-b4c5-426a7f4bb525"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipNextWeaponPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea5c139c-45f5-4cf4-8e9a-866694aae197"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipPreviousWeaponPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""61d91a68-208c-466f-b427-6d9b57be7aa0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipWeaponOnePressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e8f6cf0-e282-4cbb-aa72-b72eb63b97d7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipWeaponTwoPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""c74b8b8d-5c0e-49e4-871b-77748f107c36"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipFlashbangPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab18a52a-f3e7-499e-9d58-68feb6d8347e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -311,6 +401,116 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""RaiseXSensitivity"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4104256-e4c2-452e-b0bd-c7a408253ecd"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipWeaponOnePressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a24f915-bf3e-4b8a-94d0-a5fed56a611e"",
+                    ""path"": ""<Keyboard>/capsLock"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipPreviousWeaponPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82a96703-cc72-470f-9d84-86dfa908ad9d"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipNextWeaponPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77f9d16d-9f6a-481f-af65-061ce91a874f"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a180f420-3ed5-4cdf-8ddb-0b5191a6cce6"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ADSReleased"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""568a321a-0cd1-4103-807c-386a117a0d7e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ADSPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e911afd-1bd7-441f-abb2-b9ded7e7f061"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e45efa4-bbfb-478f-9636-98a165aba84c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""661014fd-ddd2-4e2f-8f0b-41a44ad72de7"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipFlashbangPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01907ea3-a787-419e-822c-b4d0b3b2bedd"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipWeaponTwoPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -326,6 +526,16 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_SlowWalk = m_OnFoot.FindAction("SlowWalk", throwIfNotFound: true);
         m_OnFoot_LowerXSensitivity = m_OnFoot.FindAction("LowerXSensitivity", throwIfNotFound: true);
         m_OnFoot_RaiseXSensitivity = m_OnFoot.FindAction("RaiseXSensitivity", throwIfNotFound: true);
+        m_OnFoot_AttackPressed = m_OnFoot.FindAction("AttackPressed", throwIfNotFound: true);
+        m_OnFoot_AttackHold = m_OnFoot.FindAction("AttackHold", throwIfNotFound: true);
+        m_OnFoot_ADSPressed = m_OnFoot.FindAction("ADSPressed", throwIfNotFound: true);
+        m_OnFoot_ADSReleased = m_OnFoot.FindAction("ADSReleased", throwIfNotFound: true);
+        m_OnFoot_ReloadPressed = m_OnFoot.FindAction("ReloadPressed", throwIfNotFound: true);
+        m_OnFoot_EquipNextWeaponPressed = m_OnFoot.FindAction("EquipNextWeaponPressed", throwIfNotFound: true);
+        m_OnFoot_EquipPreviousWeaponPressed = m_OnFoot.FindAction("EquipPreviousWeaponPressed", throwIfNotFound: true);
+        m_OnFoot_EquipWeaponOnePressed = m_OnFoot.FindAction("EquipWeaponOnePressed", throwIfNotFound: true);
+        m_OnFoot_EquipWeaponTwoPressed = m_OnFoot.FindAction("EquipWeaponTwoPressed", throwIfNotFound: true);
+        m_OnFoot_EquipFlashbangPressed = m_OnFoot.FindAction("EquipFlashbangPressed", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -392,6 +602,16 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_SlowWalk;
     private readonly InputAction m_OnFoot_LowerXSensitivity;
     private readonly InputAction m_OnFoot_RaiseXSensitivity;
+    private readonly InputAction m_OnFoot_AttackPressed;
+    private readonly InputAction m_OnFoot_AttackHold;
+    private readonly InputAction m_OnFoot_ADSPressed;
+    private readonly InputAction m_OnFoot_ADSReleased;
+    private readonly InputAction m_OnFoot_ReloadPressed;
+    private readonly InputAction m_OnFoot_EquipNextWeaponPressed;
+    private readonly InputAction m_OnFoot_EquipPreviousWeaponPressed;
+    private readonly InputAction m_OnFoot_EquipWeaponOnePressed;
+    private readonly InputAction m_OnFoot_EquipWeaponTwoPressed;
+    private readonly InputAction m_OnFoot_EquipFlashbangPressed;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -403,6 +623,16 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @SlowWalk => m_Wrapper.m_OnFoot_SlowWalk;
         public InputAction @LowerXSensitivity => m_Wrapper.m_OnFoot_LowerXSensitivity;
         public InputAction @RaiseXSensitivity => m_Wrapper.m_OnFoot_RaiseXSensitivity;
+        public InputAction @AttackPressed => m_Wrapper.m_OnFoot_AttackPressed;
+        public InputAction @AttackHold => m_Wrapper.m_OnFoot_AttackHold;
+        public InputAction @ADSPressed => m_Wrapper.m_OnFoot_ADSPressed;
+        public InputAction @ADSReleased => m_Wrapper.m_OnFoot_ADSReleased;
+        public InputAction @ReloadPressed => m_Wrapper.m_OnFoot_ReloadPressed;
+        public InputAction @EquipNextWeaponPressed => m_Wrapper.m_OnFoot_EquipNextWeaponPressed;
+        public InputAction @EquipPreviousWeaponPressed => m_Wrapper.m_OnFoot_EquipPreviousWeaponPressed;
+        public InputAction @EquipWeaponOnePressed => m_Wrapper.m_OnFoot_EquipWeaponOnePressed;
+        public InputAction @EquipWeaponTwoPressed => m_Wrapper.m_OnFoot_EquipWeaponTwoPressed;
+        public InputAction @EquipFlashbangPressed => m_Wrapper.m_OnFoot_EquipFlashbangPressed;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -433,6 +663,36 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RaiseXSensitivity.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnRaiseXSensitivity;
                 @RaiseXSensitivity.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnRaiseXSensitivity;
                 @RaiseXSensitivity.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnRaiseXSensitivity;
+                @AttackPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackPressed;
+                @AttackPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackPressed;
+                @AttackPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackPressed;
+                @AttackHold.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackHold;
+                @AttackHold.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackHold;
+                @AttackHold.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackHold;
+                @ADSPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnADSPressed;
+                @ADSPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnADSPressed;
+                @ADSPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnADSPressed;
+                @ADSReleased.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnADSReleased;
+                @ADSReleased.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnADSReleased;
+                @ADSReleased.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnADSReleased;
+                @ReloadPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReloadPressed;
+                @ReloadPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReloadPressed;
+                @ReloadPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReloadPressed;
+                @EquipNextWeaponPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipNextWeaponPressed;
+                @EquipNextWeaponPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipNextWeaponPressed;
+                @EquipNextWeaponPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipNextWeaponPressed;
+                @EquipPreviousWeaponPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipPreviousWeaponPressed;
+                @EquipPreviousWeaponPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipPreviousWeaponPressed;
+                @EquipPreviousWeaponPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipPreviousWeaponPressed;
+                @EquipWeaponOnePressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnePressed;
+                @EquipWeaponOnePressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnePressed;
+                @EquipWeaponOnePressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponOnePressed;
+                @EquipWeaponTwoPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponTwoPressed;
+                @EquipWeaponTwoPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponTwoPressed;
+                @EquipWeaponTwoPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipWeaponTwoPressed;
+                @EquipFlashbangPressed.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipFlashbangPressed;
+                @EquipFlashbangPressed.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipFlashbangPressed;
+                @EquipFlashbangPressed.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnEquipFlashbangPressed;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -458,6 +718,36 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RaiseXSensitivity.started += instance.OnRaiseXSensitivity;
                 @RaiseXSensitivity.performed += instance.OnRaiseXSensitivity;
                 @RaiseXSensitivity.canceled += instance.OnRaiseXSensitivity;
+                @AttackPressed.started += instance.OnAttackPressed;
+                @AttackPressed.performed += instance.OnAttackPressed;
+                @AttackPressed.canceled += instance.OnAttackPressed;
+                @AttackHold.started += instance.OnAttackHold;
+                @AttackHold.performed += instance.OnAttackHold;
+                @AttackHold.canceled += instance.OnAttackHold;
+                @ADSPressed.started += instance.OnADSPressed;
+                @ADSPressed.performed += instance.OnADSPressed;
+                @ADSPressed.canceled += instance.OnADSPressed;
+                @ADSReleased.started += instance.OnADSReleased;
+                @ADSReleased.performed += instance.OnADSReleased;
+                @ADSReleased.canceled += instance.OnADSReleased;
+                @ReloadPressed.started += instance.OnReloadPressed;
+                @ReloadPressed.performed += instance.OnReloadPressed;
+                @ReloadPressed.canceled += instance.OnReloadPressed;
+                @EquipNextWeaponPressed.started += instance.OnEquipNextWeaponPressed;
+                @EquipNextWeaponPressed.performed += instance.OnEquipNextWeaponPressed;
+                @EquipNextWeaponPressed.canceled += instance.OnEquipNextWeaponPressed;
+                @EquipPreviousWeaponPressed.started += instance.OnEquipPreviousWeaponPressed;
+                @EquipPreviousWeaponPressed.performed += instance.OnEquipPreviousWeaponPressed;
+                @EquipPreviousWeaponPressed.canceled += instance.OnEquipPreviousWeaponPressed;
+                @EquipWeaponOnePressed.started += instance.OnEquipWeaponOnePressed;
+                @EquipWeaponOnePressed.performed += instance.OnEquipWeaponOnePressed;
+                @EquipWeaponOnePressed.canceled += instance.OnEquipWeaponOnePressed;
+                @EquipWeaponTwoPressed.started += instance.OnEquipWeaponTwoPressed;
+                @EquipWeaponTwoPressed.performed += instance.OnEquipWeaponTwoPressed;
+                @EquipWeaponTwoPressed.canceled += instance.OnEquipWeaponTwoPressed;
+                @EquipFlashbangPressed.started += instance.OnEquipFlashbangPressed;
+                @EquipFlashbangPressed.performed += instance.OnEquipFlashbangPressed;
+                @EquipFlashbangPressed.canceled += instance.OnEquipFlashbangPressed;
             }
         }
     }
@@ -471,5 +761,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnSlowWalk(InputAction.CallbackContext context);
         void OnLowerXSensitivity(InputAction.CallbackContext context);
         void OnRaiseXSensitivity(InputAction.CallbackContext context);
+        void OnAttackPressed(InputAction.CallbackContext context);
+        void OnAttackHold(InputAction.CallbackContext context);
+        void OnADSPressed(InputAction.CallbackContext context);
+        void OnADSReleased(InputAction.CallbackContext context);
+        void OnReloadPressed(InputAction.CallbackContext context);
+        void OnEquipNextWeaponPressed(InputAction.CallbackContext context);
+        void OnEquipPreviousWeaponPressed(InputAction.CallbackContext context);
+        void OnEquipWeaponOnePressed(InputAction.CallbackContext context);
+        void OnEquipWeaponTwoPressed(InputAction.CallbackContext context);
+        void OnEquipFlashbangPressed(InputAction.CallbackContext context);
     }
 }

@@ -98,7 +98,7 @@ MonoBehaviour:
   particleSystemBuffer: 5
   bulletImpacts:
   - objectTag: Untagged
-    collisionParticleSystem: {fileID: -2101239930138459549, guid: d891261ba17db454b870dab2cbc11c53, type: 3}
+    collisionParticleSystem: {fileID: 8848956499122210205, guid: d891261ba17db454b870dab2cbc11c53, type: 3}
 --- !u!1001 &382212815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,15 +181,15 @@ MonoBehaviour:
   allowPlayerToHoldAimTrigger: 0
   attackDelay: 1
   fpCamera: {fileID: 4744336607983286375}
-  attackAnimationTriggerName: Attack
+  attackAnimationTriggerName: Throw
   maxThrowablesAmount: 2
-  throwableExplodeTimer: 1
-  explodeParticleSystemPrefab: {fileID: 0}
+  throwableExplodeTimer: 2
+  explodeParticleSystemPrefab: {fileID: 8848956499122210205, guid: d891261ba17db454b870dab2cbc11c53, type: 3}
   explodeDistanceFromPlayer: 5
   particleSystemSpawnTransform: {fileID: 0}
   flashbangImage: {fileID: 0}
   flashbangTimeDamp: 0.1
-  flashbangImageColor: {r: 0, g: 0, b: 0, a: 0}
+  flashbangImageColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1001 &334041757749364432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -325,6 +325,10 @@ PrefabInstance:
       propertyPath: fpCamera
       value: 
       objectReference: {fileID: 4744336607983286375}
+    - target: {fileID: 9106224811552340945, guid: f715a409e7b822a4099ed472c9dd421b, type: 3}
+      propertyPath: attackAnimationTriggerName
+      value: Shoot
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2491185129658032055, guid: f715a409e7b822a4099ed472c9dd421b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f715a409e7b822a4099ed472c9dd421b, type: 3}

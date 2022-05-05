@@ -17,6 +17,9 @@ public class InputManager : MonoBehaviour
     private PlayerMotor motor;
     private PlayerLook look;
 
+    // Player class
+    private Player player;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,7 +34,8 @@ public class InputManager : MonoBehaviour
 
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
-        
+        player = GetComponent<Player>();
+
 
         //set the "Jump" action in the "OnFoot" action map to point to the Jump function in the player motor script
         //basically just says "Hey, if the player jumps call this function"
@@ -41,6 +45,22 @@ public class InputManager : MonoBehaviour
         onFoot.LowerXSensitivity.performed += ctx => look.LowerXSensitivity();
         onFoot.RaiseXSensitivity.performed += ctx => look.RaiseXSensitivity();
 
+        // Player input
+        onFoot.AttackPressed.performed += ctx => player.OnAttackPressed();
+        onFoot.AttackHold.performed += ctx => player.OnAttackHold();
+
+        onFoot.ADSPressed.performed += ctx => player.OnADSPressed();
+        onFoot.ADSReleased.performed += ctx => player.OnADSReleased();
+
+        onFoot.ReloadPressed.performed += ctx => player.OnReloadPressed();
+
+        onFoot.EquipNextWeaponPressed.performed += ctx => player.OnEquipNextPressed();
+        onFoot.EquipPreviousWeaponPressed.performed += ctx => player.OnEquipPreviousPressed();
+
+        onFoot.EquipWeaponOnePressed.performed += ctx => player.EquipWeaponOnePressed();
+        onFoot.EquipWeaponTwoPressed.performed += ctx => player.EquipWeaponTwoPressed();
+
+        onFoot.EquipFlashbangPressed.performed += ctx => player.EquipFlashbang();
     }
 
     // Update is called once per frame

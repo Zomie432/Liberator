@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1442822752324917755}
   - component: {fileID: 2810583383781567452}
   - component: {fileID: 8226323453221632103}
-  - component: {fileID: -2101239930138459549}
+  - component: {fileID: 8848956499122210205}
   m_Layer: 0
   m_Name: Deafult_Particle_System 1
   m_TagString: Untagged
@@ -4813,7 +4813,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &-2101239930138459549
+--- !u!114 &8848956499122210205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
