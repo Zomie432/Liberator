@@ -28,5 +28,6 @@ public class ButtonFunctionality : MonoBehaviour
    public void Quit()
     {
         Application.Quit();
+        Debug.Log("Application is Exiting");
     }
 }
