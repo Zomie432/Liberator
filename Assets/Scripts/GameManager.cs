@@ -5,9 +5,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public PlayerMotor playerMoveScript;
 
-    public GameObject pauseMenu;
-    public ButtonFunctionality btnFuncScript;
-
     private GameObject player;
     public Transform playerTransform;
 
@@ -28,8 +25,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
         if (Instance != null)
         {
@@ -39,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-
+      
         player = GameObject.FindGameObjectWithTag("Player");
 
         if(player == null)
@@ -53,7 +48,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
         playerTransform = player.transform;
     }
 }

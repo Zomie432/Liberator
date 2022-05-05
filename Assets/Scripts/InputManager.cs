@@ -16,13 +16,10 @@ public class InputManager : MonoBehaviour
 
     private PlayerMotor motor;
     private PlayerLook look;
-    private ButtonFunctionality btnFunc;
 
     // Start is called before the first frame update
     void Awake()
     {
-
-
         //we want to make sure there is only ever one input manager instance
         if (_instance != null && _instance != this)
             Destroy(this.gameObject);
@@ -43,9 +40,6 @@ public class InputManager : MonoBehaviour
         onFoot.SlowWalk.performed += ctx => motor.SlowWalk();
         onFoot.LowerXSensitivity.performed += ctx => look.LowerXSensitivity();
         onFoot.RaiseXSensitivity.performed += ctx => look.RaiseXSensitivity();
-
-        // TO DO: Implement Pause Menu Input Function
-        //onFoot.OpenPauseMenu.performed += ctx => 
 
     }
 
