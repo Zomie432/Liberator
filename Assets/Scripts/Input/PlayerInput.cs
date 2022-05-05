@@ -89,6 +89,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenPauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5a09ddb-b591-4540-8efd-416f60402575"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -311,6 +320,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""RaiseXSensitivity"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f567938e-2053-4622-a978-962e4479c69c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenPauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -326,6 +346,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_SlowWalk = m_OnFoot.FindAction("SlowWalk", throwIfNotFound: true);
         m_OnFoot_LowerXSensitivity = m_OnFoot.FindAction("LowerXSensitivity", throwIfNotFound: true);
         m_OnFoot_RaiseXSensitivity = m_OnFoot.FindAction("RaiseXSensitivity", throwIfNotFound: true);
+        m_OnFoot_OpenPauseMenu = m_OnFoot.FindAction("OpenPauseMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -392,6 +413,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_SlowWalk;
     private readonly InputAction m_OnFoot_LowerXSensitivity;
     private readonly InputAction m_OnFoot_RaiseXSensitivity;
+    private readonly InputAction m_OnFoot_OpenPauseMenu;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -403,6 +425,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @SlowWalk => m_Wrapper.m_OnFoot_SlowWalk;
         public InputAction @LowerXSensitivity => m_Wrapper.m_OnFoot_LowerXSensitivity;
         public InputAction @RaiseXSensitivity => m_Wrapper.m_OnFoot_RaiseXSensitivity;
+        public InputAction @OpenPauseMenu => m_Wrapper.m_OnFoot_OpenPauseMenu;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -433,6 +456,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RaiseXSensitivity.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnRaiseXSensitivity;
                 @RaiseXSensitivity.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnRaiseXSensitivity;
                 @RaiseXSensitivity.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnRaiseXSensitivity;
+                @OpenPauseMenu.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnOpenPauseMenu;
+                @OpenPauseMenu.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnOpenPauseMenu;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -458,6 +484,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RaiseXSensitivity.started += instance.OnRaiseXSensitivity;
                 @RaiseXSensitivity.performed += instance.OnRaiseXSensitivity;
                 @RaiseXSensitivity.canceled += instance.OnRaiseXSensitivity;
+                @OpenPauseMenu.started += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
             }
         }
     }
@@ -471,5 +500,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnSlowWalk(InputAction.CallbackContext context);
         void OnLowerXSensitivity(InputAction.CallbackContext context);
         void OnRaiseXSensitivity(InputAction.CallbackContext context);
+        void OnOpenPauseMenu(InputAction.CallbackContext context);
     }
 }

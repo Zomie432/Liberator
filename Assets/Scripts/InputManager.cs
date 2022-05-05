@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
 
     private PlayerMotor motor;
     private PlayerLook look;
+    private ButtonFunctionality btnFunc;
 
     // Start is called before the first frame update
     void Awake()
@@ -34,6 +35,7 @@ public class InputManager : MonoBehaviour
 
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
+        
 
         //set the "Jump" action in the "OnFoot" action map to point to the Jump function in the player motor script
         //basically just says "Hey, if the player jumps call this function"
@@ -42,6 +44,9 @@ public class InputManager : MonoBehaviour
         onFoot.SlowWalk.performed += ctx => motor.SlowWalk();
         onFoot.LowerXSensitivity.performed += ctx => look.LowerXSensitivity();
         onFoot.RaiseXSensitivity.performed += ctx => look.RaiseXSensitivity();
+
+        // TO DO: Implement Pause Menu Input Function
+        //onFoot.OpenPauseMenu.performed += ctx => 
 
     }
 
