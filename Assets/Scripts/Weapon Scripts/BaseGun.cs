@@ -207,11 +207,11 @@ public class BaseGun : BaseWeapon
         Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
         if (bIsAiming)
         {
-            bullet.Spawn(fpCamera.transform.position - aimingBulletSpawnOffset, fpCamera.transform.forward, bulletRange);
+            bullet.Spawn(fpCamera.transform.position - aimingBulletSpawnOffset, fpCamera.transform.forward, bulletRange, this);
         }
         else
         {
-            bullet.Spawn(bulletSpawnLocation.position, fpCamera.transform.forward, bulletRange);
+            bullet.Spawn(bulletSpawnLocation.position, fpCamera.transform.forward, bulletRange, this);
         }
     }
 

@@ -16,7 +16,7 @@ public class AmmoManager : MonoBehaviour
     [Header("Visuals")]
 
     /* UI Text to update when ammo has changed */
-    [SerializeField] TextMeshProUGUI ammoGUI;
+    TextMeshProUGUI ammoGUI;
 
     /* Instance of this object, singleton pattern */
     private static AmmoManager m_AmmoManager;
@@ -47,6 +47,8 @@ public class AmmoManager : MonoBehaviour
         }
 
         Instance = this;
+
+        ammoGUI = GetComponentInChildren<TextMeshProUGUI>();
 
         foreach(Ammo _ammo in ammo)
         {

@@ -26,6 +26,8 @@ public class Bullet : PoolableObject
     /* range the bullet can go to before it gets pooled */
     float m_BulletRange = 0f;
 
+    BaseGun parentGun;
+
     /*
      * Overriden to set @Member Field 'bHitSomething' when bullet is active again
      */
@@ -72,6 +74,12 @@ public class Bullet : PoolableObject
      */
     void OnRayCastHit(RaycastHit hit)
     {
+        if(hit.collider.tag == "Hitbox")
+        {
+           hit.collider.GetComponent<Hitbox>().OnRaycastHit(parentGun, transform.forward);
+        }
+        
+
         BulletImpactManager.Instance.SpawnBulletImpact(hit.point, hit.normal, hit.collider.tag);
 
         CancelInvoke(DISABLE_METHOD_NAME);
@@ -81,12 +89,14 @@ public class Bullet : PoolableObject
     /*
      * Updates member fields when bullet is spawned
      */
-    public void Spawn(Vector3 position, Vector3 forward, float bulletRange)
+    public void Spawn(Vector3 position, Vector3 forward, float bulletRange, BaseGun parent)
     {
         m_StartPosition = position;
         transform.position = position;
         transform.forward = forward;
 
+        parentGun = parent;
+    
         m_BulletRange = bulletRange;
     }
 

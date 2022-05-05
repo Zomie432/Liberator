@@ -26,6 +26,10 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     /* string reference to the trigger name set on the animation component to play attack animation */
     [SerializeField] protected string attackAnimationTriggerName = "Attack";
 
+    [Header("Weapon Settings")]
+
+    [SerializeField] protected int damage = 25;
+
     /* this weapons animator component */
     protected Animator m_Animator;
 
@@ -134,6 +138,14 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public bool CanPlayerHoldAimTrigger()
     {
         return allowPlayerToHoldAimTrigger;
+    }
+
+    /*
+    * returns the amount of damage the weapon will do
+    */
+    public int GetDamage()
+    {
+        return damage;
     }
 
     /*
