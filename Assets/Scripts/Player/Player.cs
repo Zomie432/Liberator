@@ -76,13 +76,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-            SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
+        SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
 
-            if (m_CurrentEquippedWeapon.IsWeaponAimed())
-                m_PlayerMotor.SlowWalk();
+        if (m_CurrentEquippedWeapon.IsWeaponAimed())
+            m_PlayerMotor.SlowWalk();
 
-            if(flashbang.isActiveAndEnabled && !flashbang.HasThrowablesLeft())
-                 EquipPreviousWeapon();
+        if (flashbang.isActiveAndEnabled && !flashbang.HasThrowablesLeft())
+            EquipPreviousWeapon();
     }
 
     /*
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponOnePressed()
     {
-        EquipWeapon(0);
+        ForceEquipWeapon(0);
     }
 
     /*
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponTwoPressed()
     {
-        EquipWeapon(1);
+        ForceEquipWeapon(1);
     }
 
     /*
@@ -175,8 +175,25 @@ public class Player : MonoBehaviour
             index = weapons.Length - 1;
 
         ActivateWeapon(index);
+
         DeactivateWeapon(m_CurrentWeaponIndex);
-        
+
+        m_CurrentWeaponIndex = index;
+    }
+
+    /*
+     * equips a weapon based on the index passed in, but its assumed to be a correct index, forces player to switch to the index
+     */
+    void ForceEquipWeapon(int index)
+    {
+        if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
+
+        if (flashbang.isActiveAndEnabled)
+            DeactivateFlashbang();
+
+        DeactivateWeapon(m_CurrentWeaponIndex);
+        ActivateWeapon(index);
+
         m_CurrentWeaponIndex = index;
     }
 
@@ -372,7 +389,7 @@ public class Player : MonoBehaviour
     /*
     * returns players max health
     */
-    int GetPlayersMaxHealth()
+    public int GetPlayersMaxHealth()
     {
         return maxPlayerHealth;
     }
@@ -380,7 +397,7 @@ public class Player : MonoBehaviour
     /*
     * returns players current health
     */
-    int GetCurrentPlayerHealth()
+    public int GetCurrentPlayerHealth()
     {
         return m_CurrentPlayerHealth;
     }
@@ -388,7 +405,7 @@ public class Player : MonoBehaviour
     /*
     * returns players max shield
     */
-    int GetPlayersMaxShield()
+    public int GetPlayersMaxShield()
     {
         return maxPlayerShield;
     }
@@ -404,7 +421,7 @@ public class Player : MonoBehaviour
     /*
     * returns players current shield amount
     */
-    int GetCurrentPlayerShield()
+    public int GetCurrentPlayerShield()
     {
         return m_CurrentPlayerShield;
     }

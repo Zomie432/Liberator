@@ -30,6 +30,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     [SerializeField] protected int damage = 25;
 
+    [SerializeField] Vector3 weaponPositionOffset;
+
     /* this weapons animator component */
     protected Animator m_Animator;
 
@@ -41,6 +43,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         m_LastAttackTime = 0.0f;
 
         m_Animator = GetComponent<Animator>();
+        transform.position += weaponPositionOffset;
     }
 
     public virtual void OnEnable()

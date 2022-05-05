@@ -544,6 +544,66 @@ PrefabInstance:
       propertyPath: flashbangImage
       value: 
       objectReference: {fileID: 1363941132}
+    - target: {fileID: 778651276, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: weaponPositionOffset.y
+      value: -1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 778651276, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: weaponPositionOffset.z
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1766958057616195, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278347285537085, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278347285537085, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278347285537085, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278347285537085, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278347285537085, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856646075447491682, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856646075447491682, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856646075447491682, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856646075447491682, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856646075447491682, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856646075447491682, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 858682301449792894, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4744336608686545170, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -591,6 +651,18 @@ PrefabInstance:
     - target: {fileID: 4744336608686545171, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: m_Name
       value: Vrij_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481209219636121541, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: weaponPositionOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481209219636121541, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: weaponPositionOffset.y
+      value: -1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481209219636121541, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: weaponPositionOffset.z
+      value: -0.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
