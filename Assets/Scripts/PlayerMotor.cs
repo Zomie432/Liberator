@@ -21,9 +21,14 @@ public class PlayerMotor : MonoBehaviour
 
     [Header("Speed Variables (do not modify active speed 2d or 3d)")]
     [SerializeField] private float currentActiveSpeed3D = 0f;
-    [SerializeField] private float currentActiveSpeed2D = 0f;
+    [SerializeField] public float currentActiveSpeed2D = 0f;
+
+    //property to access for animation states
+    public float CurrentActiveSpeed2D { get { return currentActiveSpeed2D; } }
+
     [Tooltip("How often the speed variable(2D/3D) will be updated(in seconds)")]
-    [SerializeField] private float speedCheckTimer = 0.1f;
+    [SerializeField] private float speedCheckTimerMax = 0.1f;
+    private float speedCheckTimer = 0.1f;
 
     //current player position used for 2D and 3D speed calculations
     [Tooltip("Used to calculate speed by calculating how the player's transform.position changes over time")]
@@ -54,7 +59,7 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float jumpHeight = 1.2f;
     [Tooltip("How long it takes the player to crouch and uncrouch")]
     [SerializeField] private float crouchTimer = 1f;
-
+    
     private Vector2 currentInputVector;
     private Vector2 smoothInputVelocity;
 
@@ -68,30 +73,29 @@ public class PlayerMotor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (track3dSpeed)
-        {
-            if (speedCheckTimer > 0 && lastPlayerPostion3d != null)
-            {
-                //decrement timer until we check the player's speed
-                speedCheckTimer -= Time.deltaTime;
-            }
-            else if (lastPlayerPostion3d != null)
-            {
-                //reset timer
-                speedCheckTimer = 0.1f;
 
-                //calculate distance between the previous and current transform
-                currentActiveSpeed3D = Vector3.Distance(transform.position, lastPlayerPostion3d);
+        //if (track3dSpeed)
+        //{
+        //    if (speedCheckTimer > 0 && lastPlayerPostion3d != null)
+        //    {
+        //        //decrement timer until we check the player's speed
+        //        speedCheckTimer -= Time.deltaTime;
+        //    }
+        //    else if (lastPlayerPostion3d != null)
+        //    {
+        //        //reset timer
+        //        speedCheckTimer = speedCheckTimerMax;
 
-                //set the current transfrom as the new previous transform for the next iteration
-                lastPlayerPostion3d = transform.position;
+        //        //calculate distance between the previous and current transform
+        //        currentActiveSpeed3D = Vector3.Distance(transform.position, lastPlayerPostion3d);
 
-                //Debug.Log(currentActiveSpeed3D);
-            }
-            else
-                lastPlayerPostion3d = transform.position;
-        }
-        else if (track2dSpeed)
+        //        //set the current transfrom as the new previous transform for the next iteration
+        //        lastPlayerPostion3d = transform.position;
+        //    }
+        //    else
+        //        lastPlayerPostion3d = transform.position;
+        //}
+        if (track2dSpeed)
         {
             //convert player's 3d position into a 2d vector(doesn't take the player's vertical velocity into account for calculation)
             currentPlayerPosition2d.x = playerTransform.position.x;
@@ -112,8 +116,6 @@ public class PlayerMotor : MonoBehaviour
 
                 //set the current transfrom as the new previous transform for the next iteration
                 lastPlayerPostion2d = currentPlayerPosition2d;
-
-                //Debug.Log(currentActiveSpeed2D);
             }
             else
             {
@@ -121,6 +123,8 @@ public class PlayerMotor : MonoBehaviour
                 lastPlayerPostion2d.y = playerTransform.position.z;
             }
         }
+
+
         //use the built in controller property to see if the player is on the ground to see if we need to apply gravity
         isGrounded = controller.isGrounded;
 
@@ -147,7 +151,7 @@ public class PlayerMotor : MonoBehaviour
         }
         #endregion
 
-
+        
     }
 
     //receives the inputs from our InputManager.cs and applies them to the character controller component
@@ -233,7 +237,7 @@ public class PlayerMotor : MonoBehaviour
         }
         else
             waitingToLandAndCrouch = true;
-
+            
 
         crouchTimer = 0;
         lerpCrouch = true;
@@ -247,11 +251,12 @@ public class PlayerMotor : MonoBehaviour
         if (waitingToLandAndShiftWalk)
         {
             waitingToLandAndShiftWalk = false;
+            slowWalking = !slowWalking;
         }
         else
             slowWalking = !slowWalking;
 
-
+        
         if (isGrounded)
         {
             if (!crouching && slowWalking)
@@ -262,16 +267,4 @@ public class PlayerMotor : MonoBehaviour
         else //don't change the speed they travel at, queue up a function call for whenever the player lands
             waitingToLandAndShiftWalk = true;
     }
-
-    public float GetCurrentActiveSpeed3D()
-    {
-        return currentActiveSpeed3D;
-    }
-
-    public float GetCurrentActiveSpeed2D()
-    {
-        return currentActiveSpeed2D;
-    }
 }
-
-

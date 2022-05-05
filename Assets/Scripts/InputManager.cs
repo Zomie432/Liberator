@@ -17,11 +17,10 @@ public class InputManager : MonoBehaviour
     private PlayerMotor motor;
     private PlayerLook look;
 
-    private Player player;
-
     // Start is called before the first frame update
     void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         //we want to make sure there is only ever one input manager instance
@@ -35,39 +34,19 @@ public class InputManager : MonoBehaviour
 
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
-        player = GetComponent<Player>();
 
         //set the "Jump" action in the "OnFoot" action map to point to the Jump function in the player motor script
         //basically just says "Hey, if the player jumps call this function"
         onFoot.Jump.performed += ctx => motor.Jump();
         onFoot.Crouch.performed += ctx => motor.Crouch();
         onFoot.SlowWalk.performed += ctx => motor.SlowWalk();
+        onFoot.LowerXSensitivity.performed += ctx => look.LowerXSensitivity();
+        onFoot.RaiseXSensitivity.performed += ctx => look.RaiseXSensitivity();
 
-        // Player inputs
-
-        // Attack
-        onFoot.AttackPressed.performed += ctx => player.OnAttackPressed();
-        onFoot.AttackHold.performed += ctx => player.OnAttackHold();
-
-        // ADS
-        onFoot.ADSPressed.performed += ctx => player.OnADSPressed();
-        onFoot.ADSReleased.performed += ctx => player.OnADSReleased();
-
-        // Relaod
-        onFoot.ReloadPressed.performed += ctx => player.OnReloadPressed();
-
-        // weapon switching and equipping
-        onFoot.EquipNextWeaponPressed.performed += ctx => player.OnEquipNextPressed();
-        onFoot.EquipPreviousWeaponPressed.performed += ctx => player.OnEquipPreviousPressed();
-
-        onFoot.EquipWeaponOnePressed.performed += ctx => player.EquipWeaponOnePressed();
-        onFoot.EquipWeaponTwoPressed.performed += ctx => player.EquipWeaponTwoPressed();
-
-        onFoot.EquipFlashbangPressed.performed += ctx => player.EquipFlashbang();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //tell the playerMotor to move using the value from the "movement" action(WASD)
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());

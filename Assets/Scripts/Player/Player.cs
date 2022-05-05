@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-            SetCurrentAnimSpeed(m_PlayerMotor.GetCurrentActiveSpeed2D());
+            SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
 
             if (m_CurrentEquippedWeapon.IsWeaponAimed())
                 m_PlayerMotor.SlowWalk();

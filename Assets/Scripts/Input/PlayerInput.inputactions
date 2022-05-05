@@ -51,90 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AttackPressed",
+                    "name": "LowerXSensitivity",
                     "type": "Button",
-                    "id": "5eb66d2d-2cdd-4adf-bb79-866c4ab77d97",
+                    "id": "d210cb0e-c7fd-47e2-83d3-e8cf90c35762",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AttackHold",
+                    "name": "RaiseXSensitivity",
                     "type": "Button",
-                    "id": "9c6f2d58-fd47-4ee2-b952-c3c00e1b5ae3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ADSPressed",
-                    "type": "Button",
-                    "id": "791f7fe6-5914-4277-90fe-146eb042b2c3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ADSReleased",
-                    "type": "Button",
-                    "id": "f904b882-bace-4329-adf3-2f13dfdc681c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ReloadPressed",
-                    "type": "Button",
-                    "id": "eb318639-60e5-41b6-976e-5d640963ff83",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipNextWeaponPressed",
-                    "type": "Button",
-                    "id": "aab11e9c-5d59-4d9c-a872-b1e246e178d6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipPreviousWeaponPressed",
-                    "type": "Button",
-                    "id": "08fc1cce-af94-4628-87c8-9d5a54a44e34",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipWeaponOnePressed",
-                    "type": "Button",
-                    "id": "34559633-515f-4db8-8f29-b5710d3dbcc3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipWeaponTwoPressed",
-                    "type": "Button",
-                    "id": "72f63924-3655-4b54-9766-9b44b46c1dae",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipFlashbangPressed",
-                    "type": "Button",
-                    "id": "ee552b60-50b4-41dd-905e-461cf0421b66",
+                    "id": "2b72a68f-4b21-4b57-99ed-f90e93ec103e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -342,111 +270,23 @@
                 },
                 {
                     "name": "",
-                    "id": "920f7040-297d-4f6c-a008-a1b2cbb8bce3",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Press",
+                    "id": "cb894e42-77d1-4fc7-a4de-9a3807388774",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AttackPressed",
+                    "action": "LowerXSensitivity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "d40a4761-e97d-4ae8-8455-e22cc041f218",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Press",
+                    "id": "581d4473-2559-41cc-ae60-032ef2f3c901",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ADSPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3e111e55-5afe-470e-a384-4b19d0e75d5e",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackHold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cb82df59-1ae7-4e7d-b19c-ceac0eec805c",
-                    "path": "<Keyboard>/r",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ReloadPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bb1054b1-fefa-41fa-aae1-246443d19a1e",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ADSReleased",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "440541c5-d114-40ef-8832-be8e8b61a6a5",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EquipNextWeaponPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b1e9bc58-07e1-4d0a-a856-bf5239944fdb",
-                    "path": "<Keyboard>/capsLock",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EquipPreviousWeaponPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "35e46b87-ced7-48e5-a905-1edde78e5d17",
-                    "path": "<Keyboard>/1",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EquipWeaponOnePressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "54be82f7-503a-47c9-9767-a27385f862c8",
-                    "path": "<Keyboard>/2",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EquipWeaponTwoPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0e88e552-1a0f-4214-a3e3-400532924ee5",
-                    "path": "<Keyboard>/g",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EquipFlashbangPressed",
+                    "action": "RaiseXSensitivity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
