@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
     /* current equipped weapon */
     BaseWeapon m_CurrentEquippedWeapon;
 
-    private void Awake()
+    private void Start()
     {
         m_CurrentWeaponIndex = 0;
 
@@ -68,19 +68,10 @@ public class Player : MonoBehaviour
         m_CurrentEquippedWeapon = weapons[m_CurrentWeaponIndex];
 
         m_PlayerMotor = GetComponent<PlayerMotor>();
-    }
 
-    private void Start()
-    {
         m_CurrentEquippedWeapon.gameObject.SetActive(true);
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        //weapons[1].Start();
-        //flashbang.Start();
-
-        //DeactivateWeapon(1);
-        //DeactivateFlashbang();
     }
 
     private void Update()
