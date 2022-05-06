@@ -12,6 +12,7 @@ public class Knife : BaseMelee
     {
         if (TakeAction(m_LastAttackTime, attackDelay))
         {
+            PlayAttackAudio();
             GetAnimator().SetTrigger(attackAnimationTriggerName);
             UpdateLastAttackTime();
         }
@@ -24,6 +25,7 @@ public class Knife : BaseMelee
     {
         if (TakeAction(m_LastAttackTime, attackDelay))
         {
+            PlayAttack2Audio();
             GetAnimator().SetTrigger(attack2AnimationTriggerName);
             UpdateLastAttackTime();
         }

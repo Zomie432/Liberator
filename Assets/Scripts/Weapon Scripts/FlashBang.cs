@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class FlashBang : BaseThrowables
 {
     [SerializeField] float explodeDistanceFromPlayer = 5.0f;
-    [SerializeField] Transform particleSystemSpawnTransform;
 
     [SerializeField] Image flashbangImage;
     [SerializeField] float flashbangTimeDamp = 0.25f;

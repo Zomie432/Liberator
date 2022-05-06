@@ -43,7 +43,7 @@ public class BaseMelee : BaseWeapon
     */
     public override void Attack() 
     {
-        PlayAttackAudio();
+        base.Attack();
     }
 
 
