@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Animator))]
 public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
     [Header("Player Settings")]
@@ -30,17 +32,25 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     [SerializeField] protected int damage = 25;
 
+    [Header("Audio Settings")]
+
+    /* audio clip played when player attacks */
+    [SerializeField] AudioClip attackAudioClip;
+
     /* this weapons animator component */
     protected Animator m_Animator;
 
     /* time when weapon was last fired */
     protected float m_LastAttackTime;
-     
-    public virtual void Start() 
+
+    private AudioSource m_AudioSource;
+
+    public virtual void Start()
     {
-        m_LastAttackTime = 0.0f;
+        m_LastAttackTime = attackDelay * -1;
 
         m_Animator = GetComponent<Animator>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     public virtual void OnEnable()
@@ -69,6 +79,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     */
     public virtual void Attack()
     {
+        PlayAttackAudio();
         UpdateLastAttackTime();
     }
 
@@ -183,5 +194,46 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public void SetActive(bool isActive)
     {
         gameObject.SetActive(isActive);
+    }
+
+    /*
+    * returns is any audio is playing
+    */
+    protected bool IsAudioPlaying()
+    {
+        return m_AudioSource.isPlaying;
+    }
+
+    /*
+    * plays the audio 
+    */
+    protected void PlayAttackAudio()
+    {
+        m_AudioSource.clip = attackAudioClip;
+        m_AudioSource.Play();
+    }
+
+    /*
+    * plays the audio 
+    */
+    protected void PlayAudio()
+    {
+        m_AudioSource.Play();
+    }
+
+    /*
+    * sets the audio clip to be played next time play audio is called
+    */
+    protected void SetAudioClip(AudioClip clip)
+    {
+        m_AudioSource.clip = clip;
+    }
+
+    /*
+    * stops the payer audio
+    */
+    public void StopAudio()
+    {
+        m_AudioSource.Stop();
     }
 }

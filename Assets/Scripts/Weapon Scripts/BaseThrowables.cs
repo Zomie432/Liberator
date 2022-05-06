@@ -52,6 +52,8 @@ public class BaseThrowables : BaseWeapon
 
         if (TakeAction(m_LastAttackTime, attackDelay))
         {
+            PlayAttackAudio();
+
             GetAnimator().SetTrigger(attackAnimationTriggerName);
             UpdateLastAttackTime();
 

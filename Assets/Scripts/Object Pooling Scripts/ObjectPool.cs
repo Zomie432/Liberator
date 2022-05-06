@@ -45,6 +45,7 @@ public class ObjectPool
     private void CreateObject()
     {
         PoolableObject poolObject = GameObject.Instantiate(m_ObjectPrefab, Vector3.zero, Quaternion.identity, m_Parent.transform);
+        poolObject.OnStart();
         poolObject.SetParent(this);
         poolObject.gameObject.SetActive(false);
 

@@ -207,22 +207,6 @@ public class PlayerMotor : MonoBehaviour
                 isPlayerStrafing = false;
                 isPlayerWalkingBackwards = false;
             }
-            //else if(input.x != 0 && input.y == 0)
-            //{
-            //    isPlayerStrafing = true;
-            //}       
-            //else if(input.x == 0 && input.y == 0)
-            //{
-            //    currentActiveSpeed2D = 0.1f;
-
-            //    isPlayerStrafing = false;
-            //    isPlayerWalkingBackwards = false;
-            //}
-            //else
-            //{
-            //    isPlayerStrafing = false;
-            //    isPlayerWalkingBackwards = false;
-            //}
         }
         else
         {

@@ -5,6 +5,9 @@ public class BaseMelee : BaseWeapon
     /* string reference to the trigger name set on the animation component to play second attack animation */
     [SerializeField] protected string attack2AnimationTriggerName = "Attack2";
 
+    /* seconds attack audio clip */
+    [SerializeField] protected AudioClip attack2Audio;
+
     /*
     * hides the ammo GUI upon a melee weapon equip
     */
@@ -38,10 +41,23 @@ public class BaseMelee : BaseWeapon
     /*
     * overriden attack from BaseWeapon class
     */
-    public override void Attack() { Debug.Log("attack from melee"); }
+    public override void Attack() 
+    {
+        PlayAttackAudio();
+    }
+
 
     /*
     * overriden StartAiming from BaseWeapon class to act as a secondary attack for melee weapon to use
     */
-    public override void StartAiming() { }
+    public override void StartAiming() 
+    {
+        PlayAttack2Audio();
+    }
+
+    protected void PlayAttack2Audio()
+    {
+        SetAudioClip(attack2Audio);
+        PlayAudio();
+    }
 }

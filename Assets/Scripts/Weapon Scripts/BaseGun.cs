@@ -3,7 +3,9 @@ using UnityEngine;
 [System.Serializable]
 public class BaseGun : BaseWeapon
 {
-    //[Header("Animation Settings")]
+    [SerializeField] AudioClip reloadAudioClip;
+
+    [Header("Animation Settings")]
 
     /* string reference to the trigger name set on the animation component to play reload animation */
     [SerializeField] protected string reloadAnimationTriggerName = "Reload";
@@ -66,7 +68,7 @@ public class BaseGun : BaseWeapon
 
     public BaseGun()
     {
-       
+
     }
 
     /*
@@ -179,6 +181,7 @@ public class BaseGun : BaseWeapon
         Invoke("PlayMuzzleFlash", 0.1f);
 
         ShootBullet();
+        PlayAttackAudio();
 
         UpdateAmmoGUI();
     }
@@ -228,6 +231,18 @@ public class BaseGun : BaseWeapon
         m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
 
         Invoke("UpdateAmmoGUI", reloadDelay - reloadTimeDeductionForAmmoGUIUpdate);
+
+        // Audio
+        if (IsAudioPlaying())
+            Invoke("PlayRelaodAudio", 0.2f);
+        else
+            PlayRelaodAudio();
+    }
+
+    void PlayRelaodAudio()
+    {
+        SetAudioClip(reloadAudioClip);
+        PlayAudio();
     }
 
     /*
@@ -338,10 +353,10 @@ public class BaseGun : BaseWeapon
 
     /*
     * Update the ammo gui text
-    */    
+    */
     public override void UpdateAmmoGUI()
     {
-        if(AmmoManager.Instance != null)
+        if (AmmoManager.Instance != null)
             AmmoManager.Instance.UpdateAmmoGUI(ammoType, m_CurrentNumOfBullets);
     }
 }

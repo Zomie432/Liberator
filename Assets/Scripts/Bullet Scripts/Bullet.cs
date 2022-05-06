@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Bullet : PoolableObject
 {
     /* time delay before bullet is pooled after collision */
@@ -26,7 +27,16 @@ public class Bullet : PoolableObject
     /* range the bullet can go to before it gets pooled */
     float m_BulletRange = 0f;
 
+    AudioSource m_AudioSource;
+
     BaseGun parentGun;
+
+    public override void OnStart()
+    {
+        base.OnStart();
+
+        m_AudioSource = GetComponent<AudioSource>();
+    }
 
     /*
      * Overriden to set @Member Field 'bHitSomething' when bullet is active again
@@ -74,13 +84,17 @@ public class Bullet : PoolableObject
      */
     void OnRayCastHit(RaycastHit hit)
     {
-        if(hit.collider.tag == "Hitbox")
+        if (hit.collider.tag == "Hitbox")
         {
-           hit.collider.GetComponent<Hitbox>().OnRaycastHit(parentGun, transform.forward);
+            hit.collider.GetComponent<Hitbox>().OnRaycastHit(parentGun, transform.forward);
         }
-        
+
 
         BulletImpactManager.Instance.SpawnBulletImpact(hit.point, hit.normal, hit.collider.tag);
+
+        // Audio
+        m_AudioSource.clip = BulletImpactManager.Instance.GetAudioClipForImpactFromTag(hit.collider.tag);
+        m_AudioSource.Play();
 
         CancelInvoke(DISABLE_METHOD_NAME);
         Invoke(DISABLE_METHOD_NAME, destroyTimeAfterCollision);
@@ -96,7 +110,7 @@ public class Bullet : PoolableObject
         transform.forward = forward;
 
         parentGun = parent;
-    
+
         m_BulletRange = bulletRange;
     }
 
