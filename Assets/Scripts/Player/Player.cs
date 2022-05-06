@@ -76,7 +76,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
+        if (m_PlayerMotor.IsPlayerStrafing() || m_PlayerMotor.IsPlayerWalkingBackwards())
+            SetCurrentAnimSpeed(0.3f);
+        else
+            SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
 
         if (m_CurrentEquippedWeapon.IsWeaponAimed())
             m_PlayerMotor.SlowWalk();
@@ -104,6 +107,14 @@ public class Player : MonoBehaviour
     void UnEquip(BaseWeapon weapon)
     {
 
+    }
+
+    /*
+     * DEBUG_-----------------------------------------------------------------------------
+     */
+    public void TakeDamageTen()
+    {
+        TakeDamage(10);
     }
 
     public void EquipFlashbang()

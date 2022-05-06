@@ -157,6 +157,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Test_PlayerDamage",
+                    "type": "Button",
+                    "id": "def05250-eb13-41b5-b1be-ae4c7ea62c9c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -487,6 +496,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "EquipWeaponTwoPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08316b3a-22f7-4efe-9a44-406c4fadea1c",
+                    "path": "<Keyboard>/quote",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test_PlayerDamage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

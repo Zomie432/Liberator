@@ -61,6 +61,9 @@ public class InputManager : MonoBehaviour
         onFoot.EquipWeaponTwoPressed.performed += ctx => player.EquipWeaponTwoPressed();
 
         onFoot.EquipFlashbangPressed.performed += ctx => player.EquipFlashbang();
+
+        // DEBUG-----------------------------------------------------------------------------------
+        onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();
     }
 
     // Update is called once per frame
