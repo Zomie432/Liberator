@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
     /* current equipped weapon */
     BaseWeapon m_CurrentEquippedWeapon;
 
+    /* Health bar connected to player, in inspector must select health bar from ui to work*/
+    public HealthBar healthBar;
     private void Start()
     {
         m_CurrentWeaponIndex = 0;
@@ -255,6 +257,8 @@ public class Player : MonoBehaviour
 
         shieldDamageFallOff = DecreasePlayerShield(shieldDamageFallOff);
         DecreasePlayerHealth(damage - shieldDamageFallOff);
+        healthBar.UpdateHealthBar();
+        Debug.Log(m_CurrentPlayerHealth);
     }
 
     /*

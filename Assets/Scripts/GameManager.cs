@@ -5,13 +5,13 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public PlayerMotor playerMoveScript;
 
-    private GameObject player;
+    public GameObject player;
+    public Player playerScript;
     public Transform playerTransform;
-
     private static GameManager instance;
 
     public static GameManager Instance
-    { 
+    {
         get
         {
             return instance;
@@ -34,10 +34,10 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-      
-        player = GameObject.FindGameObjectWithTag("Player");
 
-        if(player == null)
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
+        if (player == null)
         {
             Debug.LogError("Player class cannot be found, does not exist");
 
