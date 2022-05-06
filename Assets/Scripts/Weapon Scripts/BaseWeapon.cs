@@ -60,6 +60,11 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public virtual void Update() { }
 
     /*
+     * called when weapon is being switched to another weapon
+     */
+    public virtual void OnWeaponSwitch() { }
+
+    /*
     * updates the last attack time
     */
     public virtual void Attack()

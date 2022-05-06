@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 778651276, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: flashbangTimeDamp
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 778651276, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: maxThrowablesAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3522521766520787424, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: m_Name
       value: Vrij_Player

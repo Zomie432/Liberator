@@ -39,7 +39,7 @@ public class AmmoManager : MonoBehaviour
      */
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.LogError("Multiple AmmoManagers! Destroying the newest one: " + this.name);
             Destroy(this.gameObject);
@@ -50,7 +50,7 @@ public class AmmoManager : MonoBehaviour
 
         ammoGUI = GetComponentInChildren<TextMeshProUGUI>();
 
-        foreach(Ammo _ammo in ammo)
+        foreach (Ammo _ammo in ammo)
         {
             m_StoredAmmo.Add(_ammo.ammoType, _ammo.ammoSlot);
         }
@@ -99,8 +99,7 @@ public class AmmoManager : MonoBehaviour
     */
     public void ShowAmmoGUI()
     {
-        if(ammoGUI != null)
-            ammoGUI.enabled = true;
+        ammoGUI.enabled = true;
     }
 
     /*
@@ -114,7 +113,7 @@ public class AmmoManager : MonoBehaviour
 
         if (currentAmmo <= 0) return 0;
 
-        if(currentAmmo - amount <= 0)
+        if (currentAmmo - amount <= 0)
         {
             m_StoredAmmo[ammoType].ammoAmount -= currentAmmo;
         }
@@ -159,10 +158,10 @@ public class AmmoManager : MonoBehaviour
     private class AmmoSlot
     {
         /* current ammo amount  */
-        public int ammoAmount;  
+        public int ammoAmount;
 
         /* max ammo capacity  */
-        public int ammoCapacity;  
+        public int ammoCapacity;
     }
 
 }

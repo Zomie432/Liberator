@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] BaseWeapon[] weapons;
 
     /* base throwable of type flashbang */
-    [SerializeField] BaseThrowables flashbang;
+    [SerializeField] FlashBang flashbang;
 
     [Header("Player Settings")]
 
@@ -83,6 +83,11 @@ public class Player : MonoBehaviour
 
         if (flashbang.isActiveAndEnabled && !flashbang.HasThrowablesLeft())
             EquipPreviousWeapon();
+
+        if(flashbang.ShouldPlayerBeFlashed())
+        {
+            flashbang.Update();
+        }
     }
 
     /*
@@ -105,8 +110,8 @@ public class Player : MonoBehaviour
     {
         if (flashbang.HasThrowablesLeft())
         {
-            ActivateFlashbang();
             DeactivateWeapon(m_CurrentWeaponIndex);
+            ActivateFlashbang();
         }
     }
 
@@ -115,7 +120,10 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponOnePressed()
     {
-        ForceEquipWeapon(0);
+        if(flashbang.isActiveAndEnabled)
+            ForceEquipWeapon(0);
+        else
+            EquipWeapon(0);
     }
 
     /*
@@ -123,7 +131,10 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponTwoPressed()
     {
-        ForceEquipWeapon(1);
+        if (flashbang.isActiveAndEnabled)
+            ForceEquipWeapon(1);
+        else
+            EquipWeapon(1);
     }
 
     /*
@@ -174,9 +185,8 @@ public class Player : MonoBehaviour
         if (index < 0)
             index = weapons.Length - 1;
 
+        DeactivateWeapon(m_CurrentWeaponIndex); // order matters, since we needs this to disable first so its OnDisable() method could be called first
         ActivateWeapon(index);
-
-        DeactivateWeapon(m_CurrentWeaponIndex);
 
         m_CurrentWeaponIndex = index;
     }
@@ -211,6 +221,7 @@ public class Player : MonoBehaviour
 
     private void DeactivateWeapon(int index)
     {
+        m_CurrentEquippedWeapon.OnWeaponSwitch();
         weapons[index].SetActive(false);
     }
 

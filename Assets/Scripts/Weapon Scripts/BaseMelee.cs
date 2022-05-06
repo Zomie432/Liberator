@@ -11,16 +11,16 @@ public class BaseMelee : BaseWeapon
     public override void OnEnable()
     {
         base.OnEnable();
-        if(AmmoManager.Instance != null)
-            AmmoManager.Instance.HideAmmoGUI();
-
+        AmmoManager.Instance.HideAmmoGUI();
     }
 
     /*
     * shows the ammo GUI upon a melee weapon unequip
     */
-    public override void OnDisable()
+
+    public override void OnWeaponSwitch()
     {
+        base.OnWeaponSwitch();
         AmmoManager.Instance.ShowAmmoGUI();
     }
 

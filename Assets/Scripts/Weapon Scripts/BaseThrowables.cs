@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -8,7 +9,7 @@ public class BaseThrowables : BaseWeapon
 
     [SerializeField] PoolableObject explodeParticleSystemPrefab;
 
-    int m_CurrentThrowablesAmount;
+    int m_CurrentThrowablesAmount = 1;
 
     protected ObjectPool m_ExplodeParticleSystemPool;
 
@@ -16,8 +17,6 @@ public class BaseThrowables : BaseWeapon
     {
         allowPlayerToHoldAimTrigger = false;
         allowPlayerToHoldAttackTrigger = false;
-
-        m_CurrentThrowablesAmount = maxThrowablesAmount;
     }
 
     public override void Start()
@@ -25,11 +24,7 @@ public class BaseThrowables : BaseWeapon
         base.Start();
 
         m_ExplodeParticleSystemPool = new ObjectPool(explodeParticleSystemPrefab, maxThrowablesAmount);
-    }
-
-    public override void Update()
-    {
-        base.Update();
+        m_CurrentThrowablesAmount = maxThrowablesAmount;
     }
 
     /*
@@ -38,15 +33,16 @@ public class BaseThrowables : BaseWeapon
     public override void OnEnable()
     {
         base.OnEnable();
-        if(AmmoManager.Instance != null)
-            AmmoManager.Instance.HideAmmoGUI();
+        AmmoManager.Instance.HideAmmoGUI();
     }
 
     /*
     * shows the ammo GUI upon a melee weapon unequip
     */
-    public override void OnDisable()
+
+    public override void OnWeaponSwitch()
     {
+        base.OnWeaponSwitch();
         AmmoManager.Instance.ShowAmmoGUI();
     }
 
@@ -59,12 +55,18 @@ public class BaseThrowables : BaseWeapon
             GetAnimator().SetTrigger(attackAnimationTriggerName);
             UpdateLastAttackTime();
 
-            Invoke("OnThrowableExplode", throwableExplodeTimer);
-            m_CurrentThrowablesAmount--;
-        }        
+            StartCoroutine(OnThrowableExplode(fpCamera.transform.forward));
+            //Invoke("OnThrowableExplode", fpCamera.transform.forward, throwableExplodeTimer);
+        }
     }
 
-    public virtual void OnThrowableExplode() { Debug.Log(name + " just exploded!"); }
+    // public virtual void OnThrowableExplode(Vector3 camForward) { Debug.Log(name + " just exploded!"); }
+
+    public virtual IEnumerator OnThrowableExplode(Vector3 camForward)
+    {
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log(name + " just exploded!");
+    }
 
     /*
      * returns if player can switch to another wepaon
@@ -72,6 +74,14 @@ public class BaseThrowables : BaseWeapon
     public override bool CanSwitchWeapon()
     {
         return TakeAction(m_LastAttackTime, attackDelay);
+    }
+
+    /*
+    * decreases throwables amount
+    */
+    protected void DecrementThrowablesAmount()
+    {
+        m_CurrentThrowablesAmount--;
     }
 
     /*
@@ -96,5 +106,13 @@ public class BaseThrowables : BaseWeapon
     public int AmountOfThrowablesLeft()
     {
         return m_CurrentThrowablesAmount;
+    }
+
+    /*
+    * returns the explode time for this throwable
+    */
+    public float GetExplodeTimer()
+    {
+        return throwableExplodeTimer;
     }
 }
