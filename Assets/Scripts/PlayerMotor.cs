@@ -64,6 +64,10 @@ public class PlayerMotor : MonoBehaviour
     private Vector2 currentInputVector;
     private Vector2 smoothInputVelocity;
 
+    // Strafe
+    bool isPlayerStrafing;
+    bool isPlayerWalkingBackwards;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -179,6 +183,46 @@ public class PlayerMotor : MonoBehaviour
 
             //use the CharacterController's built in Move function to move the player
             controller.Move(currentMaxSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
+
+            if(input.y < 0f)
+            {
+                isPlayerWalkingBackwards = true;
+            }
+            else if(input.y == 0)
+            {
+                if(input.x != 0)
+                {
+                    isPlayerStrafing = true;
+                }
+                else if(input.x == 0)
+                {
+                    currentActiveSpeed2D = 0.1f;
+
+                    isPlayerStrafing = false;
+                    isPlayerWalkingBackwards = false;
+                }
+            }
+            else
+            {
+                isPlayerStrafing = false;
+                isPlayerWalkingBackwards = false;
+            }
+            //else if(input.x != 0 && input.y == 0)
+            //{
+            //    isPlayerStrafing = true;
+            //}       
+            //else if(input.x == 0 && input.y == 0)
+            //{
+            //    currentActiveSpeed2D = 0.1f;
+
+            //    isPlayerStrafing = false;
+            //    isPlayerWalkingBackwards = false;
+            //}
+            //else
+            //{
+            //    isPlayerStrafing = false;
+            //    isPlayerWalkingBackwards = false;
+            //}
         }
         else
         {
@@ -267,5 +311,15 @@ public class PlayerMotor : MonoBehaviour
         }
         else //don't change the speed they travel at, queue up a function call for whenever the player lands
             waitingToLandAndShiftWalk = true;
+    }
+
+    public bool IsPlayerStrafing()
+    {
+        return isPlayerStrafing; 
+    }
+
+    public bool IsPlayerWalkingBackwards()
+    {
+        return isPlayerWalkingBackwards;
     }
 }
