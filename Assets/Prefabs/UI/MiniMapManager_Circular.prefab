@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930701178307674830, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
       propertyPath: m_Name
-      value: MiniMapManager
+      value: MiniMapManager_Circular
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}

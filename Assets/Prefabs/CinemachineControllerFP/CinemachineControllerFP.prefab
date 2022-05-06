@@ -638,12 +638,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3522521766890090641}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.143, z: -0.109}
+  m_LocalPosition: {x: -0.000000014901161, y: 1.1429999, z: -0.10900022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2660686638276071024}
-  - {fileID: 2044173368}
   m_Father: {fileID: 3522521766520787425}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -783,11 +782,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3522521767111046796, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7777778
+      value: 2.1213872
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522521767111046797, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 3522521767111046797, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59999996
+      value: 0.5999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522521767111046797, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000022351742
       objectReference: {fileID: 0}
     - target: {fileID: 4043269250513232049, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
       propertyPath: m_SkinWidth
@@ -964,16 +971,24 @@ MonoBehaviour:
   PlayerIndex: -1
   XYAxis: {fileID: -5587432939600217471, guid: 5224302c020f97843bcf865b95348e86, type: 3}
   ZAxis: {fileID: 0}
---- !u!1001 &5930701179009015545
+--- !u!1001 &8157646065882769166
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3522521766890090645}
+    m_TransformParent: {fileID: 8291300734312020672}
     m_Modifications:
+    - target: {fileID: 5930701177746565220, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930701177836407797, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5930701178307674817, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5930701178307674817, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1019,13 +1034,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniMapManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5930701178932311974, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
+      propertyPath: m_Color.b
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930701178932311974, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
+      propertyPath: m_Color.g
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930701178932311974, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
+      propertyPath: m_Color.r
+      value: 0.754717
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
---- !u!4 &2044173368 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5930701178307674817, guid: 5dfcc93ba52d4214380833a7ed5d6641, type: 3}
-  m_PrefabInstance: {fileID: 5930701179009015545}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8157646066924196412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1110,14 +1132,13 @@ MonoBehaviour:
   fpCamera: {fileID: 3522521766890090644}
   attackAnimationTriggerName: Throw
   damage: 25
-  maxThrowablesAmount: 2
+  maxThrowablesAmount: 10
   throwableExplodeTimer: 2
   explodeParticleSystemPrefab: {fileID: 8848956499122210205, guid: d891261ba17db454b870dab2cbc11c53, type: 3}
-  m_CurrentThrowablesAmount: 0
   explodeDistanceFromPlayer: 5
   particleSystemSpawnTransform: {fileID: 0}
   flashbangImage: {fileID: 0}
-  flashbangTimeDamp: 0.1
+  flashbangTimeDamp: 0.15
   flashbangImageColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!4 &8159102789977844174 stripped
 Transform:
