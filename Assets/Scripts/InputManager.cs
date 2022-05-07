@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
 
     private PlayerMotor motor;
     private PlayerLook look;
+    private PlayerInteract interact;
 
     // Player class
     private Player player;
@@ -35,6 +36,7 @@ public class InputManager : MonoBehaviour
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
         player = GetComponent<Player>();
+        interact = GetComponent<PlayerInteract>();
 
 
         //set the "Jump" action in the "OnFoot" action map to point to the Jump function in the player motor script
@@ -44,6 +46,7 @@ public class InputManager : MonoBehaviour
         onFoot.SlowWalk.performed += ctx => motor.SlowWalk();
         onFoot.LowerXSensitivity.performed += ctx => look.LowerXSensitivity();
         onFoot.RaiseXSensitivity.performed += ctx => look.RaiseXSensitivity();
+        onFoot.Interact.performed += ctx => interact.ProcessInteraction();
 
         // Player input
         onFoot.AttackPressed.performed += ctx => player.OnAttackPressed();

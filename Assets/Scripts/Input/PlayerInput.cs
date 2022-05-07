@@ -188,6 +188,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""3561a37a-535f-4179-aa47-77a2384ede53"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -531,6 +540,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Test_PlayerDamage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""598d117b-c8b2-41e1-af25-17faf38ee523"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -557,6 +577,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_EquipWeaponTwoPressed = m_OnFoot.FindAction("EquipWeaponTwoPressed", throwIfNotFound: true);
         m_OnFoot_EquipFlashbangPressed = m_OnFoot.FindAction("EquipFlashbangPressed", throwIfNotFound: true);
         m_OnFoot_Test_PlayerDamage = m_OnFoot.FindAction("Test_PlayerDamage", throwIfNotFound: true);
+        m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -634,6 +655,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_EquipWeaponTwoPressed;
     private readonly InputAction m_OnFoot_EquipFlashbangPressed;
     private readonly InputAction m_OnFoot_Test_PlayerDamage;
+    private readonly InputAction m_OnFoot_Interact;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -656,6 +678,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @EquipWeaponTwoPressed => m_Wrapper.m_OnFoot_EquipWeaponTwoPressed;
         public InputAction @EquipFlashbangPressed => m_Wrapper.m_OnFoot_EquipFlashbangPressed;
         public InputAction @Test_PlayerDamage => m_Wrapper.m_OnFoot_Test_PlayerDamage;
+        public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -719,6 +742,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Test_PlayerDamage.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
                 @Test_PlayerDamage.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
                 @Test_PlayerDamage.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnTest_PlayerDamage;
+                @Interact.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -777,6 +803,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Test_PlayerDamage.started += instance.OnTest_PlayerDamage;
                 @Test_PlayerDamage.performed += instance.OnTest_PlayerDamage;
                 @Test_PlayerDamage.canceled += instance.OnTest_PlayerDamage;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -801,5 +830,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnEquipWeaponTwoPressed(InputAction.CallbackContext context);
         void OnEquipFlashbangPressed(InputAction.CallbackContext context);
         void OnTest_PlayerDamage(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
