@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class BaseThrowables : BaseWeapon
 {
+    /* audio clip to be played when this explodes */
+    [SerializeField] AudioClip explodeAudioClip;
+
+    /* max amount of throwables */
     [SerializeField] int maxThrowablesAmount = 2;
+
+    /* time it takes before the throwable expodes */
     [SerializeField] float throwableExplodeTimer = 1.0f;
 
+    /* particle system to be played when the throwable explodes */
     [SerializeField] PoolableObject explodeParticleSystemPrefab;
 
+    /* current amount of throwables in inventory */
     int m_CurrentThrowablesAmount = 1;
 
+    /* object pool of explode particle system */
     protected ObjectPool m_ExplodeParticleSystemPool;
 
     public BaseThrowables()
@@ -46,6 +55,9 @@ public class BaseThrowables : BaseWeapon
         AmmoManager.Instance.ShowAmmoGUI();
     }
 
+    /*
+    * throws a throwable
+    */
     public override void Attack()
     {
         if (!HasThrowablesLeft()) return;
@@ -67,6 +79,7 @@ public class BaseThrowables : BaseWeapon
     public virtual IEnumerator OnThrowableExplode(Vector3 camForward)
     {
         yield return new WaitForSeconds(0.1f);
+        PlayExplodeAudio();
         Debug.Log(name + " just exploded!");
     }
 
@@ -76,6 +89,15 @@ public class BaseThrowables : BaseWeapon
     public override bool CanSwitchWeapon()
     {
         return TakeAction(m_LastAttackTime, attackDelay);
+    }
+
+    /*
+    * plays the explosion audio
+    */
+    protected void PlayExplodeAudio()
+    {
+        SetAudioClip(explodeAudioClip);
+        PlayAudio();
     }
 
     /*

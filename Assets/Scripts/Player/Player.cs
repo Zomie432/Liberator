@@ -38,7 +38,22 @@ public class Player : MonoBehaviour
 
     [Header("Animation Settings")]
 
+    /* time it takes to lerp from last animation speed to current animation speed */
     [SerializeField] float animationSpeedInterpTime = 0.1f;
+
+    [Header("Audio Settings")]
+
+    /* footstep audio when player walks */
+    [SerializeField] AudioClip footStepWalkAudio;
+
+    /* footstep audio when player runs */
+    [SerializeField] AudioClip footStepRunAudio;
+
+    /* delay on the foot step walk audio to keep it in control */
+    [SerializeField] float footStepWalkAudioPlayDelay = 0.75f;
+
+    /* delay on the foot step run audio to keep it in control */
+    [SerializeField] float footStepRunAudioPlayDelay = 0.75f;
 
     /* current equipped weapon */
     int m_CurrentWeaponIndex;
@@ -51,6 +66,12 @@ public class Player : MonoBehaviour
 
     /* Last Animation speed */
     float m_LastAnimSpeed = 0f;
+
+    /* audio source used for footsteps */
+    AudioSource m_FootstepAudioSrc;
+
+    /* last time a sound effect was played for footsteps */
+    float m_LastStepSoundTime = 0f;
 
     /* player motor of the player */
     PlayerMotor m_PlayerMotor;
@@ -70,6 +91,7 @@ public class Player : MonoBehaviour
         m_CurrentEquippedWeapon = weapons[m_CurrentWeaponIndex];
 
         m_PlayerMotor = GetComponent<PlayerMotor>();
+        m_FootstepAudioSrc = GetComponentInChildren<AudioSource>();
 
         m_CurrentEquippedWeapon.gameObject.SetActive(true);
 
@@ -79,9 +101,31 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (m_PlayerMotor.IsPlayerStrafing() || m_PlayerMotor.IsPlayerWalkingBackwards())
+        {
             SetCurrentAnimSpeed(0.3f);
+        }
         else
+        {
             SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
+        }
+
+        if(m_PlayerMotor.currentActiveSpeed2D > 0.1f)
+        {
+            if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
+            {
+                SetFootstepAudio(footStepWalkAudio);
+                PlayFootStepAudio();
+                m_LastStepSoundTime = Time.time;
+            }
+            else if(Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
+            {
+                SetFootstepAudio(footStepRunAudio);
+                PlayFootStepAudio();
+                m_LastStepSoundTime = Time.time;
+            }
+        }
+
+        
 
         if (m_CurrentEquippedWeapon.IsWeaponAimed())
             m_PlayerMotor.SlowWalk();
@@ -220,24 +264,36 @@ public class Player : MonoBehaviour
         m_CurrentWeaponIndex = index;
     }
 
+    /*
+    * enables the weapon at @Param: 'index', and sets it to current equipped weapon
+    */
     private void ActivateWeapon(int index)
     {
         weapons[index].SetActive(true);
         m_CurrentEquippedWeapon = weapons[index];
     }
 
+    /*
+    * enables flashbang, and sets it to current equipped weapon
+    */
     private void ActivateFlashbang()
     {
         flashbang.SetActive(true);
         m_CurrentEquippedWeapon = flashbang;
     }
 
+    /*
+    * disables the weapon at @Param: 'index'
+    */
     private void DeactivateWeapon(int index)
     {
         m_CurrentEquippedWeapon.OnWeaponSwitch();
         weapons[index].SetActive(false);
     }
 
+    /*
+    * disables flashbang
+    */
     private void DeactivateFlashbang()
     {
         flashbang.SetActive(false);
@@ -398,6 +454,9 @@ public class Player : MonoBehaviour
         m_CurrentEquippedWeapon.StopAiming();
     }
 
+    /*
+    * lerps from last aniamtion speed to current animation speed to create a flow
+    */
     public void SetCurrentAnimSpeed(float speed)
     {
         m_LastAnimSpeed = Mathf.Lerp(m_LastAnimSpeed, speed, animationSpeedInterpTime);
@@ -458,5 +517,21 @@ public class Player : MonoBehaviour
     int GetShieldDamage(int damageTaken)
     {
         return (int)(damageTaken * playerShieldFallOffScale);
+    }
+
+    /*
+    * set the footstep audio sources clip to the @Param: 'clip'
+    */
+    void SetFootstepAudio(AudioClip clip)
+    {
+        m_FootstepAudioSrc.clip = clip;
+    }
+
+    /*
+    * plays a footstep audio
+    */
+    void PlayFootStepAudio()
+    {
+        m_FootstepAudioSrc.Play();
     }
 }

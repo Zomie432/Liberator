@@ -46,6 +46,13 @@ public class BaseMelee : BaseWeapon
         base.Attack();
     }
 
+    /*
+    * called when the attack animation reaches a certain frame
+    */
+    public virtual void OnAttackAnimationHitEvent()
+    {
+        Debug.Log("Melee Hit");
+    }
 
     /*
     * overriden StartAiming from BaseWeapon class to act as a secondary attack for melee weapon to use
@@ -55,6 +62,9 @@ public class BaseMelee : BaseWeapon
         PlayAttack2Audio();
     }
 
+    /*
+    * plays second attack audio
+    */
     protected void PlayAttack2Audio()
     {
         SetAudioClip(attack2Audio);

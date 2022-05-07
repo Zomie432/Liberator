@@ -32,6 +32,14 @@ public class Knife : BaseMelee
     }
 
     /*
+    * called when the attack animation reaches a certain frame
+    */
+    public override void OnAttackAnimationHitEvent()
+    {
+        Debug.Log("Knife Hit");
+    }
+
+    /*
      * returns if player can switch to another wepaon
     */
     public override bool CanSwitchWeapon()

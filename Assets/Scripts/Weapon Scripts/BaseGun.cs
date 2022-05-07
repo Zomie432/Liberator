@@ -41,6 +41,11 @@ public class BaseGun : BaseWeapon
     /* max number of bullets this gun can have at one time */
     [SerializeField] int maxNumOfBullets = 30;
 
+    [SerializeField] AudioClip bulletDropAudioClip;
+
+    /* amount of seconds to wait to play bullet drop audio after shooting */
+    [SerializeField] float bulletDropAudioInterval = 0.5f;
+
     /* current number of bullets */
     int m_CurrentNumOfBullets;
     #endregion
@@ -182,8 +187,15 @@ public class BaseGun : BaseWeapon
 
         ShootBullet();
         PlayAttackAudio();
+        Invoke("PlayBulletDropAudio", bulletDropAudioInterval);
 
         UpdateAmmoGUI();
+    }
+
+    void PlayBulletDropAudio()
+    {
+        SetAudioClip(bulletDropAudioClip);
+        PlayAudio();
     }
 
     /*
