@@ -8,12 +8,13 @@ public class AmmoPickup : MonoBehaviour
     /* Amount of ammo given upon pickup */
     [SerializeField] int ammoAmount;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.tag == "Player")
+        Debug.Log(other.tag);
+        if (other.tag == "Player")
         {
             AmmoManager.Instance.IncreaseAmmo(ammoType, ammoAmount);
             Destroy(gameObject);
-        } 
+        }
     }
 }

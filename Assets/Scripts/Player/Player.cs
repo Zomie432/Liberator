@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
             SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
         }
 
-        if(m_PlayerMotor.currentActiveSpeed2D > 0.1f)
+        if(GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
         {
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
             {
@@ -127,9 +127,7 @@ public class Player : MonoBehaviour
                 PlayFootStepAudio();
                 m_LastStepSoundTime = Time.time;
             }
-        }
-
-        
+        }        
 
         if (m_CurrentEquippedWeapon.IsWeaponAimed())
             m_PlayerMotor.SlowWalk();

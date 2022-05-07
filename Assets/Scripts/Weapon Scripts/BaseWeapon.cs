@@ -227,6 +227,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     protected void SetAudioClip(AudioClip clip)
     {
         m_AudioSource.clip = clip;
+        m_AudioSource.time = 0;
     }
 
     /*

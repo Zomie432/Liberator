@@ -246,7 +246,7 @@ public class BaseGun : BaseWeapon
 
         // Audio
         if (IsAudioPlaying())
-            Invoke("PlayRelaodAudio", 0.2f);
+            Invoke("PlayRelaodAudio", 0.25f);
         else
             PlayRelaodAudio();
     }
