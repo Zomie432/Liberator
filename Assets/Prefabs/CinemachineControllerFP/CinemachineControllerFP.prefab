@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 3522521766890090642}
   m_Layer: 0
   m_Name: MainCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1117,6 +1117,20 @@ MonoBehaviour:
   footStepWalkAudioPlayDelay: 0.75
   footStepRunAudioPlayDelay: 0.4
   healthBar: {fileID: 0}
+  shieldBar: {fileID: 0}
+--- !u!114 &3089032162603844563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671586182020813366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af91d62818c3bf7498781d9e275fd7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 3
 --- !u!4 &8291300734312020672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4096617023938946199, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
@@ -1472,7 +1486,7 @@ MonoBehaviour:
   aimDownSightAnimationBoolName: isAiming
   reloadDelay: 4.5
   muzzleFlash: {fileID: 1144762567295748676}
-  bulletPrefab: {fileID: 7251879723483470099, guid: 04529a0483539d94ab4530d8796f5a8d, type: 3}
+  bulletPrefab: {fileID: -7061582049979965478, guid: cb821671db89c704ea873bec606a6513, type: 3}
   bulletSpawnLocation: {fileID: 6216476984867650739}
   bulletRange: 100
   ammoType: 0

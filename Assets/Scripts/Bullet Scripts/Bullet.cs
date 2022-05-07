@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(TrailRenderer))]
 public class Bullet : PoolableObject
 {
     /* time delay before bullet is pooled after collision */
@@ -29,6 +30,8 @@ public class Bullet : PoolableObject
 
     AudioSource m_AudioSource;
 
+    TrailRenderer m_TrailRenderer;
+
     BaseGun parentGun;
 
     public override void OnStart()
@@ -36,6 +39,7 @@ public class Bullet : PoolableObject
         base.OnStart();
 
         m_AudioSource = GetComponent<AudioSource>();
+        m_TrailRenderer = GetComponent<TrailRenderer>();
     }
 
     /*
@@ -108,6 +112,8 @@ public class Bullet : PoolableObject
         m_StartPosition = position;
         transform.position = position;
         transform.forward = forward;
+
+        m_TrailRenderer.SetPosition(0, position);
 
         parentGun = parent;
 
