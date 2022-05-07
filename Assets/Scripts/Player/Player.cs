@@ -81,13 +81,17 @@ public class Player : MonoBehaviour
 
     /* Health bar connected to player, in inspector must select health bar from ui to work*/
     public HealthBar healthBar;
+
+    /* Shield bar connected to player, in inspector must select Shield bar from ui to work*/
+    public ShieldBar shieldBar;
     private void Start()
     {
         m_CurrentWeaponIndex = 0;
 
         m_CurrentPlayerHealth = maxPlayerHealth;
         m_CurrentPlayerShield = maxPlayerShield;
-
+        healthBar.SetMaxHealth();
+        shieldBar.SetMaxShield();
         m_CurrentEquippedWeapon = weapons[m_CurrentWeaponIndex];
 
         m_PlayerMotor = GetComponent<PlayerMotor>();
@@ -314,7 +318,10 @@ public class Player : MonoBehaviour
         shieldDamageFallOff = DecreasePlayerShield(shieldDamageFallOff);
         DecreasePlayerHealth(damage - shieldDamageFallOff);
         healthBar.UpdateHealthBar();
-        Debug.Log(m_CurrentPlayerHealth);
+        shieldBar.UpdateShieldBar();
+        Debug.Log("Damage Taken: " + damage);
+        Debug.Log("Current Health: " + m_CurrentPlayerHealth);
+        Debug.Log("Current Shield: " + m_CurrentPlayerShield);
     }
 
     /*
