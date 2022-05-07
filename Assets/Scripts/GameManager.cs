@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     public Vector3 playerAimVector;
     [HideInInspector]
     public Transform playerTransform;
+    [HideInInspector]
+    public CharacterController playerCharacterController;
+    [HideInInspector]
+    public bool playerIsGrounded;
 
 
     private static GameManager instance;
@@ -45,6 +49,7 @@ public class GameManager : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<Player>();
+        playerCharacterController = player.GetComponent<CharacterController>();
         if (player == null)
         {
             Debug.LogError("Player class cannot be found, does not exist");
@@ -66,5 +71,8 @@ public class GameManager : MonoBehaviour
 
         //getting where the player is looking which includes the rotation up and down of the main camera
         playerAimVector = mainCamera.transform.forward;
+
+        //implemented to use for footstep audio so it doesn't play if the player is in the air, can be used or anything
+        playerIsGrounded = playerCharacterController.isGrounded;
     }
 }
