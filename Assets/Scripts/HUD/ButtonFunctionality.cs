@@ -6,41 +6,50 @@ public class ButtonFunctionality : MonoBehaviour
 {
 
 
-    GameObject pause;
+    public GameObject pause;
     GameObject mainCamera;
-    
+    public static bool gameIsPaused = false;
     // Start is called before the first frame update
     void Start()
     {
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
+        pause.SetActive(false);
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (pause.activeInHierarchy)
-        //{
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //    Cursor.visible = true;
-        //}
-    }
+ 
 
     public void PauseGame()
     {
-        // Freezes time
-        Time.timeScale = 0f;
-        // Disables main camera so player can not look around in the pause menu
-        mainCamera.SetActive(false);
-        Debug.Log("Game Paused");
+        if (gameIsPaused == false)
+        {
+            // Turns on Pause menu image
+            pause.SetActive(true);
+            // Unlock cursor
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            // Freezes time
+            Time.timeScale = 0f;
+            // Disables main camera so player can not look around in the pause menu
+            mainCamera.SetActive(false);
+            Debug.Log("Game Paused");
+            gameIsPaused = true;
+        }
+        else
+        {
+            Resume();
+        }
     }
     public void Resume()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         // Resumes time
         Time.timeScale = 1f;
         // Re Enables players ability to look around and disables the Pause menu UI image
         mainCamera.SetActive(true);
         pause.SetActive(false);
+        gameIsPaused = false;
         Debug.Log("Resuming Level");
     }
 

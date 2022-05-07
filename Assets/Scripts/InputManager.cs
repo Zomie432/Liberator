@@ -21,6 +21,9 @@ public class InputManager : MonoBehaviour
     // Player class
     private Player player;
 
+    // button Functionality class
+    public ButtonFunctionality buttonFunc;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,7 +40,7 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
         player = GetComponent<Player>();
         interact = GetComponent<PlayerInteract>();
-
+       // buttonFunc = GetComponent<ButtonFunctionality>();
 
         //set the "Jump" action in the "OnFoot" action map to point to the Jump function in the player motor script
         //basically just says "Hey, if the player jumps call this function"
@@ -64,6 +67,8 @@ public class InputManager : MonoBehaviour
         onFoot.EquipWeaponTwoPressed.performed += ctx => player.EquipWeaponTwoPressed();
 
         onFoot.EquipFlashbangPressed.performed += ctx => player.EquipFlashbang();
+
+        onFoot.PauseGame.performed += ctx => buttonFunc.PauseGame();
 
         // DEBUG-----------------------------------------------------------------------------------
         onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();

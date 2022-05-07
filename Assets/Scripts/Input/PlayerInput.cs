@@ -197,6 +197,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""36e29e9a-13f0-4e2a-8dd0-990cc737619b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -551,6 +560,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""765c9e58-0d5d-4633-954f-66e4eecae1a6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -578,6 +598,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_EquipFlashbangPressed = m_OnFoot.FindAction("EquipFlashbangPressed", throwIfNotFound: true);
         m_OnFoot_Test_PlayerDamage = m_OnFoot.FindAction("Test_PlayerDamage", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
+        m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -656,6 +677,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_EquipFlashbangPressed;
     private readonly InputAction m_OnFoot_Test_PlayerDamage;
     private readonly InputAction m_OnFoot_Interact;
+    private readonly InputAction m_OnFoot_PauseGame;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -679,6 +701,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @EquipFlashbangPressed => m_Wrapper.m_OnFoot_EquipFlashbangPressed;
         public InputAction @Test_PlayerDamage => m_Wrapper.m_OnFoot_Test_PlayerDamage;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
+        public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -745,6 +768,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @PauseGame.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
+                @PauseGame.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
+                @PauseGame.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -806,6 +832,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
         }
     }
@@ -831,5 +860,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnEquipFlashbangPressed(InputAction.CallbackContext context);
         void OnTest_PlayerDamage(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
 }
