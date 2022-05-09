@@ -10,6 +10,8 @@ public class Bullet : PoolableObject
     /* speed of bullet */
     public float moveSpeed = 25f;
 
+    public bool isEnemy = false;
+
     /* name of the method that is invoked after collision to pool object */
     private const string DISABLE_METHOD_NAME = "ReturnBulletToPool";
 
@@ -31,6 +33,8 @@ public class Bullet : PoolableObject
     AudioSource m_AudioSource;
 
     TrailRenderer m_TrailRenderer;
+
+    int damage = 0;
 
     BaseGun parentGun;
 
@@ -88,11 +92,20 @@ public class Bullet : PoolableObject
      */
     void OnRayCastHit(RaycastHit hit)
     {
-        if (hit.collider.tag == "Hitbox")
+        if(isEnemy)
         {
-            hit.collider.GetComponent<Hitbox>().OnRaycastHit(parentGun, transform.forward);
+            if (hit.collider.tag == "Player")
+            {
+                hit.collider.GetComponent<Player>().TakeDamage(damage);
+            }
         }
-
+        else
+        {
+            if (hit.collider.tag == "Hitbox")
+            {
+                hit.collider.GetComponent<Hitbox>().OnRaycastHit(parentGun, transform.forward);
+            }
+        }
 
         BulletImpactManager.Instance.SpawnBulletImpact(hit.point, hit.normal, hit.collider.tag);
 
@@ -116,6 +129,19 @@ public class Bullet : PoolableObject
         m_TrailRenderer.SetPosition(0, position);
 
         parentGun = parent;
+
+        m_BulletRange = bulletRange;
+    }
+
+    public void Spawn(Vector3 position, Vector3 forward, float bulletRange, int d)
+    {
+        m_StartPosition = position;
+        transform.position = position;
+        transform.forward = forward;
+
+        m_TrailRenderer.SetPosition(0, position);
+
+        damage = d;
 
         m_BulletRange = bulletRange;
     }
