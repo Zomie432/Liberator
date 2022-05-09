@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 1622362585}
   - component: {fileID: 1622362590}
   - component: {fileID: 1622362589}
-  - component: {fileID: 1622362588}
+  - component: {fileID: 1622362591}
   m_Layer: 0
   m_Name: EnemyGun
   m_TagString: Untagged
@@ -890,39 +890,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622362583}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1622362588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622362583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5af398e37ce0e304e86df1e70e0eb6b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowPlayerToHoldAttackTrigger: 0
-  allowPlayerToHoldAimTrigger: 0
-  attackDelay: 1
-  fpCamera: {fileID: 0}
-  attackAnimationTriggerName: Attack
-  damage: 25
-  attackAudioClip: {fileID: 0}
-  reloadAudioClip: {fileID: 0}
-  reloadAnimationTriggerName: Reload
-  aimDownSightAnimationBoolName: isAiming
-  reloadDelay: 1
-  muzzleFlash: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  bulletSpawnLocation: {fileID: 0}
-  bulletRange: 100
-  ammoType: 0
-  maxNumOfBullets: 30
-  bulletDropAudioClip: {fileID: 0}
-  bulletDropAudioInterval: 0.5
-  reloadTimeDeductionForAmmoGUIUpdate: 0.35
-  aimingBulletSpawnOffset: {x: 0, y: 0, z: 0}
 --- !u!95 &1622362589
 Animator:
   serializedVersion: 4
@@ -1039,6 +1006,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1622362591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622362583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6215d5fffe529a40990ff77121b26b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.25
+  damage: 25
+  bulletPrefab: {fileID: 0}
+  bulletSpawnLocation: {fileID: 0}
+  maxNumOfBullets: 30
+  bulletRange: 100
+  reloadTime: 100
 --- !u!1 &1768787745
 GameObject:
   m_ObjectHideFlags: 0

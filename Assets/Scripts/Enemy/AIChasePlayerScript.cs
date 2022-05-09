@@ -33,6 +33,10 @@ public class AIChasePlayerScript : AIState
             }
             timer = agent.config.maxTime;
         }
+        //if(agent.playerTransform.position - agent.transform.position <= )
+        //{
+
+        //}
     }
 
     public void Exit(AIAgent agent)
