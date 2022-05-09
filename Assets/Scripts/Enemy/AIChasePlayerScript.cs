@@ -35,7 +35,7 @@ public class AIChasePlayerScript : AIState
         }
         if(Mathf.Abs((agent.playerTransform.position - agent.transform.position).magnitude) <= gun.bulletRange)
         {
-            gun.Shoot(agent.transform.forward);
+            gun.Shoot();
         }
     }
 
