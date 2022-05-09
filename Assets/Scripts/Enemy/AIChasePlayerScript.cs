@@ -14,7 +14,7 @@ public class AIChasePlayerScript : AIState
 
     public void Enter(AIAgent agent)
     {
-
+        gun = agent.GetComponentInChildren<EnemyGun>();
     }
 
     public void Update(AIAgent agent)
@@ -33,10 +33,7 @@ public class AIChasePlayerScript : AIState
             }
             timer = agent.config.maxTime;
         }
-        if(Mathf.Abs((agent.playerTransform.position - agent.transform.position).magnitude) <= gun.bulletRange)
-        {
             gun.Shoot();
-        }
     }
 
     public void Exit(AIAgent agent)
