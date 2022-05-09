@@ -7,7 +7,7 @@ public class BulletImpactManager : MonoBehaviour
     [SerializeField] private int particleSystemBuffer = 5;
 
     /* list of bullet impacts */
-    public List<BulletImpact> bulletImpacts = new List<BulletImpact>();
+    public List<Impact> bulletImpacts = new List<Impact>();
 
     /* stores the object pool related to a string */
     public Dictionary<string, ObjectPool> bulletImpactDictionary = new Dictionary<string, ObjectPool>();
@@ -43,7 +43,7 @@ public class BulletImpactManager : MonoBehaviour
 
         Instance = this;
 
-        foreach (BulletImpact impact in bulletImpacts)
+        foreach (Impact impact in bulletImpacts)
         {
             bulletImpactDictionary.Add(impact.objectTag, new ObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
             bulletImpactAudioClipDictionary.Add(impact.objectTag, impact.impactAudio);
@@ -91,7 +91,7 @@ public class BulletImpactManager : MonoBehaviour
      * Stores the tag and the particle system associated with the tag
      */
     [System.Serializable]
-    public class BulletImpact
+    public class Impact
     {
         public string objectTag;
         public PoolableObject collisionParticleSystem;

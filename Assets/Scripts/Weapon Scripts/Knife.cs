@@ -5,6 +5,8 @@ public class Knife : BaseMelee
     /* time taken off of attack delay to preform weapon switch */
     [SerializeField] float switchWeaponDelayTimeOffAttackDelay = 0.5f;
 
+    [SerializeField] float knifeHitRange = 0.5f;
+
     /*
     * triggers first attack 
     */
@@ -36,7 +38,17 @@ public class Knife : BaseMelee
     */
     public override void OnAttackAnimationHitEvent()
     {
-        Debug.Log("Knife Hit");
+        RaycastHit hitInfo;
+        Debug.DrawLine(fpCamera.transform.position, fpCamera.transform.position + fpCamera.transform.forward * 1f, Color.red, 2f);
+        if (Physics.Raycast(fpCamera.transform.position, fpCamera.transform.forward, out hitInfo, 1f))
+        {
+            Debug.Log("Knife Hit " + hitInfo.collider.tag);
+            MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);
+
+            // Audio
+            SetAudioClip(MeleeImpactManager.Instance.GetAudioClipForImpactFromTag(hitInfo.collider.tag));
+            PlayAudio();
+        }
     }
 
     /*

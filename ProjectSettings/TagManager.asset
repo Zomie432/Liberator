@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PauseMenu
   - Door
+  - HostageSecuredScreen
+  - NotWalkable
+  - Walkable
   layers:
   - Default
   - TransparentFX

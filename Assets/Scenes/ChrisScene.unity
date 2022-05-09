@@ -123,6 +123,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &228779222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2249140822492217233, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+  m_PrefabInstance: {fileID: 2249140822282577004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &228779226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228779222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f30c312a360964cbdaed790c51cd36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pause: {fileID: 228779222}
+  hostageSecured: {fileID: 0}
 --- !u!1 &343837907
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +883,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
+    - target: {fileID: 2552385591354814606, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2963038271833927880, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -915,6 +938,10 @@ PrefabInstance:
     - target: {fileID: 3340936658801214558, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563927550808037296, guid: 70a3515ae83a79440b842a194371f102, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3893321571218892407, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_RootOrder
