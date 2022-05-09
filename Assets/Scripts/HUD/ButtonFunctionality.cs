@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonFunctionality : MonoBehaviour
 {
 
 
     public GameObject pause;
+    public GameObject hostageSecured;
     GameObject mainCamera;
     public static bool gameIsPaused = false;
-    // Start is called before the first frame update
+   
     void Start()
     {
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
         pause.SetActive(false);
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        hostageSecured = GameObject.FindGameObjectWithTag("HostageSecuredScreen");
+        hostageSecured.SetActive(false);
+
     }
 
  
@@ -55,6 +60,8 @@ public class ButtonFunctionality : MonoBehaviour
 
     public void Restart()
     {
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
         Debug.Log("Restarting Level");
     }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PauseMenu
   - Door
+  - HostageSecuredScreen
   layers:
   - Default
   - TransparentFX
