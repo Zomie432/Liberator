@@ -9,7 +9,6 @@ public class Health : MonoBehaviour
     public float currentHealth;
     AIAgent agent;
     SkinnedMeshRenderer skinnedMeshRenderer;
-
     public float blinkIntensity;
     public float blinkDuration;
     float blinkTimer;

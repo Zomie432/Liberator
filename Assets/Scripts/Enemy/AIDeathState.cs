@@ -17,6 +17,8 @@ public class AIDeathState : AIState
         agent.ragdoll.ActivateRagdoll();
         agent.ragdoll.ApplyForce(direction * agent.config.dieForce);
         agent.mesh.updateWhenOffscreen = true;
+        var material = agent.GetComponentsInChildren<Material>();
+        agent.mesh.material.SetColor("_Color", Color.black);
     }
 
     public void Update(AIAgent agent)
