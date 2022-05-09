@@ -6,7 +6,6 @@ TagManager:
   tags:
   - PauseMenu
   - Door
-  - Hitbox
   layers:
   - Default
   - TransparentFX
