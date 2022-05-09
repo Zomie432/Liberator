@@ -33,7 +33,7 @@ public class AIChasePlayerScript : AIState
             }
             timer = agent.config.maxTime;
         }
-        if((agent.playerTransform.position - agent.transform.position).magnitude.abs <= gun.bulletRange)
+        if((agent.playerTransform.position - agent.transform.position).magnitude <= gun.bulletRange)
         {
             gun.Shoot(agent.transform.forward);
         }
