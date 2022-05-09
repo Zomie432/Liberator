@@ -39,8 +39,8 @@ public class Knife : BaseMelee
     public override void OnAttackAnimationHitEvent()
     {
         RaycastHit hitInfo;
-        Debug.DrawLine(fpCamera.transform.position, fpCamera.transform.position + fpCamera.transform.forward * 1f, Color.red, 2f);
-        if (Physics.Raycast(fpCamera.transform.position, fpCamera.transform.forward, out hitInfo, 1f))
+        Debug.DrawLine(fpCamera.transform.position, fpCamera.transform.position + fpCamera.transform.forward * knifeHitRange, Color.red, 2f);
+        if (Physics.Raycast(fpCamera.transform.position, fpCamera.transform.forward, out hitInfo, knifeHitRange))
         {
             Debug.Log("Knife Hit " + hitInfo.collider.tag);
             MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);

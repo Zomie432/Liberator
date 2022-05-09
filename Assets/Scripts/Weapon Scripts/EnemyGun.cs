@@ -39,12 +39,29 @@ public class EnemyGun : MonoBehaviour
         m_BulletPool = new ObjectPool(bulletPrefab, maxNumOfBullets);
     }
 
+    public void Shoot()
+    {
+        if (Time.time > m_NextTimeToFire)
+        {
+            Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
+            bullet.Spawn(bulletSpawnLocation.position, bulletSpawnLocation.forward, bulletRange, damage);
+            m_NextTimeToFire = Time.time + fireRate;
+
+            m_CurrentNumOfBullets--;
+        }
+
+        if (m_CurrentNumOfBullets < 1)
+        {
+            Reload();
+        }
+    }
+
     public void Shoot(Vector3 forward)
     {
         if(Time.time > m_NextTimeToFire)
         {
             Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
-            bullet.Spawn(bulletSpawnLocation.position, forward, bulletRange, null);
+            bullet.Spawn(bulletSpawnLocation.position, forward, bulletRange, damage);
             m_NextTimeToFire = Time.time + fireRate;
 
             m_CurrentNumOfBullets--;
@@ -54,7 +71,7 @@ public class EnemyGun : MonoBehaviour
         {
             Reload();
         }
-    }
+    }    
 
     public void Reload()
     {
