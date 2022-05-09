@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHealth;
-    [HideInInspector]
+    //[HideInInspector]
     public float currentHealth;
     AIAgent agent;
     SkinnedMeshRenderer skinnedMeshRenderer;

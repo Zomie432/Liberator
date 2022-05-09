@@ -16,7 +16,7 @@ public class AIFlashState : AIState
     public void Update(AIAgent agent)
     {
         flashTimer -= Time.deltaTime;
-        if (flashTimer == 0.0f)
+        if (flashTimer <= 0.0f)
         {
             agent.mesh.material.color = Color.red;
             agent.stateMachine.ChangeState(AIStateID.Idle);

@@ -32,7 +32,7 @@ public class AIAgent : MonoBehaviour
     void Update()
     {
         //sets the player transform to look for the player tagged object
-        playerTransform = GameManager.Instance.playerTransform;
+        playerTransform = GameManager.Instance.player.transform;
         //constantly updates the machine
         stateMachine.Update();
     }
