@@ -141,7 +141,8 @@ public class BaseGun : BaseWeapon
         if (IsAtMaxAmmo()) return; // doesn't allow reload when gun has full ammo
         if (!HasMoreAmmoInPouch()) return; // no more ammo left 
 
-        GetAnimator().ResetTrigger(attackAnimationTriggerName);
+        if (GetAnimator() != null)
+            GetAnimator().ResetTrigger(attackAnimationTriggerName);
         StopAiming();
         StartWeaponReloading();
     }
@@ -182,7 +183,8 @@ public class BaseGun : BaseWeapon
         m_LastAttackTime = Time.time;
         m_CurrentNumOfBullets--;
 
-        GetAnimator().SetTrigger(attackAnimationTriggerName);
+        if(GetAnimator() != null)
+            GetAnimator().SetTrigger(attackAnimationTriggerName);
         Invoke("PlayMuzzleFlash", 0.1f);
 
         ShootBullet();
@@ -238,7 +240,8 @@ public class BaseGun : BaseWeapon
         m_ReloadStartTime = Time.time;
         bIsReloading = true;
 
-        GetAnimator().SetTrigger(reloadAnimationTriggerName);
+        if (GetAnimator() != null)
+            GetAnimator().SetTrigger(reloadAnimationTriggerName);
 
         m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
 
@@ -270,7 +273,8 @@ public class BaseGun : BaseWeapon
      */
     public void StartWeaponAiming()
     {
-        GetAnimator().SetBool(aimDownSightAnimationBoolName, true);
+        if (GetAnimator() != null)
+            GetAnimator().SetBool(aimDownSightAnimationBoolName, true);
         bIsAiming = true;
     }
 
@@ -279,7 +283,8 @@ public class BaseGun : BaseWeapon
      */
     public void StopWeaponAiming()
     {
-        GetAnimator().SetBool(aimDownSightAnimationBoolName, false);
+        if (GetAnimator() != null)
+            GetAnimator().SetBool(aimDownSightAnimationBoolName, false);
         bIsAiming = false;
     }
 
