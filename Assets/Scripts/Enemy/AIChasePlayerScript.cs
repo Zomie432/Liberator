@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIChasePlayerScript : AIState
 {
-    
+    EnemyGun gun;
     float timer = 0.0f;
 
     public AIStateID GetId()
@@ -33,10 +33,10 @@ public class AIChasePlayerScript : AIState
             }
             timer = agent.config.maxTime;
         }
-        //if(agent.playerTransform.position - agent.transform.position <= )
-        //{
-
-        //}
+        if((agent.playerTransform.position - agent.transform.position).magnitude.abs <= gun.bulletRange)
+        {
+            gun.Shoot(agent.transform.forward);
+        }
     }
 
     public void Exit(AIAgent agent)

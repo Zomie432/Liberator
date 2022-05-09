@@ -16,7 +16,7 @@ public class EnemyGun : MonoBehaviour
     /* max number of bullets this gun can have at one time */
     [SerializeField] int maxNumOfBullets = 30;
 
-    [SerializeField] float bulletRange = 100f;
+    [SerializeField] public float bulletRange = 100f;
 
     [SerializeField] float reloadTime = 100f;
 
