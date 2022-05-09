@@ -559,22 +559,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 728950297623109673, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5999997
-      objectReference: {fileID: 0}
-    - target: {fileID: 728950297623109673, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.00000020861626
-      objectReference: {fileID: 0}
-    - target: {fileID: 4744336607983286374, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1429996
-      objectReference: {fileID: 0}
-    - target: {fileID: 4744336607983286374, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.109000206
-      objectReference: {fileID: 0}
     - target: {fileID: 4744336608686545170, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -623,34 +607,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vrij_Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8157646064995154665, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: meleeImpacts.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8157646064995154665, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: meleeImpacts.Array.data[0].objectTag
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8157646064995154665, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: meleeImpacts.Array.data[1].objectTag
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8157646064995154665, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: meleeImpacts.Array.data[0].impactAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
-    - target: {fileID: 8157646064995154665, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: meleeImpacts.Array.data[1].impactAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 019b1cad8d20c6748abcaeabd40d6746, type: 3}
-    - target: {fileID: 8157646064995154665, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: meleeImpacts.Array.data[0].collisionParticleSystem
-      value: 
-      objectReference: {fileID: -7308709378478881761, guid: c2505f646b94d494bbdd5f853db29b10, type: 3}
-    - target: {fileID: 8157646064995154665, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
-      propertyPath: meleeImpacts.Array.data[1].collisionParticleSystem
-      value: 
-      objectReference: {fileID: -7308709378478881761, guid: c2505f646b94d494bbdd5f853db29b10, type: 3}
     - target: {fileID: 8157646066335396237, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: healthBar
       value: 
