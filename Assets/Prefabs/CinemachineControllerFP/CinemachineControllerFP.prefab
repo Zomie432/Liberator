@@ -333,7 +333,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cd45ec5cbc1d37247a36775d8949da86, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.193
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -554,6 +554,58 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1674523160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674523161}
+  - component: {fileID: 1674523162}
+  m_Layer: 0
+  m_Name: KnifeImpactManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674523161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674523160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3522521766520787425}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1674523162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674523160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989ba4cfa582bfc48b21caed447f78b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemBuffer: 5
+  meleeImpacts:
+  - objectTag: Untagged
+    collisionParticleSystem: {fileID: -7308709378478881761, guid: c2505f646b94d494bbdd5f853db29b10, type: 3}
+    impactAudio: {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
+  - objectTag: Enemy
+    collisionParticleSystem: {fileID: -7308709378478881761, guid: c2505f646b94d494bbdd5f853db29b10, type: 3}
+    impactAudio: {fileID: 8300000, guid: 019b1cad8d20c6748abcaeabd40d6746, type: 3}
 --- !u!1 &1793510863
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +754,7 @@ MonoBehaviour:
   particleSystemBuffer: 5
   bulletImpacts:
   - objectTag: Untagged
-    collisionParticleSystem: {fileID: 8848956499122210205, guid: d891261ba17db454b870dab2cbc11c53, type: 3}
+    collisionParticleSystem: {fileID: -7308709378478881761, guid: c2505f646b94d494bbdd5f853db29b10, type: 3}
     impactAudio: {fileID: 8300000, guid: 087bace50db49124c9737a5840e97554, type: 3}
   - objectTag: Player
     collisionParticleSystem: {fileID: 8848956499122210205, guid: d891261ba17db454b870dab2cbc11c53, type: 3}
@@ -740,6 +792,7 @@ Transform:
   - {fileID: 2007052647}
   - {fileID: 433753419}
   - {fileID: 1793510864}
+  - {fileID: 1674523161}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -770,7 +823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3522521766890090641}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.143, z: -0.109}
+  m_LocalPosition: {x: 0, y: 1.1429996, z: -0.109000206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1023,11 +1076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3522521767111046797, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59999996
+      value: 0.5999997
       objectReference: {fileID: 0}
     - target: {fileID: 3522521767111046797, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.00000020861626
       objectReference: {fileID: 0}
     - target: {fileID: 4043269250513232049, guid: f7ad71f9a352a6d4fb19b1f37d62fe31, type: 3}
       propertyPath: m_SkinWidth

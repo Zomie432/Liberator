@@ -7,6 +7,8 @@ TagManager:
   - PauseMenu
   - Door
   - HostageSecuredScreen
+  - NotWalkable
+  - Walkable
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Roof
   - Lights
   - MiniMapSight
-  - 
+  - Player
   - 
   - 
   - 
