@@ -11,20 +11,24 @@ public class AIFlashState : AIState
     }
     public void Enter(AIAgent agent)
     {
-        agent.mesh.material.color = Color.white;
+        
     }
     public void Update(AIAgent agent)
     {
-
-        flashTimer -= Time.deltaTime;
         if (flashTimer <= 0.0f)
         {
-            agent.mesh.material.color = Color.red;
-            agent.stateMachine.ChangeState(AIStateID.Idle);
+            agent.mesh.material.color = Color.white * flashTimer;
+            flashTimer -= Time.deltaTime;
+        
+            
+        }
+        else
+        {
+            Exit(agent);
         }
     }
     public void Exit(AIAgent agent)
     {
-
+        agent.stateMachine.ChangeState(AIStateID.Idle);
     }
 }

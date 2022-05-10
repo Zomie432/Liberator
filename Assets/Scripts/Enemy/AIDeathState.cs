@@ -16,7 +16,6 @@ public class AIDeathState : AIState
     {
         agent.ragdoll.ActivateRagdoll();
         agent.ragdoll.ApplyForce(direction * agent.config.dieForce);
-        agent.mesh.material.SetColor("_Color", Color.black * 0);
         var rigidBodies = agent.GetComponentsInChildren<Rigidbody>();
         foreach(var rigidbody in rigidBodies)
         {
@@ -27,7 +26,7 @@ public class AIDeathState : AIState
 
     public void Update(AIAgent agent)
     {
-
+        agent.mesh.material.SetColor("_Color", Color.black * 0);
     }
 
     public void Exit(AIAgent agent)

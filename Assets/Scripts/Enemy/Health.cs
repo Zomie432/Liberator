@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       agent = GetComponent<AIAgent>();
+        agent = GetComponent<AIAgent>();
         currentHealth = maxHealth;
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
         foreach(var rigidBody in rigidBodies)
