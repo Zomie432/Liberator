@@ -14,11 +14,9 @@ public class ButtonFunctionality : MonoBehaviour
    
     void Start()
     {
+        // Get istances of pause menu and find virtual camera attached to player that is tagged VirtualCam
         pause = GameManager.Instance.pause;
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
-        hostageSecured = GameManager.Instance.hostageSecured;
-        hostageSecured.SetActive(false);
-        
     }
 
  
@@ -61,11 +59,14 @@ public class ButtonFunctionality : MonoBehaviour
 
     public void Restart()
     {
+        // Resume time
+        Time.timeScale = 1f;
+        // Get instance of Pause menu and turn it off
         pause = GameManager.Instance.pause;
         pause.SetActive(false);
+        // Find instance of virtual camera
         virtualCam = GameObject.FindGameObjectWithTag("MainCamera");
-        hostageSecured = GameManager.Instance.hostageSecured;
-        hostageSecured.SetActive(false);
+        // Find active scene and reload it
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
         Debug.Log("Restarting Level");
