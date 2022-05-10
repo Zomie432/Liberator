@@ -21,7 +21,7 @@ public class BaseGun : BaseWeapon
     [Header("Visuals")]
 
     /* Muzzle flash VFX played when weapon has been fired */
-    [SerializeField] ParticleSystem muzzleFlash;
+    [SerializeField] GameObject muzzleFlash;
 
     [Header("Bullet")]
 
@@ -185,7 +185,10 @@ public class BaseGun : BaseWeapon
 
         if(GetAnimator() != null)
             GetAnimator().SetTrigger(attackAnimationTriggerName);
-        Invoke("PlayMuzzleFlash", 0.1f);
+
+        muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
+        muzzleFlash.SetActive(true);
+        Invoke("HideMuzzleFlash", 0.02f);
 
         ShootBullet();
         PlayAttackAudio();
@@ -203,9 +206,9 @@ public class BaseGun : BaseWeapon
     /*
     * plays the muzzle flash animation
     */
-    void PlayMuzzleFlash()
+    void HideMuzzleFlash()
     {
-        muzzleFlash.Play();
+        muzzleFlash.SetActive(false);
     }
 
     /*

@@ -67,17 +67,18 @@ public class FlashBang : BaseThrowables
         sphereCollider.SetActive(true);
 
         flashbangImageColor.a = 1;
+        bIsBeingFlashed = true;
 
-        float dot = Vector3.Dot(flashBangParticleSystem.transform.position.normalized, fpCamera.transform.forward); // gets the angle between the cameras forward and position of where the flashbang exploded
-        if (dot > 0) // if its > 0, flash the player, if not don't
-        {
-            flashbangImageColor.a = dot < 0.5f ? 1f * dot * 0.4f : 1f; // if the player is barely within view flash, if not completely out but barely seing the flash, scale the flash amount
-            bIsBeingFlashed = true;
-        }
-        else
-        {
-            bIsBeingFlashed = false;
-        }
+        //float dot = Vector3.Dot(flashBangParticleSystem.transform.position.normalized, fpCamera.transform.forward); // gets the angle between the cameras forward and position of where the flashbang exploded
+        //if (dot > 0) // if its > 0, flash the player, if not don't
+        //{
+        //    flashbangImageColor.a = dot < 0.5f ? 1f * dot * 0.4f : 1f; // if the player is barely within view flash, if not completely out but barely seing the flash, scale the flash amount
+        //    bIsBeingFlashed = true;
+        //}
+        //else
+        //{
+        //    bIsBeingFlashed = false;
+        //}
 
         DecrementThrowablesAmount();
 
