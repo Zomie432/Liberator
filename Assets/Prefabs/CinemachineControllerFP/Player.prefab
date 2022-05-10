@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6982f94f6826645bbe824cc4d948d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonFunc: {fileID: 0}
 --- !u!114 &6455542711272163310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,9 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf786cae5914e7048a956069d80e9216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  track3dSpeed: 0
   track2dSpeed: 1
-  currentActiveSpeed3D: 0
   currentActiveSpeed2D: 0
   speedCheckTimerMax: 0.1
   playerTransform: {fileID: 4096617023938946199}
@@ -158,8 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 3522521767111046797}
+  FPcam: {fileID: 0}
   xSensitivity: 5
-  ySensitivity: 20
 --- !u!1 &3522521767111046795
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +171,7 @@ GameObject:
   - component: {fileID: 3522521767111046796}
   m_Layer: 0
   m_Name: FPVirtualCam
-  m_TagString: Untagged
+  m_TagString: VirtualCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3522521767111046795}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6000061, z: 0}
+  m_LocalPosition: {x: 0, y: 0.59999996, z: 0.000000029802322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -222,7 +221,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.7949341, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
