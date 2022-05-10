@@ -539,4 +539,14 @@ public class Player : MonoBehaviour
     {
         m_FootstepAudioSrc.Play();
     }
+
+    public int GetCurrentFlashbangsAmount()
+    {
+        return flashbang.AmountOfThrowablesLeft();
+    }
+
+    public int GetMaxFlashBangs()
+    {
+        return flashbang.GetMaxAmountOfThrowables();
+    }
 }
