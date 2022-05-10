@@ -6,6 +6,10 @@ using UnityEngine;
 //this script will contain all player movement functionality
 public class PlayerMotor : MonoBehaviour
 {
+    //static field for hostage secure in PlayerInteract(disable movement when they start securing the hostage, enable if they cancel or succeed)
+    public static bool movementEnabled = true;
+    [HideInInspector] public static bool MovementEnabled { get { return movementEnabled; } set { movementEnabled = value; } }
+
     private CharacterController controller;
     private Vector3 playerVelocity; //used for vertical movement and gravity only
     Vector3 moveDirection = Vector3.zero; //used for horizontal movement
@@ -164,64 +168,67 @@ public class PlayerMotor : MonoBehaviour
     public void ProcessMove(Vector2 input)
     {
 
-        if (isGrounded)
+        if (movementEnabled)
         {
-            //player started or stopped crouching whle in the air previously, so we need to update their speed accordingly
-            if (waitingToLandAndCrouch)
-                Crouch();
-
-            //player started or stopped walking whle in the air previously, so we need to update their speed accordingly
-            if (waitingToLandAndShiftWalk)
-                SlowWalk();
-
-            //smooth between WASD input for more fluid motion(psuedo acceleration/inertia)
-            currentInputVector = Vector2.SmoothDamp(currentInputVector, input, ref smoothInputVelocity, timeToAccelerate);
-
-            //change the 2D movement vector to the new smoothed inputs
-            moveDirection.x = currentInputVector.x;
-            moveDirection.z = currentInputVector.y;
-
-            //use the CharacterController's built in Move function to move the player
-            controller.Move(currentMaxSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
-
-            if(input.y < 0f)
+            if (isGrounded)
             {
-                isPlayerWalkingBackwards = true;
-            }
-            else if(input.y == 0)
-            {
-                if(input.x != 0)
+                //player started or stopped crouching whle in the air previously, so we need to update their speed accordingly
+                if (waitingToLandAndCrouch)
+                    Crouch();
+
+                //player started or stopped walking whle in the air previously, so we need to update their speed accordingly
+                if (waitingToLandAndShiftWalk)
+                    SlowWalk();
+
+                //smooth between WASD input for more fluid motion(psuedo acceleration/inertia)
+                currentInputVector = Vector2.SmoothDamp(currentInputVector, input, ref smoothInputVelocity, timeToAccelerate);
+
+                //change the 2D movement vector to the new smoothed inputs
+                moveDirection.x = currentInputVector.x;
+                moveDirection.z = currentInputVector.y;
+
+                //use the CharacterController's built in Move function to move the player
+                controller.Move(currentMaxSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
+
+                if (input.y < 0f)
                 {
-                    isPlayerStrafing = true;
+                    isPlayerWalkingBackwards = true;
                 }
-                else if(input.x == 0)
+                else if (input.y == 0)
                 {
-                    currentActiveSpeed2D = 0.1f;
+                    if (input.x != 0)
+                    {
+                        isPlayerStrafing = true;
+                    }
+                    else if (input.x == 0)
+                    {
+                        currentActiveSpeed2D = 0.1f;
 
+                        isPlayerStrafing = false;
+                        isPlayerWalkingBackwards = false;
+                    }
+                }
+                else
+                {
                     isPlayerStrafing = false;
                     isPlayerWalkingBackwards = false;
                 }
             }
             else
             {
-                isPlayerStrafing = false;
-                isPlayerWalkingBackwards = false;
+                //if the player is pressed up against an obstacle then set the stored force that would otherwise be applied to 0
+                //TO DO-------------------------------------------------------------
+                //if (playersCurrentSpeedInXY < 0.05 && transform.position.y <= groundLeftYPos + 0.2f)
+                //
+
+                //smooth between WASD input to give player some air control, only difference is the "airTimeToAccelerate"
+                currentInputVector = Vector2.SmoothDamp(currentInputVector, input, ref smoothInputVelocity, airTimeToAccelerate);
+
+                //clamp the input vectors to make sure the player can't move faster than normal by jumping
+                moveDirection.x = Mathf.Clamp(currentInputVector.x, -0.8f, 0.8f);
+                moveDirection.z = Mathf.Clamp(currentInputVector.y, -0.8f, 0.8f);
+                controller.Move(currentMaxSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
             }
-        }
-        else
-        {
-            //if the player is pressed up against an obstacle then set the stored force that would otherwise be applied to 0
-            //TO DO-------------------------------------------------------------
-            //if (playersCurrentSpeedInXY < 0.05 && transform.position.y <= groundLeftYPos + 0.2f)
-            //
-
-            //smooth between WASD input to give player some air control, only difference is the "airTimeToAccelerate"
-            currentInputVector = Vector2.SmoothDamp(currentInputVector, input, ref smoothInputVelocity, airTimeToAccelerate);
-
-            //clamp the input vectors to make sure the player can't move faster than normal by jumping
-            moveDirection.x = Mathf.Clamp(currentInputVector.x, -0.8f, 0.8f);
-            moveDirection.z = Mathf.Clamp(currentInputVector.y, -0.8f, 0.8f);
-            controller.Move(currentMaxSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
         }
 
         //apply a downward force on the player, force increases overtime
@@ -238,7 +245,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded)
+        if (isGrounded && movementEnabled)
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }

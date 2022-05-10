@@ -9,6 +9,8 @@ TagManager:
   - HostageSecuredScreen
   - NotWalkable
   - Walkable
+  - Hitbox
+  - Hostage
   layers:
   - Default
   - TransparentFX

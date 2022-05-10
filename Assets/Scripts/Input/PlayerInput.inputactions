@@ -177,6 +177,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "HoldInteract",
+                    "type": "Button",
+                    "id": "3bab1baa-391f-4b48-b541-b9d5340a8d71",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "PauseGame",
                     "type": "Button",
                     "id": "36e29e9a-13f0-4e2a-8dd0-990cc737619b",
@@ -532,7 +541,7 @@
                     "name": "",
                     "id": "598d117b-c8b2-41e1-af25-17faf38ee523",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
@@ -547,6 +556,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5370f7f1-1a8d-410c-8e96-c14b142a5755",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Hold(duration=3)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
