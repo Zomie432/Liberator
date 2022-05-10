@@ -40,7 +40,6 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
         player = GetComponent<Player>();
         interact = GetComponent<PlayerInteract>();
-       // buttonFunc = GetComponent<ButtonFunctionality>();
 
         //set the "Jump" action in the "OnFoot" action map to point to the Jump function in the player motor script
         //basically just says "Hey, if the player jumps call this function"

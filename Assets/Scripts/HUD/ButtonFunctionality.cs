@@ -14,12 +14,12 @@ public class ButtonFunctionality : MonoBehaviour
    
     void Start()
     {
-        pause = GameObject.FindGameObjectWithTag("PauseMenu");
+        pause = GameManager.Instance.pause;
         pause.SetActive(false);
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        hostageSecured = GameObject.FindGameObjectWithTag("HostageSecuredScreen");
+        hostageSecured = GameManager.Instance.hostageSecured;
         hostageSecured.SetActive(false);
-
+        
     }
 
  
@@ -60,6 +60,11 @@ public class ButtonFunctionality : MonoBehaviour
 
     public void Restart()
     {
+        pause = GameManager.Instance.pause;
+        pause.SetActive(false);
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        hostageSecured = GameManager.Instance.hostageSecured;
+        hostageSecured.SetActive(false);
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
         Debug.Log("Restarting Level");
