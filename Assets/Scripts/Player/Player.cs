@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
             SetCurrentAnimSpeed(m_PlayerMotor.currentActiveSpeed2D);
         }
 
-        if(GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
+        if (GameManager.Instance.playerIsGrounded && m_PlayerMotor.currentActiveSpeed2D > 0.1f)
         {
             if (Time.time - m_LastStepSoundTime > footStepWalkAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D < 0.3f)
             {
@@ -121,13 +121,13 @@ public class Player : MonoBehaviour
                 PlayFootStepAudio();
                 m_LastStepSoundTime = Time.time;
             }
-            else if(Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
+            else if (Time.time - m_LastStepSoundTime > footStepRunAudioPlayDelay && m_PlayerMotor.currentActiveSpeed2D > 0.3f)
             {
                 SetFootstepAudio(footStepRunAudio);
                 PlayFootStepAudio();
                 m_LastStepSoundTime = Time.time;
             }
-        }        
+        }
 
         if (m_CurrentEquippedWeapon.IsWeaponAimed())
             m_PlayerMotor.SlowWalk();
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
         if (flashbang.isActiveAndEnabled && !flashbang.HasThrowablesLeft())
             EquipPreviousWeapon();
 
-        if(flashbang.ShouldPlayerBeFlashed())
+        if (flashbang.ShouldPlayerBeFlashed())
         {
             flashbang.Update();
         }
@@ -167,6 +167,8 @@ public class Player : MonoBehaviour
 
     public void EquipFlashbang()
     {
+        if (!GameRunningCheck()) return;
+
         if (flashbang.HasThrowablesLeft())
         {
             DeactivateWeapon(m_CurrentWeaponIndex);
@@ -179,7 +181,9 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponOnePressed()
     {
-        if(flashbang.isActiveAndEnabled)
+        if (!GameRunningCheck()) return;
+
+        if (flashbang.isActiveAndEnabled)
             ForceEquipWeapon(0);
         else
             EquipWeapon(0);
@@ -190,6 +194,8 @@ public class Player : MonoBehaviour
      */
     public void EquipWeaponTwoPressed()
     {
+        if (!GameRunningCheck()) return;
+
         if (flashbang.isActiveAndEnabled)
             ForceEquipWeapon(1);
         else
@@ -201,6 +207,8 @@ public class Player : MonoBehaviour
      */
     public void OnEquipNextPressed()
     {
+        if (!GameRunningCheck()) return;
+
         EquipNextWeapon();
     }
 
@@ -217,6 +225,8 @@ public class Player : MonoBehaviour
      */
     public void OnEquipPreviousPressed()
     {
+        if (!GameRunningCheck()) return;
+
         EquipPreviousWeapon();
     }
 
@@ -387,6 +397,8 @@ public class Player : MonoBehaviour
      */
     public void OnAttackPressed()
     {
+        if (!GameRunningCheck()) return;
+
         StartAttacking();
     }
 
@@ -395,6 +407,8 @@ public class Player : MonoBehaviour
      */
     public void OnAttackHold()
     {
+        if (!GameRunningCheck()) return;
+
         if (m_CurrentEquippedWeapon.CanPlayerHoldAttackTrigger())
             StartAttacking();
     }
@@ -404,6 +418,8 @@ public class Player : MonoBehaviour
      */
     public void OnADSPressed()
     {
+        if (!GameRunningCheck()) return;
+
         if (!m_CurrentEquippedWeapon.CanPlayerHoldAimTrigger() && m_CurrentEquippedWeapon.IsWeaponAimed())
             StopAiming();
         else
@@ -415,6 +431,8 @@ public class Player : MonoBehaviour
     */
     public void OnADSReleased()
     {
+        if (!GameRunningCheck()) return;
+
         if (m_CurrentEquippedWeapon.CanPlayerHoldAimTrigger())
             StopAiming();
     }
@@ -424,6 +442,8 @@ public class Player : MonoBehaviour
      */
     public void OnReloadPressed()
     {
+        if (!GameRunningCheck()) return;
+
         StartReloading();
     }
 
@@ -548,5 +568,10 @@ public class Player : MonoBehaviour
     public int GetMaxFlashBangs()
     {
         return flashbang.GetMaxAmountOfThrowables();
+    }
+
+    bool GameRunningCheck()
+    {
+        return Time.timeScale > 0f;
     }
 }
