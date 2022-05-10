@@ -83,7 +83,7 @@ public class FlashBang : BaseThrowables
 
         Invoke("StopCollisionDetection", 0.25f);
 
-        //Debug.DrawLine(fpCamera.transform.position, flashBangParticleSystem.transform.position, Color.cyan, 2f);
+        Debug.DrawLine(fpCamera.transform.position, flashBangParticleSystem.transform.position, Color.cyan, 2f);
     }
 
     public void StopCollisionDetection()
