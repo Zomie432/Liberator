@@ -10,7 +10,7 @@ public class AIAgent : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public AIAgentConfig config;
     public Transform playerTransform;
-    public SkinnedMeshRenderer mesh;
+    public Renderer mesh;
     public Ragdoll ragdoll;
 
     // Start is called before the first frame update

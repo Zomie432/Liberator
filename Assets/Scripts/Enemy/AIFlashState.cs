@@ -11,6 +11,7 @@ public class AIFlashState : AIState
     }
     public void Enter(AIAgent agent)
     {
+        agent.mesh.material.color = Color.white;
     }
     public void Update(AIAgent agent)
     {

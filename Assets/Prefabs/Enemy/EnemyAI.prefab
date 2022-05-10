@@ -380,7 +380,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!144 &9041930443408282395
 CharacterJoint:
@@ -528,7 +528,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   config: {fileID: 11400000, guid: 8ee259b6c9066a04693d51b540291e70, type: 2}
   playerTransform: {fileID: 0}
-  mesh: {fileID: 1565810454}
+  mesh: {fileID: 9041930443999640926}
   ragdoll: {fileID: 0}
 --- !u!114 &9041930443545811657
 MonoBehaviour:
@@ -544,6 +544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  skinnedMeshRenderer: {fileID: 9041930443999640926}
   blinkIntensity: 10
   blinkDuration: 1
 --- !u!137 &1565810454
@@ -713,7 +714,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!144 &9041930443713063890
 CharacterJoint:
@@ -1022,7 +1023,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &143540444
 CapsuleCollider:
@@ -1508,7 +1509,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!144 &9041930444559450328
 CharacterJoint:
@@ -2155,7 +2156,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!144 &9041930445052642088
 CharacterJoint:
@@ -2317,7 +2318,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!144 &9041930445175923322
 CharacterJoint:

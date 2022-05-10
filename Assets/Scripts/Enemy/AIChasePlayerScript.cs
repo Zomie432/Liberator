@@ -24,12 +24,12 @@ public class AIChasePlayerScript : AIState
             //stops a lot of cost for the enemy.
             float sqrDistance = (agent.playerTransform.position - agent.navMeshAgent.destination).sqrMagnitude;
             agent.transform.LookAt(agent.playerTransform);
-        if (sqrDistance > agent.config.maxDistance * agent.config.maxDistance && sqrDistance > gun.bulletRange)
-        {
+            if (sqrDistance > agent.config.maxDistance * agent.config.maxDistance && sqrDistance > gun.bulletRange)
+            {
                 //constantly sets move target for enemy to the player
                 agent.navMeshAgent.destination = agent.playerTransform.position;
-        }
-        gun.Shoot();
+            }
+            gun.ShootAtTarget(agent.playerTransform.position);
     }
             
 
