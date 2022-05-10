@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
             Hitbox hitbox = rigidBody.gameObject.AddComponent<Hitbox>();
             hitbox.health = this;
         }
+       agent.stateMachine.ChangeState("")
     }
 
    public void TakeDamage(float _amount, Vector3 direction)
