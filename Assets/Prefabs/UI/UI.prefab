@@ -673,7 +673,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &2249140821128684854
 MonoBehaviour:
@@ -728,7 +728,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 2249140822492217233}
-  hostageSecured: {fileID: 0}
 --- !u!1 &2249140821949016826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,7 +1334,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 0}
-  hostageSecured: {fileID: 0}
 --- !u!1 &2249140822829290639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,7 +1482,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 0}
-  hostageSecured: {fileID: 0}
 --- !u!1 &2249140822914780084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,7 +1630,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 0}
-  hostageSecured: {fileID: 0}
 --- !u!1 &2249140822920166310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +1913,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 0}
-  hostageSecured: {fileID: 0}
 --- !u!1 &3048561550311305767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,7 +2205,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 0}
-  hostageSecured: {fileID: 0}
 --- !u!1 &4245633247250850541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,7 +2429,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 0}
-  hostageSecured: {fileID: 0}
 --- !u!1 &5261511712309089087
 GameObject:
   m_ObjectHideFlags: 0
