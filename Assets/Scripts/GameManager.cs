@@ -18,7 +18,10 @@ public class GameManager : MonoBehaviour
     public CharacterController playerCharacterController;
     [HideInInspector]
     public bool playerIsGrounded;
-
+    [HideInInspector]
+    public GameObject pause;
+    [HideInInspector]
+    public GameObject hostageSecured;
 
     private static GameManager instance;
 
@@ -50,6 +53,9 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<Player>();
         playerCharacterController = player.GetComponent<CharacterController>();
+        pause = GameObject.FindGameObjectWithTag("PauseMenu");
+        hostageSecured = GameObject.FindGameObjectWithTag("HostageSecuredScreen");
+
         if (player == null)
         {
             Debug.LogError("Player class cannot be found, does not exist");

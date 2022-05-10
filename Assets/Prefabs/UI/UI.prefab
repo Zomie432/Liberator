@@ -1935,7 +1935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3563927550808037296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2623,6 +2623,8 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   playerCharacterController: {fileID: 0}
   playerIsGrounded: 0
+  pause: {fileID: 0}
+  hostageSecured: {fileID: 0}
 --- !u!1 &7574485978244490830
 GameObject:
   m_ObjectHideFlags: 0
