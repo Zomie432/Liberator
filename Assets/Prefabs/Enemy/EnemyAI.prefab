@@ -265,7 +265,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: -7061582049979965478, guid: 0bacc6736d7e36244b8f36b20e092033, type: 3}
   bulletSpawnLocation: {fileID: 590484052}
   maxNumOfBullets: 30
-  bulletRange: 100
+  bulletRange: 30
   reloadTime: 100
 --- !u!1 &9041930443408282464
 GameObject:
@@ -365,7 +365,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.250626
-  m_Center: {x: 0, y: 0.250626, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930443408282394
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -698,7 +698,7 @@ CapsuleCollider:
   m_Radius: 0.49991
   m_Height: 1.99964
   m_Direction: 1
-  m_Center: {x: 0, y: 0.99982, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930443713063891
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -860,7 +860,7 @@ CapsuleCollider:
   m_Radius: 0.17217691
   m_Height: 0.68870765
   m_Direction: 1
-  m_Center: {x: 0, y: -0.34435382, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930443910207456
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -875,7 +875,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!144 &9041930443910207457
 CharacterJoint:
@@ -934,8 +934,8 @@ GameObject:
   - component: {fileID: 9041930443999640924}
   - component: {fileID: 9041930443999640925}
   - component: {fileID: 9041930443999640926}
-  - component: {fileID: 9041930443999640922}
   - component: {fileID: 9041930443999640923}
+  - component: {fileID: 143540444}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Hitbox
@@ -1008,19 +1008,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9041930443999640922
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9041930443999640992}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.599, y: 0.855, z: 0.517}
-  m_Center: {x: -0.30350018, y: -0.3475001, z: 0.1950922}
 --- !u!54 &9041930443999640923
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1037,6 +1024,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &143540444
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041930443999640992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9041930444406866040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,7 +1137,7 @@ CapsuleCollider:
   m_Radius: 0.17217705
   m_Height: 0.6887082
   m_Direction: 1
-  m_Center: {x: 0, y: -0.3443541, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930444406866034
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1151,7 +1152,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!144 &9041930444406866035
 CharacterJoint:
@@ -1492,7 +1493,7 @@ CapsuleCollider:
   m_Radius: 0.37633163
   m_Height: 1.8816581
   m_Direction: 0
-  m_Center: {x: 0.94082904, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930444559450327
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1654,7 +1655,7 @@ CapsuleCollider:
   m_Radius: 0.1591528
   m_Height: 0.53050935
   m_Direction: 1
-  m_Center: {x: 0, y: -0.26525468, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930444644653828
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1669,7 +1670,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!144 &9041930444644653827
 CharacterJoint:
@@ -1816,7 +1817,7 @@ CapsuleCollider:
   m_Radius: 0.1591528
   m_Height: 0.53050935
   m_Direction: 1
-  m_Center: {x: 0, y: -0.26525468, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930444925488263
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1831,7 +1832,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!144 &9041930444925488262
 CharacterJoint:
@@ -1908,8 +1909,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9041930444962499767}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.58, y: 0.033985, z: 0.076}
-  m_LocalScale: {x: 0.078315, y: 0.2175669, z: -0.14454}
+  m_LocalPosition: {x: -0.38, y: -0.099185, z: -0.03}
+  m_LocalScale: {x: 0.08779894, y: 0.7301679, z: 0.08491725}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9041930443545811661}
@@ -1976,8 +1977,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.5544934, y: 6.6015463, z: 5.6247406}
-  m_Center: {x: 2.7772455, y: -0.46769333, z: -2.8123703}
+  m_Size: {x: 5.5544934, y: 2.5, z: 5.6247406}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930444962499761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2139,7 +2140,7 @@ CapsuleCollider:
   m_Radius: 0.37037787
   m_Height: 1.4815115
   m_Direction: 1
-  m_Center: {x: 0, y: 0.74075574, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930445052642089
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2301,7 +2302,7 @@ CapsuleCollider:
   m_Radius: 0.52107406
   m_Height: 2.6053703
   m_Direction: 0
-  m_Center: {x: -1.3026851, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9041930445175923321
 Rigidbody:
   m_ObjectHideFlags: 0
