@@ -147,6 +147,7 @@ MonoBehaviour:
   autoPoolTime: 5
   destroyTimeAfterCollision: 1
   moveSpeed: 75
+  isEnemy: 0
 --- !u!96 &3802597141050631336
 TrailRenderer:
   serializedVersion: 2

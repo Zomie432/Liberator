@@ -7,6 +7,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513091435, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: aimingBulletSpawnOffset.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 830713899, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: m_VerticalAxis.m_MaxSpeed
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007052646, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: bulletImpacts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007052646, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: bulletImpacts.Array.data[2].objectTag
+      value: Hitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007052646, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: bulletImpacts.Array.data[2].impactAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 3277b0a2754c77649a8725423b9720ea, type: 3}
+    - target: {fileID: 2007052646, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: bulletImpacts.Array.data[0].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 3348676198658618746, guid: 8baf9f733d630444e9acd8221103083e, type: 3}
+    - target: {fileID: 2007052646, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: bulletImpacts.Array.data[1].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
+    - target: {fileID: 2007052646, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: bulletImpacts.Array.data[2].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
+    - target: {fileID: 1144762567295748676, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211959205078891433, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: knifeHitRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3522521766520787424, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: m_Name
       value: Vrij_Player
@@ -54,6 +94,10 @@ PrefabInstance:
     - target: {fileID: 3522521766520787425, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107318558731997600, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: xSensitivity
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
