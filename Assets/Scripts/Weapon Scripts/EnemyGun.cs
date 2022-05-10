@@ -71,7 +71,26 @@ public class EnemyGun : MonoBehaviour
         {
             Reload();
         }
-    }    
+    }
+    public void ShootAtTarget(Vector3 target)
+    {
+        Vector3 direction = (target - bulletSpawnLocation.position).normalized;
+        Debug.DrawLine(bulletSpawnLocation.position, bulletSpawnLocation.position + direction * 5f, Color.red, 2f);
+
+        if (Time.time > m_NextTimeToFire)
+        {
+            Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
+            bullet.Spawn(bulletSpawnLocation.position, direction, bulletRange, damage);
+            m_NextTimeToFire = Time.time + fireRate;
+
+            m_CurrentNumOfBullets--;
+        }
+
+        if (m_CurrentNumOfBullets < 1)
+        {
+            Reload();
+        }
+    }
 
     public void Reload()
     {
