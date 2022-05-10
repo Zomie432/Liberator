@@ -11,7 +11,7 @@ public class AIIdleState : AIState
 
     public void Enter(AIAgent agent)
     {
-
+        agent.currentState = AIStateID.Idle;
     }
 
     public void Update(AIAgent agent)

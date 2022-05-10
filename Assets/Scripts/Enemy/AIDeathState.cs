@@ -14,6 +14,7 @@ public class AIDeathState : AIState
 
     public void Enter(AIAgent agent)
     {
+        agent.currentState = AIStateID.Death;
         agent.ragdoll.ActivateRagdoll();
         agent.ragdoll.ApplyForce(direction * agent.config.dieForce);
         var rigidBodies = agent.GetComponentsInChildren<Rigidbody>();

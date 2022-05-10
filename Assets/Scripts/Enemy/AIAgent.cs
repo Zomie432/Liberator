@@ -7,6 +7,7 @@ public class AIAgent : MonoBehaviour
 {
     public AIStateMachine stateMachine;
     public AIStateID initialState;
+    public AIStateID currentState;
     public NavMeshAgent navMeshAgent;
     public AIAgentConfig config;
     public Transform playerTransform;
@@ -19,6 +20,7 @@ public class AIAgent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         //creates a new state machine for this agent type. 
         stateMachine = new AIStateMachine(this);
+        currentState = initialState;
         //adds the chase player to the enum for AIState
         stateMachine.RegisterState(new AIChasePlayerScript());
         stateMachine.RegisterState(new AIDeathState());

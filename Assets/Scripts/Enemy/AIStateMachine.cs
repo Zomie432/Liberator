@@ -23,7 +23,7 @@ public class AIStateMachine {
         states[index] = state;
     }
     
-    //returns the id the state the enemy is in.
+    //returns the id state the enemy is in.
     public AIState GetState(AIStateID stateID){
         int index = (int)stateID;
         return states[index];

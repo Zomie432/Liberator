@@ -4,29 +4,27 @@ using UnityEngine;
 
 public class AIFlashState : AIState
 {
-    float flashTimer = 1.0f;
+    float flashTimer = 5.0f;
     public AIStateID GetId()
     {
         return AIStateID.Flashed;
     }
     public void Enter(AIAgent agent)
     {
-        
+        agent.currentState = AIStateID.Flashed;
     }
     public void Update(AIAgent agent)
     {
-        if (flashTimer > 0.0f)
+        
+        agent.mesh.material.color = Color.yellow * 1.0f;
+        flashTimer -= Time.deltaTime;
+        if(flashTimer <= 0.0f)
         {
-            agent.mesh.material.color = Color.white * flashTimer;
-            flashTimer -= Time.deltaTime;
-        }
-        else
-        {
-            Exit(agent);
+            agent.stateMachine.ChangeState(AIStateID.Idle);
         }
     }
     public void Exit(AIAgent agent)
     {
-        agent.stateMachine.ChangeState(AIStateID.Idle);
+       
     }
 }

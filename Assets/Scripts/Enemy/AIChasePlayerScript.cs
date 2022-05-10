@@ -14,11 +14,13 @@ public class AIChasePlayerScript : AIState
     public void Enter(AIAgent agent)
     {
         gun = agent.GetComponentInChildren<EnemyGun>();
+        agent.mesh.material.color = Color.red * 0.5f;
+        agent.currentState = AIStateID.ChasePlayer;
     }
 
     public void Update(AIAgent agent)
     {
-        agent.mesh.material.color = Color.red * 0.5f;
+        
         //stops a lot of cost for the enemy.
         float sqrDistance = (agent.playerTransform.position - agent.navMeshAgent.destination).sqrMagnitude;
         agent.transform.LookAt(agent.playerTransform);
