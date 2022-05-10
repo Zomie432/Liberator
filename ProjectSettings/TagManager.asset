@@ -12,6 +12,7 @@ TagManager:
   - Hitbox
   - Hostage
   - VirtualCam
+  - Reticle
   layers:
   - Default
   - TransparentFX

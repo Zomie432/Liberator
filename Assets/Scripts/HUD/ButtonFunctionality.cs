@@ -8,24 +8,26 @@ public class ButtonFunctionality : MonoBehaviour
 
 
     public GameObject pause;
-    public GameObject hostageSecured;
     GameObject virtualCam;
+    GameObject reticle;
     public static bool gameIsPaused = false;
-   
+
     void Start()
     {
         // Get istances of pause menu and find virtual camera attached to player that is tagged VirtualCam
         pause = GameManager.Instance.pause;
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
+        reticle = GameObject.FindGameObjectWithTag("Reticle");
     }
 
- 
 
     public void PauseGame()
     {
         Debug.Log("Escape Pressed");
         if (gameIsPaused == false)
         {
+            // Turn off Reticle
+            reticle.SetActive(false);
             // Turns on Pause menu image
             pause.SetActive(true);
             Debug.Log("Pause Menu Active in Hierarchy: " + pause.activeInHierarchy);
@@ -46,6 +48,8 @@ public class ButtonFunctionality : MonoBehaviour
     }
     public void Resume()
     {
+        // Turn Reticle back on
+        reticle.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         // Resumes time
@@ -67,7 +71,7 @@ public class ButtonFunctionality : MonoBehaviour
         // Find instance of virtual camera
         virtualCam = GameObject.FindGameObjectWithTag("MainCamera");
         // Find active scene and reload it
-        Scene scene = SceneManager.GetActiveScene(); 
+        Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
         Debug.Log("Restarting Level");
     }
