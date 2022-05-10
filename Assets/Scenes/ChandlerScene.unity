@@ -545,14 +545,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9041930443545811657, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: skinnedMeshRenderer
-      value: 
-      objectReference: {fileID: 1257851780}
-    - target: {fileID: 9041930443545811658, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: mesh
-      value: 
-      objectReference: {fileID: 1257851780}
     - target: {fileID: 9041930443545811661, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -603,11 +595,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
---- !u!23 &1257851780 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 9041930443999640926, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-  m_PrefabInstance: {fileID: 1257851779}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1278664084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -615,10 +602,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9041930443545811658, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: mesh
-      value: 
-      objectReference: {fileID: 1278664085}
     - target: {fileID: 9041930443545811661, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -669,11 +652,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
---- !u!23 &1278664085 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 9041930443999640926, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-  m_PrefabInstance: {fileID: 1278664084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1418874458
 PrefabInstance:
   m_ObjectHideFlags: 0
