@@ -22,6 +22,7 @@ public class AIDeathState : AIState
             rigidbody.isKinematic = true;
             rigidbody.freezeRotation = false;
         }
+        agent.gameObject.SetActive(false);
     }
 
     public void Update(AIAgent agent)
