@@ -15,12 +15,10 @@ public class AIFlashState : AIState
     }
     public void Update(AIAgent agent)
     {
-        if (flashTimer <= 0.0f)
+        if (flashTimer > 0.0f)
         {
             agent.mesh.material.color = Color.white * flashTimer;
             flashTimer -= Time.deltaTime;
-        
-            
         }
         else
         {
