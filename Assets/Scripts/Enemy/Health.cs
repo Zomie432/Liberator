@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     //[HideInInspector]
     public float currentHealth;
     AIAgent agent;
-    SkinnedMeshRenderer skinnedMeshRenderer;
+    [SerializeField] Renderer skinnedMeshRenderer;
     public float blinkIntensity;
     public float blinkDuration;
     float blinkTimer;
@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
        agent = GetComponent<AIAgent>();
         currentHealth = maxHealth;
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
-        skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+
         foreach(var rigidBody in rigidBodies)
         {
             Hitbox hitbox = rigidBody.gameObject.AddComponent<Hitbox>();
