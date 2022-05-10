@@ -10,11 +10,11 @@ public class AIFlashState : AIState
         return AIStateID.Flashed;
     }
     public void Enter(AIAgent agent)
-    { 
-        agent.mesh.material.color = Color.white;
+    {
     }
     public void Update(AIAgent agent)
     {
+
         flashTimer -= Time.deltaTime;
         if (flashTimer <= 0.0f)
         {

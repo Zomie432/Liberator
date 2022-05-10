@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: m_VerticalAxis.m_MaxSpeed
       value: 0.075
       objectReference: {fileID: 0}
+    - target: {fileID: 1674523162, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: meleeImpacts.Array.data[1].objectTag
+      value: Hitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674523162, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: meleeImpacts.Array.data[1].collisionParticleSystem
+      value: 
+      objectReference: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
     - target: {fileID: 2007052646, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: bulletImpacts.Array.size
       value: 3
