@@ -42,7 +42,10 @@ public class Knife : BaseMelee
         Debug.DrawLine(fpCamera.transform.position, fpCamera.transform.position + fpCamera.transform.forward * knifeHitRange, Color.red, 2f);
         if (Physics.Raycast(fpCamera.transform.position, fpCamera.transform.forward, out hitInfo, knifeHitRange))
         {
-            Debug.Log("Knife Hit " + hitInfo.collider.tag);
+
+            if (hitInfo.collider.tag == "Hitbox")
+                hitInfo.collider.GetComponent<Hitbox>().OnRaycastHit(this, transform.forward);
+
             MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);
 
             // Audio

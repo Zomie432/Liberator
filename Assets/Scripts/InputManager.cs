@@ -40,7 +40,6 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
         player = GetComponent<Player>();
         interact = GetComponent<PlayerInteract>();
-       // buttonFunc = GetComponent<ButtonFunctionality>();
 
         //set the "Jump" action in the "OnFoot" action map to point to the Jump function in the player motor script
         //basically just says "Hey, if the player jumps call this function"
@@ -49,7 +48,14 @@ public class InputManager : MonoBehaviour
         onFoot.SlowWalk.performed += ctx => motor.SlowWalk();
         onFoot.LowerXSensitivity.performed += ctx => look.LowerXSensitivity();
         onFoot.RaiseXSensitivity.performed += ctx => look.RaiseXSensitivity();
-        onFoot.Interact.performed += ctx => interact.ProcessInteraction();
+
+        //door interaction
+        onFoot.Interact.performed += ctx => interact.ProcessInteraction(true); //true for press interactions
+
+        //hostage interaction
+        onFoot.HoldInteract.started += ctx => interact.ProcessInteraction(false); //false for hold interactions
+        onFoot.HoldInteract.canceled += ctx => interact.CancelHostageSecure(); //if player lets go of E before the hold duration
+        onFoot.HoldInteract.performed += ctx => interact.PerformHostageSecure(); //if player completes the "E" hold duration
 
         // Player input
         onFoot.AttackPressed.performed += ctx => player.OnAttackPressed();

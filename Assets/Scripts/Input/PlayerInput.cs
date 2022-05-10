@@ -199,6 +199,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""HoldInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bab1baa-391f-4b48-b541-b9d5340a8d71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""PauseGame"",
                     ""type"": ""Button"",
                     ""id"": ""36e29e9a-13f0-4e2a-8dd0-990cc737619b"",
@@ -554,7 +563,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""598d117b-c8b2-41e1-af25-17faf38ee523"",
                     ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
@@ -569,6 +578,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5370f7f1-1a8d-410c-8e96-c14b142a5755"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Hold(duration=3)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -598,6 +618,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_EquipFlashbangPressed = m_OnFoot.FindAction("EquipFlashbangPressed", throwIfNotFound: true);
         m_OnFoot_Test_PlayerDamage = m_OnFoot.FindAction("Test_PlayerDamage", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
+        m_OnFoot_HoldInteract = m_OnFoot.FindAction("HoldInteract", throwIfNotFound: true);
         m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
     }
 
@@ -677,6 +698,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_EquipFlashbangPressed;
     private readonly InputAction m_OnFoot_Test_PlayerDamage;
     private readonly InputAction m_OnFoot_Interact;
+    private readonly InputAction m_OnFoot_HoldInteract;
     private readonly InputAction m_OnFoot_PauseGame;
     public struct OnFootActions
     {
@@ -701,6 +723,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @EquipFlashbangPressed => m_Wrapper.m_OnFoot_EquipFlashbangPressed;
         public InputAction @Test_PlayerDamage => m_Wrapper.m_OnFoot_Test_PlayerDamage;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
+        public InputAction @HoldInteract => m_Wrapper.m_OnFoot_HoldInteract;
         public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
@@ -768,6 +791,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @HoldInteract.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnHoldInteract;
+                @HoldInteract.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnHoldInteract;
+                @HoldInteract.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnHoldInteract;
                 @PauseGame.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
                 @PauseGame.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
                 @PauseGame.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
@@ -832,6 +858,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @HoldInteract.started += instance.OnHoldInteract;
+                @HoldInteract.performed += instance.OnHoldInteract;
+                @HoldInteract.canceled += instance.OnHoldInteract;
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
@@ -860,6 +889,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnEquipFlashbangPressed(InputAction.CallbackContext context);
         void OnTest_PlayerDamage(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnHoldInteract(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
     }
 }
