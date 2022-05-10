@@ -6,7 +6,7 @@ public class EnemyGun : MonoBehaviour
 {
     [SerializeField] float fireRate = 0.25f;
 
-    [SerializeField] int damage = 25;
+    [SerializeField] int damage = 12;
 
     /* prefab of the bullet that will be spawned in */
     [SerializeField] Bullet bulletPrefab;
