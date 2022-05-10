@@ -11,11 +11,17 @@ public class Flashbang_DetectEnemiesHIt : MonoBehaviour
         if (other.tag == "Hitbox")
         {
             Debug.Log("Enemy detected on flash!");
-            AIAgent agent;
-            if (other.TryGetComponent<AIAgent>(out agent))
-            {
-                agent.stateMachine.ChangeState(AIStateID.Flashed);
-            }
+            other.GetComponentInParent<AIAgent>().stateMachine.ChangeState(AIStateID.Flashed);
         }
+
+        //if (other.tag == "Hitbox")
+        //{
+        //    Debug.Log("Enemy detected on flash!");
+        //    AIAgent agent;
+        //    if (other.TryGetComponent<AIAgent>(out agent))
+        //    {
+        //        agent.stateMachine.ChangeState(AIStateID.Flashed);
+        //    }
+        //}
     }
 }
