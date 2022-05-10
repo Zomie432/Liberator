@@ -469,6 +469,206 @@ PrefabInstance:
       propertyPath: shieldBar
       value: 
       objectReference: {fileID: 294845093}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[0].ammoSlot.ammoAmount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[1].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[2].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[3].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[4].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[5].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[6].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[7].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[8].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[9].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[10].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[11].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[12].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[13].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[14].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[15].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[16].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[17].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[18].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[19].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[20].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[21].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[22].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[23].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[24].ammoSlot.ammoAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[1].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[2].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[3].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[4].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[5].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[6].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[7].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[8].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[9].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[10].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[11].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[12].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[13].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[14].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[15].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[16].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[17].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[18].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[19].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[20].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[21].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[22].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[23].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646066975737273, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: ammo.Array.data[24].ammoSlot.ammoCapacity
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
 --- !u!1001 &1299022468
