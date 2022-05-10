@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -84,6 +85,9 @@ public class Player : MonoBehaviour
 
     /* Shield bar connected to player, in inspector must select Shield bar from ui to work*/
     public ShieldBar shieldBar;
+
+    /*Flash bang Count ui */
+    public TextMeshProUGUI flashbangUi;
     private void Start()
     {
         m_CurrentWeaponIndex = 0;
@@ -98,8 +102,8 @@ public class Player : MonoBehaviour
         m_FootstepAudioSrc = GetComponentInChildren<AudioSource>();
 
         m_CurrentEquippedWeapon.gameObject.SetActive(true);
+        UpdateFlashbangCount();
 
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -453,6 +457,7 @@ public class Player : MonoBehaviour
     void StartAttacking()
     {
         m_CurrentEquippedWeapon.Attack();
+        UpdateFlashbangCount();
     }
 
     /*
@@ -573,5 +578,10 @@ public class Player : MonoBehaviour
     bool GameRunningCheck()
     {
         return Time.timeScale > 0f;
+    }
+
+    void UpdateFlashbangCount()
+    {
+        flashbangUi.text = flashbang.AmountOfThrowablesLeft() + "/" + flashbang.GetMaxAmountOfThrowables();
     }
 }

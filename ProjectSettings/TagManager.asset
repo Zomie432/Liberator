@@ -13,6 +13,7 @@ TagManager:
   - Hostage
   - VirtualCam
   - Reticle
+  - FlashbangCount
   layers:
   - Default
   - TransparentFX
