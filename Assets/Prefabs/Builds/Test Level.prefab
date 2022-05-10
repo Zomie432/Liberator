@@ -9719,6 +9719,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room Hallway
       objectReference: {fileID: 0}
+    - target: {fileID: 8595764526999070887, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595764526999070887, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595764526999070887, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595764527077211792, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595764527077211792, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595764527077211792, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595764527077211792, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595764527077211792, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bbed716035b6494e860e11960b4a4f6, type: 3}
 --- !u!4 &8975244594202831683 stripped
