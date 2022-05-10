@@ -11,6 +11,7 @@ TagManager:
   - Walkable
   - Hitbox
   - Hostage
+  - VirtualCam
   layers:
   - Default
   - TransparentFX

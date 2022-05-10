@@ -9,14 +9,14 @@ public class ButtonFunctionality : MonoBehaviour
 
     public GameObject pause;
     public GameObject hostageSecured;
-    GameObject mainCamera;
+    GameObject virtualCam;
     public static bool gameIsPaused = false;
    
     void Start()
     {
         pause = GameManager.Instance.pause;
         pause.SetActive(false);
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
         hostageSecured = GameManager.Instance.hostageSecured;
         hostageSecured.SetActive(false);
         
@@ -26,17 +26,19 @@ public class ButtonFunctionality : MonoBehaviour
 
     public void PauseGame()
     {
+        Debug.Log("Escape Pressed");
         if (gameIsPaused == false)
         {
             // Turns on Pause menu image
             pause.SetActive(true);
+            Debug.Log("Pause Menu Active in Hierarchy: " + pause.activeInHierarchy);
             // Unlock cursor
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             // Freezes time
             Time.timeScale = 0f;
-            // Disables main camera so player can not look around in the pause menu
-            mainCamera.SetActive(false);
+            // Disables virtual camera so player can not look around in the pause menu
+            virtualCam.SetActive(false);
             Debug.Log("Game Paused");
             gameIsPaused = true;
         }
@@ -52,7 +54,7 @@ public class ButtonFunctionality : MonoBehaviour
         // Resumes time
         Time.timeScale = 1f;
         // Re Enables players ability to look around and disables the Pause menu UI image
-        mainCamera.SetActive(true);
+        virtualCam.SetActive(true);
         pause.SetActive(false);
         gameIsPaused = false;
         Debug.Log("Resuming Level");
@@ -62,7 +64,7 @@ public class ButtonFunctionality : MonoBehaviour
     {
         pause = GameManager.Instance.pause;
         pause.SetActive(false);
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        virtualCam = GameObject.FindGameObjectWithTag("MainCamera");
         hostageSecured = GameManager.Instance.hostageSecured;
         hostageSecured.SetActive(false);
         Scene scene = SceneManager.GetActiveScene(); 
