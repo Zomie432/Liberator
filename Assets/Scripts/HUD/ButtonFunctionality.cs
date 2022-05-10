@@ -15,7 +15,6 @@ public class ButtonFunctionality : MonoBehaviour
     void Start()
     {
         pause = GameManager.Instance.pause;
-        pause.SetActive(false);
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
         hostageSecured = GameManager.Instance.hostageSecured;
         hostageSecured.SetActive(false);
