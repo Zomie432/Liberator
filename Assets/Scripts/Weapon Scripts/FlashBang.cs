@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(SphereCollider))]
 public class FlashBang : BaseThrowables
 {
     /*
@@ -23,6 +24,8 @@ public class FlashBang : BaseThrowables
     * color of the flashbang
     */
     [SerializeField] Color flashbangImageColor;
+
+    [SerializeField] GameObject sphereCollider;
 
     /*
     * if player was flashed or not
@@ -56,9 +59,14 @@ public class FlashBang : BaseThrowables
         Vector3 camPosition = fpCamera.transform.position; // gets current position of the MainCamera
 
         // spawns in the particle system and updates it forward and position vectors
-        PoolableObject flashBangParticleSystem = m_ExplodeParticleSystemPool.SpawnObject(); 
+        PoolableObject flashBangParticleSystem = m_ExplodeParticleSystemPool.SpawnObject();
         flashBangParticleSystem.transform.forward = camForward;
         flashBangParticleSystem.transform.position = camPosition + camForward * explodeDistanceFromPlayer;
+
+        sphereCollider.transform.position = flashBangParticleSystem.transform.position;
+        sphereCollider.SetActive(true);
+
+        flashbangImageColor.a = 1;
 
         float dot = Vector3.Dot(flashBangParticleSystem.transform.position.normalized, fpCamera.transform.forward); // gets the angle between the cameras forward and position of where the flashbang exploded
         if (dot > 0) // if its > 0, flash the player, if not don't
@@ -73,7 +81,14 @@ public class FlashBang : BaseThrowables
 
         DecrementThrowablesAmount();
 
+        Invoke("StopCollisionDetection", 0.25f);
+
         //Debug.DrawLine(fpCamera.transform.position, flashBangParticleSystem.transform.position, Color.cyan, 2f);
+    }
+
+    public void StopCollisionDetection()
+    {
+        sphereCollider.SetActive(false);
     }
 
     /*
