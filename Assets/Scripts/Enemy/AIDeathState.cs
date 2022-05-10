@@ -16,17 +16,17 @@ public class AIDeathState : AIState
     {
         agent.ragdoll.ActivateRagdoll();
         agent.ragdoll.ApplyForce(direction * agent.config.dieForce);
-        agent.mesh.updateWhenOffscreen = true;
         var rigidBodies = agent.GetComponentsInChildren<Rigidbody>();
         foreach(var rigidbody in rigidBodies)
         {
+            rigidbody.isKinematic = true;
             rigidbody.freezeRotation = false;
         }
     }
 
     public void Update(AIAgent agent)
     {
-
+        agent.mesh.material.SetColor("_Color", Color.black * 0);
     }
 
     public void Exit(AIAgent agent)

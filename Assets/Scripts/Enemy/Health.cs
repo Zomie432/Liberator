@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     //[HideInInspector]
     public float currentHealth;
     AIAgent agent;
-    SkinnedMeshRenderer skinnedMeshRenderer;
+    [SerializeField] Renderer skinnedMeshRenderer;
     public float blinkIntensity;
     public float blinkDuration;
     float blinkTimer;
@@ -16,10 +16,9 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       agent = GetComponent<AIAgent>();
+        agent = GetComponent<AIAgent>();
         currentHealth = maxHealth;
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
-        skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         foreach(var rigidBody in rigidBodies)
         {
             Hitbox hitbox = rigidBody.gameObject.AddComponent<Hitbox>();
@@ -31,8 +30,10 @@ public class Health : MonoBehaviour
    public void TakeDamage(float _amount, Vector3 direction)
    {
         currentHealth -= _amount;
+        
         if (currentHealth <= 0.0f)
         {
+            agent.stateMachine.ChangeState(AIStateID.Death);
             Die(direction);
         }
         blinkTimer = blinkDuration;
@@ -44,7 +45,6 @@ public class Health : MonoBehaviour
         //changes agent into death state when the agent is dead.
         AIDeathState deathState = agent.stateMachine.GetState(AIStateID.Death) as AIDeathState;
         deathState.direction = direction;
-        agent.stateMachine.ChangeState(AIStateID.Death);
     }
 
     private void Update()

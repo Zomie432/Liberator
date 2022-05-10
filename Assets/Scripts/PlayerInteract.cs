@@ -6,7 +6,15 @@ public class PlayerInteract : MonoBehaviour
 {
     [Tooltip("Distance the player can interact with objects from")]
     [SerializeField] private float interactRange = 3f;
+    private GameObject hostageSecureScreen;
+
     private bool securingHostage = false;
+
+    private void Start()
+    {
+        hostageSecureScreen = GameManager.Instance.hostageSecured;
+        
+    }
     public void ProcessInteraction(bool pressOrHoldBehavior)
     {
         //get where the player is looking from the game manager
@@ -51,6 +59,7 @@ public class PlayerInteract : MonoBehaviour
 
             //anything we want to do when the player cancels securing the hostage goes here
 
+
             //break player out of causing cancel/perform events when they aren't interacting with the hostage
             securingHostage = false;
         }
@@ -65,6 +74,7 @@ public class PlayerInteract : MonoBehaviour
             PlayerMotor.MovementEnabled = true;
 
             //add code to win the level
+            hostageSecureScreen.SetActive(true);
 
             //break player out of causing cancel/perform events when they aren't interacting with the hostage
             securingHostage = false;

@@ -16,6 +16,7 @@ public class AIIdleState : AIState
 
     public void Update(AIAgent agent)
     {
+        agent.mesh.material.color = Color.red * 0.5f;
         //finds the player direction and checks to see if its magnitude is outside
         //the range of the agent sight.
         Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
