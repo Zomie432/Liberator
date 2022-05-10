@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
         if (Instance != null)
         {
             Debug.LogError("Multiple GameManagers! Destroying the newest one: " + this.name);
@@ -49,6 +48,9 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<Player>();
