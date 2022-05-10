@@ -16,9 +16,6 @@ public class ButtonFunctionality : MonoBehaviour
     {
         pause = GameManager.Instance.pause;
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
-        hostageSecured = GameManager.Instance.hostageSecured;
-        hostageSecured.SetActive(false);
-        
     }
 
  
@@ -64,8 +61,6 @@ public class ButtonFunctionality : MonoBehaviour
         pause = GameManager.Instance.pause;
         pause.SetActive(false);
         virtualCam = GameObject.FindGameObjectWithTag("MainCamera");
-        hostageSecured = GameManager.Instance.hostageSecured;
-        hostageSecured.SetActive(false);
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
         Debug.Log("Restarting Level");

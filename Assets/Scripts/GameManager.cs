@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
         pause.SetActive(false);
         hostageSecured = GameObject.FindGameObjectWithTag("HostageSecuredScreen");
+        hostageSecured.SetActive(false);
 
         if (player == null)
         {
