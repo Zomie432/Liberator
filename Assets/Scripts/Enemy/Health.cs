@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
             Hitbox hitbox = rigidBody.gameObject.AddComponent<Hitbox>();
             hitbox.health = this;
         }
-        agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
+        
     }
 
    public void TakeDamage(float _amount, Vector3 direction)
@@ -36,7 +36,8 @@ public class Health : MonoBehaviour
             Die(direction);
         }
         blinkTimer = blinkDuration;
-   }
+        agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
+    }
 
     private void Die(Vector3 direction)
     {
