@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,7 +10,24 @@ public class Player : MonoBehaviour
     [SerializeField] BaseWeapon[] weapons;
 
     /* base throwable of type flashbang */
-    [SerializeField] FlashBang flashbang;
+    [SerializeField] FlashbangHand flashbang;
+
+    [Header("Flashbang Settings")]
+
+    /*
+    * images used to simulate a flashbang effect
+    */
+    [SerializeField] Image flashbangImage;
+
+    /*
+   * used to slow down or speed up how long flashbang lasts
+   */
+    [SerializeField] float flashbangTimeDamp = 0.25f;
+
+    /*
+    * color of the flashbang -- temporary
+    */
+    [SerializeField] Color flashbangImageColor;
 
     [Header("Player Settings")]
 
@@ -88,6 +106,8 @@ public class Player : MonoBehaviour
 
     /*Flash bang Count ui */
     public TextMeshProUGUI flashbangUi;
+
+
     private void Start()
     {
         m_CurrentWeaponIndex = 0;
@@ -108,6 +128,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (flashbangImageColor.a > 0f)
+        {
+            flashbangImageColor.a -= Time.deltaTime * flashbangTimeDamp;
+            flashbangImage.color = flashbangImageColor;
+        }
+
         if (m_PlayerMotor.IsPlayerStrafing() || m_PlayerMotor.IsPlayerWalkingBackwards())
         {
             SetCurrentAnimSpeed(0.3f);
@@ -136,13 +162,8 @@ public class Player : MonoBehaviour
         if (m_CurrentEquippedWeapon.IsWeaponAimed())
             m_PlayerMotor.SlowWalk();
 
-        if (flashbang.isActiveAndEnabled && !flashbang.HasThrowablesLeft())
+        if (flashbang.isActiveAndEnabled && !flashbang.HasMoreFlashbangs())
             EquipPreviousWeapon();
-
-        if (flashbang.ShouldPlayerBeFlashed())
-        {
-            flashbang.Update();
-        }
     }
 
     /*
@@ -173,7 +194,7 @@ public class Player : MonoBehaviour
     {
         if (!GameRunningCheck()) return;
 
-        if (flashbang.HasThrowablesLeft())
+        if (flashbang.HasMoreFlashbangs())
         {
             DeactivateWeapon(m_CurrentWeaponIndex);
             ActivateFlashbang();
@@ -567,12 +588,12 @@ public class Player : MonoBehaviour
 
     public int GetCurrentFlashbangsAmount()
     {
-        return flashbang.AmountOfThrowablesLeft();
+        return flashbang.GetCurrentAmountOfFlashbangs();
     }
 
     public int GetMaxFlashBangs()
     {
-        return flashbang.GetMaxAmountOfThrowables();
+        return flashbang.GetMaxAmountOfFlashbangs();
     }
 
     bool GameRunningCheck()
@@ -582,6 +603,11 @@ public class Player : MonoBehaviour
 
     void UpdateFlashbangCount()
     {
-        flashbangUi.text = flashbang.AmountOfThrowablesLeft() + "/" + flashbang.GetMaxAmountOfThrowables();
+        flashbangUi.text = flashbang.GetCurrentAmountOfFlashbangs().ToString();
+    }
+
+    public void FlashPlayer()
+    {
+        flashbangImageColor.a = 1;
     }
 }
