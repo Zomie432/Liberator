@@ -13,6 +13,8 @@ public class BaseGun : BaseWeapon
     /* string reference to the bool name set on the animation component to play ads animation */
     [SerializeField] protected string aimDownSightAnimationBoolName = "isAiming";
 
+    [SerializeField] protected string aimingShootAnimationTriggerName = "Shot_Aiming";
+
     [Header("Delays")]
 
     /* amount of time it takes to reload this weapon in seconds */
@@ -194,9 +196,6 @@ public class BaseGun : BaseWeapon
         m_LastAttackTime = Time.time;
         m_CurrentNumOfBullets--;
 
-        if (GetAnimator() != null)
-            GetAnimator().SetTrigger(attackAnimationTriggerName);
-
         ShootBullet();
 
         muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
@@ -239,11 +238,15 @@ public class BaseGun : BaseWeapon
         Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
         if (bIsAiming)
         {
+            GetAnimator().Play(aimingShootAnimationTriggerName);
+
             muzzleFlash.transform.position = adsMuzzleFlashSpawnLocation.position;
             bullet.Spawn(adsBulletSpawnLocation.position, fpCamera.transform.forward, bulletRange, this);
         }
         else
         {
+            GetAnimator().Play(attackAnimationTriggerName);
+
             muzzleFlash.transform.position = muzzleFlashSpawnLocation.position;
             bullet.Spawn(bulletSpawnLocation.position, fpCamera.transform.forward, bulletRange, this);
         }

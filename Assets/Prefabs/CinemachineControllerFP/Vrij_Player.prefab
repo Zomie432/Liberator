@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 513091435, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: attackDelay
-      value: 0.125
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 513091435, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: muzzleFlash
