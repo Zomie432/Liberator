@@ -15,7 +15,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244128805561
@@ -98,7 +98,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244145766785
@@ -182,7 +182,7 @@ GameObject:
   m_Name: SM_Pipe_01_1 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244190774151
@@ -278,7 +278,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244273516905
@@ -417,7 +417,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244292153684
@@ -501,7 +501,7 @@ GameObject:
   m_Name: SM_Pipe_01 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244292702158
@@ -597,7 +597,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244375823990
@@ -681,7 +681,7 @@ GameObject:
   m_Name: SM_Pipe_01 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244413757366
@@ -817,7 +817,7 @@ GameObject:
   m_Name: SM_Pipe_01_1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244493444560
@@ -913,7 +913,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244548276423
@@ -997,7 +997,7 @@ GameObject:
   m_Name: SM_Pipe_01 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255244911948655
@@ -1164,7 +1164,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255245387660664
@@ -1255,7 +1255,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2230255245450375197}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -13.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1320,7 +1320,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255245743809169
@@ -1404,7 +1404,7 @@ GameObject:
   m_Name: SM_Pipe_01 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255245744395466
@@ -1500,7 +1500,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255245923219803
@@ -1583,7 +1583,7 @@ GameObject:
   m_Name: SM_Pipe_01_2 (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2230255246158077999
@@ -1717,6 +1717,10 @@ PrefabInstance:
     - target: {fileID: 9112561337208258090, guid: 6ff35ace92e30b44f8fb911e5820ed7c, type: 3}
       propertyPath: m_Name
       value: Box 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112561337208258090, guid: 6ff35ace92e30b44f8fb911e5820ed7c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ff35ace92e30b44f8fb911e5820ed7c, type: 3}
@@ -2008,6 +2012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ventilation_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8252705884649311946, guid: 621bb7ccc6adf75408dc820763bebc85, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8776478746652447856, guid: 621bb7ccc6adf75408dc820763bebc85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2069,6 +2077,10 @@ PrefabInstance:
     - target: {fileID: 2164406911649492855, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
       propertyPath: m_Name
       value: Weapon Crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164406911649492855, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2905628005308194148, guid: f653ff9d61542734cb237c730a88c0ba, type: 3}
       propertyPath: m_RootOrder
@@ -2191,6 +2203,10 @@ PrefabInstance:
     - target: {fileID: 5318559967915613271, guid: 3e1651201a7be594dbff442985d8b8eb, type: 3}
       propertyPath: m_Name
       value: SM_Phone_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5318559967915613271, guid: 3e1651201a7be594dbff442985d8b8eb, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e1651201a7be594dbff442985d8b8eb, type: 3}
@@ -2345,6 +2361,10 @@ PrefabInstance:
     - target: {fileID: 337559130592142219, guid: 8905a17dafb36934da138f6a1e1b6a02, type: 3}
       propertyPath: m_Name
       value: SM_ElectroShield_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 337559130592142219, guid: 8905a17dafb36934da138f6a1e1b6a02, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1145199158761765169, guid: 8905a17dafb36934da138f6a1e1b6a02, type: 3}
       propertyPath: m_RootOrder
@@ -2605,6 +2625,10 @@ PrefabInstance:
     - target: {fileID: 8252705884649311946, guid: 621bb7ccc6adf75408dc820763bebc85, type: 3}
       propertyPath: m_Name
       value: SM_Ventilation_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252705884649311946, guid: 621bb7ccc6adf75408dc820763bebc85, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8776478746652447856, guid: 621bb7ccc6adf75408dc820763bebc85, type: 3}
       propertyPath: m_RootOrder
@@ -3152,6 +3176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sign_01
       objectReference: {fileID: 0}
+    - target: {fileID: 3118360888443873503, guid: 3d108a7f903b31041b4496f203eeb9ed, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d108a7f903b31041b4496f203eeb9ed, type: 3}
 --- !u!4 &4539066900509386845 stripped
@@ -3225,6 +3253,10 @@ PrefabInstance:
     - target: {fileID: 8680060877712284773, guid: e3bcfcfa8e5d6444ebd273ec1199872b, type: 3}
       propertyPath: m_Name
       value: Crate-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680060877712284773, guid: e3bcfcfa8e5d6444ebd273ec1199872b, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3bcfcfa8e5d6444ebd273ec1199872b, type: 3}
