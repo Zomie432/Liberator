@@ -8,25 +8,28 @@ public class PlayerMotor : MonoBehaviour
 {
     //static field for hostage secure in PlayerInteract(disable movement when they start securing the hostage, enable if they cancel or succeed)
     public static bool movementEnabled = true;
+
+    //used to disable player movement while they are securing the hostage(in PlayerInteract.cs)
     [HideInInspector] public static bool MovementEnabled { get { return movementEnabled; } set { movementEnabled = value; } }
 
     private CharacterController controller;
     private Vector3 playerVelocity; //used for vertical movement and gravity only
     Vector3 moveDirection = Vector3.zero; //used for horizontal movement
-    private bool isGrounded; //whether or not the player is on the ground, used for gravity
+
+    private bool isGrounded; //used for gravity
     private bool lerpCrouch = false;
     private bool crouching = false;
     private bool slowWalking = false;
+    private bool shiftPressed = false;
     private bool waitingToLandAndCrouch = false;
     private bool waitingToLandAndShiftWalk = false;
+
     [Header("Player Speed in Worldspace(for animation states)")]
     [SerializeField] private bool track2dSpeed = true;
-    //[SerializeField] private bool track3dSpeed = false;
 
     [Header("Speed Variables (do not modify active speed 2d or 3d)")]
     
     [SerializeField] public float currentActiveSpeed2D = 0f;
-    //[SerializeField] private float currentActiveSpeed3D = 0f;
 
     //property to access for animation states
     public float CurrentActiveSpeed2D { get { return currentActiveSpeed2D; } }
@@ -35,16 +38,13 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float speedCheckTimerMax = 0.1f;
     private float speedCheckTimer = 0.1f;
 
-    //current player position used for 2D and 3D speed calculations
+    //current player position used for 2D speed calculation
     [Tooltip("Used to calculate speed by calculating how the player's transform.position changes over time")]
     [SerializeField] private Transform playerTransform;
 
     //positions used for 2D speed calculation
     private Vector2 currentPlayerPosition2d;
     private Vector2 lastPlayerPostion2d;
-
-    //previous position used for 3D speed calculation
-    //private Vector3 lastPlayerPostion3d;
 
     [Header("Player Movement Regarding WASD Input")]
     [Tooltip("This value will adjust the max speed of the player, but also note that the time it takes to accelerate to that max speed will be the same as before(so you may need to bump up or down the rate of acceleration")]
@@ -82,28 +82,6 @@ public class PlayerMotor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //if (track3dSpeed)
-        //{
-        //    if (speedCheckTimer > 0 && lastPlayerPostion3d != null)
-        //    {
-        //        //decrement timer until we check the player's speed
-        //        speedCheckTimer -= Time.deltaTime;
-        //    }
-        //    else if (lastPlayerPostion3d != null)
-        //    {
-        //        //reset timer
-        //        speedCheckTimer = speedCheckTimerMax;
-
-        //        //calculate distance between the previous and current transform
-        //        currentActiveSpeed3D = Vector3.Distance(transform.position, lastPlayerPostion3d);
-
-        //        //set the current transfrom as the new previous transform for the next iteration
-        //        lastPlayerPostion3d = transform.position;
-        //    }
-        //    else
-        //        lastPlayerPostion3d = transform.position;
-        //}
         if (track2dSpeed)
         {
             //convert player's 3d position into a 2d vector(doesn't take the player's vertical velocity into account for calculation)
@@ -133,7 +111,6 @@ public class PlayerMotor : MonoBehaviour
             }
         }
 
-
         //use the built in controller property to see if the player is on the ground to see if we need to apply gravity
         isGrounded = controller.isGrounded;
 
@@ -160,14 +137,14 @@ public class PlayerMotor : MonoBehaviour
         }
         #endregion
 
-        
+        //if (slowWalking != shiftPressed)
+        //   CheckSlowWalk();
     }
 
     //receives the inputs from our InputManager.cs and applies them to the character controller component
     //move inputs x and y  can each be either -1, 0, or 1 (ex. pressing 'A' sets input.x to -1, letting go of 'A' resets it to 0)
     public void ProcessMove(Vector2 input)
     {
-
         if (movementEnabled)
         {
             if (isGrounded)
@@ -178,7 +155,7 @@ public class PlayerMotor : MonoBehaviour
 
                 //player started or stopped walking whle in the air previously, so we need to update their speed accordingly
                 if (waitingToLandAndShiftWalk)
-                    SlowWalk();
+                    CheckSlowWalk();
 
                 //smooth between WASD input for more fluid motion(psuedo acceleration/inertia)
                 currentInputVector = Vector2.SmoothDamp(currentInputVector, input, ref smoothInputVelocity, timeToAccelerate);
@@ -217,10 +194,8 @@ public class PlayerMotor : MonoBehaviour
             else
             {
                 //if the player is pressed up against an obstacle then set the stored force that would otherwise be applied to 0
-                //TO DO-------------------------------------------------------------
-                //if (playersCurrentSpeedInXY < 0.05 && transform.position.y <= groundLeftYPos + 0.2f)
-                //
-
+                //TO DO-------------------------------------------------------------^^^^^^^^^^^^^
+                
                 //smooth between WASD input to give player some air control, only difference is the "airTimeToAccelerate"
                 currentInputVector = Vector2.SmoothDamp(currentInputVector, input, ref smoothInputVelocity, airTimeToAccelerate);
 
@@ -247,7 +222,14 @@ public class PlayerMotor : MonoBehaviour
     {
         if (isGrounded && movementEnabled)
         {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            //just stand the player up if they jump from a crouched position
+            if (crouching)
+                Crouch();
+            else
+            {
+                //give the player a positive upward vector(multiplied by a negative since gravity is negative)
+                playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            }
         }
     }
 
@@ -268,40 +250,65 @@ public class PlayerMotor : MonoBehaviour
         {
             if (crouching)
                 currentMaxSpeed = maxSpeed * crouchSpeedMultiplier;
-            else
+            else if(!slowWalking && !shiftPressed) //return player to normal speed if not crouching
                 currentMaxSpeed = maxSpeed;
         }
         else
             waitingToLandAndCrouch = true;
             
-
         crouchTimer = 0;
         lerpCrouch = true;
     }
 
     public void SlowWalk()
     {
-        //if they start shifting in the air, let the movement function know that it should run the given function(slowwalk)
-        //whenever the player lands so that it can actually update the speed as opposed to doing it in the air or not at all
-        //i.e. if the player starts shifting in the air, when they land slow down to the correct speed
-        if (waitingToLandAndShiftWalk)
-        {
-            waitingToLandAndShiftWalk = false;
-            slowWalking = !slowWalking;
-        }
-        else
-            slowWalking = !slowWalking;
+        //keep track of if shift key is up or down by always toggling it on either press or release
+        shiftPressed = !shiftPressed;
 
-        
         if (isGrounded)
         {
-            if (!crouching && slowWalking)
+            //slowwalking boolean used in Player.cs for when the player ADS's to slow the player down, let that bool override
+            //whether or not they have the shift key pressed
+            if (slowWalking)
+            {
                 currentMaxSpeed = maxSpeed * shiftWalkSpeedMultiplier;
-            else if (!crouching && !slowWalking)
+            }
+            else if (shiftPressed)
+            {
+                currentMaxSpeed = maxSpeed * shiftWalkSpeedMultiplier;
+            }
+            //don't want to speed up the player if the player is crouching just because they aren't pressing shift
+            else if (!crouching && !shiftPressed)
+            {
                 currentMaxSpeed = maxSpeed;
+            }
         }
-        else //don't change the speed they travel at, queue up a function call for whenever the player lands
+        else //if the player presses or releases shift in the air, once the player is grounded again, run CheckSlowWalk() (in ProcessMovement)
             waitingToLandAndShiftWalk = true;
+    }
+
+    public void SlowWalk(bool setSlowWalk)
+    {
+        slowWalking = setSlowWalk;
+    }
+
+    public void CheckSlowWalk()
+    {
+        if (isGrounded)
+        {
+            if (slowWalking)
+                currentMaxSpeed = maxSpeed * shiftWalkSpeedMultiplier;
+            else if (shiftPressed)
+                currentMaxSpeed = maxSpeed * shiftWalkSpeedMultiplier;
+            else if (!shiftPressed && !crouching)
+                currentMaxSpeed = maxSpeed;
+
+            waitingToLandAndShiftWalk = false;
+        }
+        else if (!shiftPressed && !crouching)
+            waitingToLandAndShiftWalk = true;
+
+        
     }
 
     public bool IsPlayerStrafing()

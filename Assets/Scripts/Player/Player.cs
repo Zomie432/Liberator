@@ -159,9 +159,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (m_CurrentEquippedWeapon.IsWeaponAimed())
-            m_PlayerMotor.SlowWalk();
-
         if (flashbang.isActiveAndEnabled && !flashbang.HasMoreFlashbangs())
             EquipPreviousWeapon();
     }
@@ -495,6 +492,8 @@ public class Player : MonoBehaviour
     void StartAiming()
     {
         m_CurrentEquippedWeapon.StartAiming();
+        m_PlayerMotor.SlowWalk(true);
+        m_PlayerMotor.CheckSlowWalk();
     }
 
     /*
@@ -503,6 +502,8 @@ public class Player : MonoBehaviour
     void StopAiming()
     {
         m_CurrentEquippedWeapon.StopAiming();
+        m_PlayerMotor.SlowWalk(false);
+        m_PlayerMotor.CheckSlowWalk();
     }
 
     /*

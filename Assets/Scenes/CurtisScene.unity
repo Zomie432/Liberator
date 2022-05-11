@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: shieldBar
       value: 
       objectReference: {fileID: 1485196872}
+    - target: {fileID: 8157646067055996824, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 595243786}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
 --- !u!1 &262858785
@@ -300,12 +304,17 @@ Transform:
   m_GameObject: {fileID: 262858785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.89, y: 1, z: 2.81}
+  m_LocalScale: {x: 5.8276854, y: 2.0165, z: 5.6663647}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &595243786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1891974572, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+  m_PrefabInstance: {fileID: 135875941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &704207958 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3223389968422689866, guid: 70a3515ae83a79440b842a194371f102, type: 3}
