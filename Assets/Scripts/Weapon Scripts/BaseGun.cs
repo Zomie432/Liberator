@@ -23,6 +23,10 @@ public class BaseGun : BaseWeapon
     /* Muzzle flash VFX played when weapon has been fired */
     [SerializeField] GameObject muzzleFlash;
 
+    [SerializeField] Transform muzzleFlashSpawnLocation;
+
+    [SerializeField] Transform adsMuzzleFlashSpawnLocation;
+
     [Header("Bullet")]
 
     #region Bullet Stuff
@@ -193,11 +197,12 @@ public class BaseGun : BaseWeapon
         if (GetAnimator() != null)
             GetAnimator().SetTrigger(attackAnimationTriggerName);
 
+        ShootBullet();
+
         muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
         muzzleFlash.SetActive(true);
         Invoke("HideMuzzleFlash", 0.02f);
 
-        ShootBullet();
         PlayAttackAudio();
         Invoke("PlayBulletDropAudio", bulletDropAudioInterval);
 
@@ -234,10 +239,12 @@ public class BaseGun : BaseWeapon
         Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
         if (bIsAiming)
         {
+            muzzleFlash.transform.position = adsMuzzleFlashSpawnLocation.position;
             bullet.Spawn(adsBulletSpawnLocation.position, fpCamera.transform.forward, bulletRange, this);
         }
         else
         {
+            muzzleFlash.transform.position = muzzleFlashSpawnLocation.position;
             bullet.Spawn(bulletSpawnLocation.position, fpCamera.transform.forward, bulletRange, this);
         }
     }

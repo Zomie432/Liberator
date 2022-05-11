@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : PoolableObject
 {
     /* time delay before bullet is pooled after collision */
-    public float destroyTimeAfterCollision = 1f;
+    [Tooltip("time delay before bullet is pooled after collision, -2 = instant pool")]public float destroyTimeAfterCollision = 1f;
 
     /* speed of bullet */
     public float moveSpeed = 25f;
@@ -113,8 +113,16 @@ public class Bullet : PoolableObject
         m_AudioSource.clip = BulletImpactManager.Instance.GetAudioClipForImpactFromTag(hit.collider.tag);
         m_AudioSource.Play();
 
-        CancelInvoke(DISABLE_METHOD_NAME);
-        Invoke(DISABLE_METHOD_NAME, destroyTimeAfterCollision);
+        if (destroyTimeAfterCollision == -2)
+        {
+            ReturnBulletToPool();
+        }
+        else
+        {
+            CancelInvoke(DISABLE_METHOD_NAME);
+            Invoke(DISABLE_METHOD_NAME, destroyTimeAfterCollision);
+        }
+       
     }
 
     /*
