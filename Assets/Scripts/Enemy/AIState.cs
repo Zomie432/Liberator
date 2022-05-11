@@ -6,6 +6,7 @@ using UnityEngine;
 public enum AIStateID
 {
     ChasePlayer,
+    AttackPlayer,
     Death,
     Idle,
     Flashed

@@ -8,11 +8,12 @@ public class AIAgent : MonoBehaviour
     public AIStateMachine stateMachine;
     public AIStateID initialState;
     public AIStateID currentState;
-    public NavMeshAgent navMeshAgent;
-    public AIAgentConfig config;
-    public Transform playerTransform;
-    public Renderer mesh;
-    public Ragdoll ragdoll;
+    [HideInInspector]public NavMeshAgent navMeshAgent;
+    [HideInInspector]public AIAgentConfig config;
+    [HideInInspector]public Transform playerTransform;
+    [HideInInspector]public Renderer mesh;
+    [HideInInspector]public Ragdoll ragdoll;
+    [HideInInspector] public AiSensor sensor;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +22,13 @@ public class AIAgent : MonoBehaviour
         //creates a new state machine for this agent type. 
         stateMachine = new AIStateMachine(this);
         currentState = initialState;
+        sensor = GetComponent<AiSensor>();
         //adds the chase player to the enum for AIState
         stateMachine.RegisterState(new AIChasePlayerScript());
         stateMachine.RegisterState(new AIDeathState());
         stateMachine.RegisterState(new AIIdleState());
         stateMachine.RegisterState(new AIFlashState());
+        stateMachine.RegisterState(new AIAttackPlayerState());
         //sets state to initial state.
         stateMachine.ChangeState(initialState);
     }

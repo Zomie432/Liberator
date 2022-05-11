@@ -20,10 +20,10 @@ public class AIIdleState : AIState
         //finds the player direction and checks to see if its magnitude is outside
         //the range of the agent sight.
         Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
-        if(playerDirection.magnitude > agent.config.maxSightDistance)
-        {
-            return;
-        }
+        //if(playerDirection.magnitude > agent.config.maxSightDistance)
+        //{
+        //    return;
+        //}
         //gets the direction the enemy is pointing.
         Vector3 agentDirection = agent.transform.forward;
 
@@ -32,7 +32,10 @@ public class AIIdleState : AIState
         float dotProduct = Vector3.Dot(playerDirection, agentDirection);
         if(dotProduct > 0.0f)
         {
-            agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
+            if (agent.sensor.IsInsight(agent.playerTransform.position))
+            {
+                agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
+            }
         }
     }
 

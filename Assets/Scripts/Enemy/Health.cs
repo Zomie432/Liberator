@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Health Start");
         agent = GetComponent<AIAgent>();
         currentHealth = maxHealth;
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
@@ -36,8 +37,12 @@ public class Health : MonoBehaviour
             agent.stateMachine.ChangeState(AIStateID.Death);
             Die(direction);
         }
+        else if(currentHealth > 0.0f)
+        {
+            agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
+        }
         blinkTimer = blinkDuration;
-        agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
+        
     }
 
     private void Die(Vector3 direction)
