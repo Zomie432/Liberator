@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class Flashbang : BaseThrowables
 {
+    /*
+    * Called when flashbang explodes
+    *   - Returns after the explode timer                                                         
+    *   - Plays both the explosion audio and the particle system
+    *   - Does a sphere cast that returns all the colliders in the sphere, max 25, then checks if any of them was player or enemy, if so, flash them
+    *   - Pools the object after the pool timer
+    */
     public override IEnumerator OnThrowableExplode()
     {
         yield return new WaitForSeconds(GetExplodeTimer());
@@ -33,10 +40,13 @@ public class Flashbang : BaseThrowables
         Invoke("Pool", GetPoolTimeAfterExplosion());
     }
 
-    public override void OnThrowThrowable(Vector3 cameraForward, float forceMultiplier = 1f)
+    /*
+    * Adds a force in the forceDirection with a scale of forceMultiplier
+    */
+    public override void OnThrowThrowable(Vector3 forceDirection, float forceMultiplier = 1f)
     {
         Debug.Log("Throw" + name);
-        GetRigidbody().AddForce(cameraForward * forceMultiplier, ForceMode.Impulse);
+        GetRigidbody().AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
         StartCoroutine(OnThrowableExplode());
     }
 }

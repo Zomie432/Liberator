@@ -7,22 +7,24 @@ using UnityEngine;
 public class BaseThrowables : PoolableObject
 {
     /* time it takes before the throwable expodes */
-    [SerializeField] float throwableExplodeTimer = 1.0f;
+    [SerializeField] [Tooltip("time it takes before the throwable expodes")] float throwableExplodeTimer = 1.0f;
 
     /* particle system to be played when the throwable explodes */
-    [SerializeField] ParticleSystem explodeParticleSystem;
+    [SerializeField] [Tooltip("particle system to be played when the throwable explodes")] ParticleSystem explodeParticleSystem;
 
-    /*  */
-    [SerializeField] float poolTimeAfterExplosion = 1.0f;
+    /* the time in seconds it should wait before pooling this throwable back to the object pool */
+    [SerializeField] [Tooltip("the time in seconds it should wait before pooling this throwable back to the object pool")] float poolTimeAfterExplosion = 1.0f;
 
+    /* the audio source used to play audio for this throwable */
     AudioSource m_AudioSource;
 
+    /* rigidbody for this throwable */
     Rigidbody m_RigidBody;
 
     public BaseThrowables() { }
 
     /*
-    * called once when the object is created
+    * sets both audio source and rigidbody of this throwable
     */
     public override void OnStart()
     {
@@ -30,6 +32,9 @@ public class BaseThrowables : PoolableObject
         m_RigidBody = GetComponent<Rigidbody>();
     }
 
+    /*
+    * called when the throwable explodes
+    */
     public virtual IEnumerator OnThrowableExplode()
     {
         yield return new WaitForSeconds(throwableExplodeTimer);
@@ -42,7 +47,10 @@ public class BaseThrowables : PoolableObject
         Invoke("Pool", poolTimeAfterExplosion);
     }
 
-    public virtual void OnThrowThrowable(Vector3 cameraForward, float forceMultiplier = 1f)
+    /*
+    * Called when the player throws this throwable
+    */
+    public virtual void OnThrowThrowable(Vector3 forceDirection, float forceMultiplier = 1f)
     {
         Debug.Log("Throw" + name);
         StartCoroutine(OnThrowableExplode());
@@ -56,6 +64,9 @@ public class BaseThrowables : PoolableObject
         m_AudioSource.Play();
     }
 
+    /*
+    * plays the explosion particle effect
+    */
     protected void PlayExplodeSFX()
     {
         explodeParticleSystem.Play();
@@ -69,11 +80,17 @@ public class BaseThrowables : PoolableObject
         return throwableExplodeTimer;
     }
 
+    /*
+    * returns the pool time after explosion
+    */
     public float GetPoolTimeAfterExplosion()
     {
         return poolTimeAfterExplosion;
     }
 
+    /*
+    * returns the rigidbody
+    */
     protected Rigidbody GetRigidbody()
     {
         return m_RigidBody;
