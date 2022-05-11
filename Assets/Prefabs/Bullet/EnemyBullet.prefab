@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPoolTime: 5
-  destroyTimeAfterCollision: 1
+  destroyTimeAfterCollision: 0.02
   moveSpeed: 25
   isEnemy: 1
 --- !u!96 &3802597141050631336
