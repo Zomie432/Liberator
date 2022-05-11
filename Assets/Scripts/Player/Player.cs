@@ -602,9 +602,20 @@ public class Player : MonoBehaviour
         return Time.timeScale > 0f;
     }
 
-    void UpdateFlashbangCount()
+    public void UpdateFlashbangCount()
     {
         flashbangUi.text = flashbang.GetCurrentAmountOfFlashbangs().ToString();
+    }
+
+    public void HideFlashbangGUI()
+    {
+        flashbangUi.gameObject.SetActive(false);
+    }
+
+    public void ShowFlashbangGUI()
+    {
+        UpdateFlashbangCount();
+        flashbangUi.gameObject.SetActive(true);
     }
 
     public void FlashPlayer()

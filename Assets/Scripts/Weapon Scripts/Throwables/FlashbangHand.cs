@@ -32,7 +32,25 @@ public class FlashbangHand : BaseWeapon
         m_FlashbangPool = new ObjectPool(flashbangPrefab, maxFlashbangAmount);
         m_CurrentFlashbangAmount = maxFlashbangAmount;
 
+        GameManager.Instance.playerScript.UpdateFlashbangCount();
+
         Debug.Log("Start");
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+
+        AmmoManager.Instance.HideAmmoGUI();
+        GameManager.Instance.playerScript.ShowFlashbangGUI();
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+
+        AmmoManager.Instance.ShowAmmoGUI();
+        GameManager.Instance.playerScript.HideFlashbangGUI();
     }
 
     public override void Attack()

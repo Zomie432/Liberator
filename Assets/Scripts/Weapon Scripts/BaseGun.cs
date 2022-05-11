@@ -32,6 +32,9 @@ public class BaseGun : BaseWeapon
     /* location where the bullet will be spawned */
     [SerializeField] Transform bulletSpawnLocation;
 
+    /* location where the bullet will be spawned when gun is aimed*/
+    [SerializeField] Transform adsBulletSpawnLocation;
+
     /* the max range a bullet can travel before getting destroyed */
     [SerializeField] float bulletRange = 100f;
 
@@ -55,9 +58,6 @@ public class BaseGun : BaseWeapon
     [SerializeField]
     [Tooltip("Amount of seconds that get deducted from the reload delay to update the ammo GUI")]
     float reloadTimeDeductionForAmmoGUIUpdate = 0.35f;
-
-    /* offset applied only when weapon was shot while aiming, makes the bullet look like it came out from weapon */
-    [SerializeField] Vector3 aimingBulletSpawnOffset;
 
     /* bool to keep in track if weapon is being reloaded */
     protected bool bIsReloading;
@@ -98,6 +98,13 @@ public class BaseGun : BaseWeapon
         base.OnEnable();
 
         UpdateAmmoGUI();
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+
+        AmmoManager.Instance.HideAmmoGUI();
     }
 
     /*
@@ -183,7 +190,7 @@ public class BaseGun : BaseWeapon
         m_LastAttackTime = Time.time;
         m_CurrentNumOfBullets--;
 
-        if(GetAnimator() != null)
+        if (GetAnimator() != null)
             GetAnimator().SetTrigger(attackAnimationTriggerName);
 
         muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
@@ -227,7 +234,7 @@ public class BaseGun : BaseWeapon
         Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
         if (bIsAiming)
         {
-            bullet.Spawn(fpCamera.transform.position - aimingBulletSpawnOffset, fpCamera.transform.forward, bulletRange, this);
+            bullet.Spawn(adsBulletSpawnLocation.position, fpCamera.transform.forward, bulletRange, this);
         }
         else
         {
