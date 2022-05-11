@@ -329,8 +329,8 @@ Transform:
   m_GameObject: {fileID: 1891974572}
   m_LocalRotation: {x: 0, y: 0, z: -0.61964196, w: 0.78488463}
   m_LocalPosition: {x: 0.111, y: 1.634, z: 0.693}
-  m_LocalScale: {x: 0.40091005, y: 0.40091005, z: 0.40091005}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4137960443585781}
   m_RootOrder: 11
@@ -603,6 +603,10 @@ PrefabInstance:
       propertyPath: muzzleFlash
       value: 
       objectReference: {fileID: 1891974572}
+    - target: {fileID: 513091435, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
+      propertyPath: attackAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ca7eb945cbcc1e746816442000b09364, type: 3}
     - target: {fileID: 513091435, guid: d54bde2e3af31094c89d3442f3f7c1dc, type: 3}
       propertyPath: maxNumOfBullets
       value: 15
