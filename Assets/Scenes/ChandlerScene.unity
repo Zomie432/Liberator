@@ -553,26 +553,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 143540444, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Height
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 143540444, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930443408282393, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930443408282394, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930443545811659, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9041930443545811661, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -620,66 +600,6 @@ PrefabInstance:
     - target: {fileID: 9041930443545811662, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
       propertyPath: m_Name
       value: EnemyAI (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930443713063889, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930443713063891, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930443910207391, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930444406866033, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930444421372826, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930444431225866, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930444559450326, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930444559450327, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930444644653826, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930444925488261, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930444962499760, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930445052642087, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930445052642089, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930445175923320, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041930445175923321, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
-      propertyPath: m_Constraints
-      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
