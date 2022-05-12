@@ -7,13 +7,11 @@ public class PlayerInteract : MonoBehaviour
     [Tooltip("Distance the player can interact with objects from")]
     [SerializeField] private float interactRange = 3f;
     private GameObject hostageSecureScreen;
-    private GameObject virtualCam;
     private bool securingHostage = false;
 
     private void Start()
     {
         hostageSecureScreen = GameManager.Instance.hostageSecured;
-        virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
     }
 
     public void ProcessInteraction(bool pressOrHoldBehavior)
@@ -78,7 +76,7 @@ public class PlayerInteract : MonoBehaviour
             Cursor.visible = true;
             Time.timeScale = 0f;
             // Disables virtual camera so player can not look around in the pause menu
-            virtualCam.SetActive(false);
+            GameManager.Instance.virtualCam.SetActive(false);
 
             //add code to win the level
             hostageSecureScreen.SetActive(true);
