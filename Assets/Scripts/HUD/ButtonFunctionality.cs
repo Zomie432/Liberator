@@ -12,17 +12,12 @@ public class ButtonFunctionality : MonoBehaviour
     GameObject reticle;
     public static bool gameIsPaused = false;
 
-    private void Awake()
-    {
-        // find reticle for player
-
-        reticle = GameObject.FindGameObjectWithTag("Reticle");
-    }
     void Start()
     {
         // Get instances of pause menu and Virtual cam
         pause = GameManager.Instance.pause;
         virtualCam = GameManager.Instance.virtualCam;
+        reticle = GameManager.Instance.reticle;
     }
 
 
@@ -54,6 +49,10 @@ public class ButtonFunctionality : MonoBehaviour
     }
     public void Resume()
     {
+        if (virtualCam == null)
+        {
+            Debug.Log("Reticle is Null");
+        }
         // Turn Reticle back on
         reticle.SetActive(true);
 
@@ -80,8 +79,10 @@ public class ButtonFunctionality : MonoBehaviour
         // Get instance of Pause menu and turn it off
         pause = GameManager.Instance.pause;
         pause.SetActive(false);
-        // Find instance of virtual camera
-        virtualCam = GameObject.FindGameObjectWithTag("MainCamera");
+        // Get instance of virtual camera
+        virtualCam = GameManager.Instance.virtualCam;
+        // find Instance of Reticle
+        reticle = GameManager.Instance.reticle;
         // Find active scene and reload it
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
