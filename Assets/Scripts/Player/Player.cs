@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISpawnable
 {
     [Header("Weapon Settings")]
 
@@ -130,6 +130,29 @@ public class Player : MonoBehaviour
         healthBar.SetMaxHealth();
         shieldBar.SetMaxShield();
 
+    }
+
+    public void Spawn()
+    {
+        m_CurrentWeaponIndex = 0;
+
+        m_CurrentPlayerHealth = maxPlayerHealth;
+        m_CurrentPlayerShield = maxPlayerShield;
+        m_CurrentEquippedWeapon = weapons[m_CurrentWeaponIndex];
+
+        m_CurrentEquippedWeapon.gameObject.SetActive(true);
+        UpdateFlashbangCount();
+
+        healthBar = GameManager.Instance.healthBarScript;
+        shieldBar = GameManager.Instance.shieldBarScript;
+
+        healthBar.SetMaxHealth();
+        shieldBar.SetMaxShield();
+    }
+
+    public void Despawn()
+    {
+        gameObject.SetActive(false);
     }
 
     private void Update()
