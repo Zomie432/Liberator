@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Flashbang : BaseThrowables
 {
+
+    [SerializeField] float flashSphereRadius = 50f;
     /*
     * Called when flashbang explodes
     *   - Returns after the explode timer                                                         
@@ -19,14 +21,15 @@ public class Flashbang : BaseThrowables
 
         // Do Physics.OverlapSphereNonAlloc here
         Collider[] colliders = new Collider[20];
-        int collidersCount = Physics.OverlapSphereNonAlloc(transform.position, 10f, colliders);
+        int collidersCount = Physics.OverlapSphereNonAlloc(transform.position, flashSphereRadius, colliders);
         if (collidersCount > 0)
         {
             for (int i = 0; i < collidersCount; i++)
             {
+                Debug.Log("Flash: " + colliders[i].tag);
                 if (colliders[i].tag == "Player")
                 {
-                    colliders[i].GetComponent<Player>().FlashPlayer();
+                    GameManager.Instance.playerScript.FlashPlayer();
                 }
 
                 if (colliders[i].tag == "Hitbox")

@@ -30,19 +30,19 @@ public class AIChasePlayerScript : AIState
         // checks if player is insight and the distance between them is < the maxdistance the player can see before having to move
         if (inSight && sqrDistance < (agent.config.maxDistance * agent.config.maxDistance))
         {
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
             agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
         }
         else
         {
-            Debug.Log("Chase");
+            //Debug.Log("Chase");
             //constantly sets move target for enemy to the player
             agent.navMeshAgent.destination = agent.playerTransform.position;
 
             // if the player has left the range of the enemy, make the enemy idle
             if (sqrDistance > (agent.config.maxSightDistance * agent.config.maxSightDistance))
             {
-                Debug.Log("Idle");
+                //Debug.Log("Idle");
                 agent.stateMachine.ChangeState(AIStateID.Idle);
             }
         }

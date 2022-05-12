@@ -61,7 +61,7 @@ public class ObjectPool
     {
         if (m_CurrentActiveObjects >= m_Size)
         {
-            Debug.Log("Need to add more objects to pool, current size: " + m_Size);
+            //Debug.Log("Need to add more objects to pool, current size: " + m_Size);
             CreateObject();
             m_CurrentActiveObjects++;
         }
