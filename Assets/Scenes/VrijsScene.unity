@@ -447,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9041930443545811661, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.728
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 9041930443545811661, guid: 96607ccd692265b4fa2be79496089c03, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4029,6 +4029,7 @@ MonoBehaviour:
   playerIsGrounded: 0
   pause: {fileID: 0}
   hostageSecured: {fileID: 0}
+  virtualCam: {fileID: 0}
 --- !u!114 &9065282937320660992
 MonoBehaviour:
   m_ObjectHideFlags: 0

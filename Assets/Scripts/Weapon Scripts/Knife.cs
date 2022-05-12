@@ -39,7 +39,7 @@ public class Knife : BaseMelee
     public override void OnAttackAnimationHitEvent()
     {
         RaycastHit hitInfo;
-        Debug.DrawLine(fpCamera.transform.position, fpCamera.transform.position + fpCamera.transform.forward * knifeHitRange, Color.red, 2f);
+        //Debug.DrawLine(fpCamera.transform.position, fpCamera.transform.position + fpCamera.transform.forward * knifeHitRange, Color.red, 2f);
         if (Physics.Raycast(fpCamera.transform.position, fpCamera.transform.forward, out hitInfo, knifeHitRange))
         {
 

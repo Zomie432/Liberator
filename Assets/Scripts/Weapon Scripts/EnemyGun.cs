@@ -41,6 +41,8 @@ public class EnemyGun : MonoBehaviour
 
     public void Shoot()
     {
+        if (IsGunEmpty()) return;
+
         if (Time.time > m_NextTimeToFire)
         {
             Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
@@ -74,6 +76,8 @@ public class EnemyGun : MonoBehaviour
     }
     public void ShootAtTarget(Vector3 target, Vector2 radius)
     {
+        if (IsGunEmpty()) return;
+
         Vector3 newTarget = Vector3.zero;
         newTarget.x = Random.Range(target.x - radius.x, target.x + radius.x);
         newTarget.y = Random.Range(target.y - radius.y, target.y + radius.y);
@@ -85,7 +89,7 @@ public class EnemyGun : MonoBehaviour
     public void ShootAtTarget(Vector3 target)
     {
         Vector3 direction = (target - bulletSpawnLocation.position).normalized;
-        Debug.DrawLine(bulletSpawnLocation.position, bulletSpawnLocation.position + direction * 5f, Color.red, 2f);
+        //Debug.DrawLine(bulletSpawnLocation.position, bulletSpawnLocation.position + direction * 5f, Color.red, 2f);
 
         if (Time.time > m_NextTimeToFire)
         {
@@ -106,5 +110,10 @@ public class EnemyGun : MonoBehaviour
     {
         m_CurrentNumOfBullets = maxNumOfBullets;
         m_NextTimeToFire += reloadTime;
+    }
+
+    public bool IsGunEmpty()
+    {
+        return m_CurrentNumOfBullets < 1;
     }
 }

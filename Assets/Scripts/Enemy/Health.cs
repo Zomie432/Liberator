@@ -32,10 +32,9 @@ public class Health : MonoBehaviour
    {
         currentHealth -= _amount;
         
-        if (currentHealth <= 0.0f)
+        if (currentHealth < 1f)
         {
             agent.stateMachine.ChangeState(AIStateID.Death);
-            Die(direction);
         }
         else if(currentHealth > 0.0f)
         {

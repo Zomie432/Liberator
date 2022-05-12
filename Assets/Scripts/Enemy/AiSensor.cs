@@ -85,8 +85,8 @@ public class AiSensor : MonoBehaviour
         dest.y = origin.y;
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
-            Debug.Log("Entered raycast line, " + hit.collider.tag);
-            Debug.DrawLine(origin, dest, Color.green, 2f);
+            //Debug.Log("Entered raycast line, " + hit.collider.tag);
+            //Debug.DrawLine(origin, dest, Color.green, 1f);
             if (hit.collider.tag == "Player")
             {
                 return true;
@@ -207,7 +207,7 @@ public class AiSensor : MonoBehaviour
         {
             Gizmos.color = meshColor;
             //draws the sight mesh on the agent transform and position.
-            Gizmos.DrawMesh(mesh, transform.position, transform.rotation);
+            //Gizmos.DrawMesh(mesh, transform.position, transform.rotation);
         }
     }
 }
