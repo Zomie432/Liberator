@@ -190,6 +190,7 @@ public class Player : MonoBehaviour
     public void EquipFlashbang()
     {
         if (!GameRunningCheck()) return;
+        if (!m_CurrentEquippedWeapon.CanSwitchWeapon()) return;
 
         if (flashbang.HasMoreFlashbangs())
         {

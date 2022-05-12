@@ -32,11 +32,12 @@ public class Health : MonoBehaviour
    {
         currentHealth -= _amount;
         
+
         if (currentHealth < 1f)
         {
             agent.stateMachine.ChangeState(AIStateID.Death);
         }
-        else if(currentHealth > 0.0f)
+        else if(currentHealth > 0.0f && !agent.isFlashed)
         {
             agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }

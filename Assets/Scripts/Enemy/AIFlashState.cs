@@ -15,6 +15,8 @@ public class AIFlashState : AIState
         agent.currentState = AIStateID.Flashed;
         agent.navMeshAgent.isStopped = true;
 
+        agent.isFlashed = true;
+
     }
     public void Update(AIAgent agent)
     {
@@ -30,5 +32,7 @@ public class AIFlashState : AIState
     {
         agent.navMeshAgent.isStopped = false;
         currentFlashTimer = flashTimer;
+
+        agent.isFlashed = false;
     }
 }

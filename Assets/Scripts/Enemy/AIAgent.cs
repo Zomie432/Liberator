@@ -15,6 +15,8 @@ public class AIAgent : MonoBehaviour
     [HideInInspector]public Ragdoll ragdoll;
     [HideInInspector] public AiSensor sensor;
 
+    public bool isFlashed = false;
+
     // Start is called before the first frame update
     void Start()
     {

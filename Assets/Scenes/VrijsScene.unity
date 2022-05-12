@@ -515,6 +515,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1170337873562965, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 728950297623109673, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -535,6 +539,18 @@ PrefabInstance:
       propertyPath: buttonFunc
       value: 
       objectReference: {fileID: 1464104683}
+    - target: {fileID: 2775711992537466816, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775711992537466816, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775711992537466816, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4744336607983286374, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -603,13 +619,33 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 6476448947667117943, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623587250408737568, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: interactRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748340582771127130, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: damage
+      value: 105
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163524311238365514, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: gravity
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163524311238365514, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: jumpHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8157646066259349119, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: throwForceMultiplier
       value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8157646066299877592, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: m_VerticalAxis.m_MaxSpeed
-      value: 0.025
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8157646066335396237, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: healthBar
@@ -639,6 +675,14 @@ PrefabInstance:
       propertyPath: attackAudioClip
       value: 
       objectReference: {fileID: 8300000, guid: ca7eb945cbcc1e746816442000b09364, type: 3}
+    - target: {fileID: 8157646067055996824, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: allowPlayerToHoldAttackTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157646067055996824, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: reloadTimeDeductionForAmmoGUIUpdate
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
 --- !u!1001 &1091554217
@@ -744,7 +788,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.25
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2

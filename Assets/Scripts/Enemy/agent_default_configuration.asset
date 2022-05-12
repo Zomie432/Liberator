@@ -15,4 +15,4 @@ MonoBehaviour:
   maxDistance: 10
   maxSightDistance: 15
   dieForce: 10
-  shootSprayRadius: {x: 0.75, y: 0.5}
+  shootSprayRadius: {x: 0.65, y: 0.5}

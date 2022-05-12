@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ZachsScene.unity
     guid: a2f04a95f68315d41a5a0187abe5f9a5
+  - enabled: 1
+    path: Assets/Scenes/VrijsScene.unity
+    guid: f1b9f2f9d73270047923edfbc0b679b4
   m_configObjects: {}
