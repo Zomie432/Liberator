@@ -72,6 +72,16 @@ public class EnemyGun : MonoBehaviour
             Reload();
         }
     }
+    public void ShootAtTarget(Vector3 target, Vector2 radius)
+    {
+        Vector3 newTarget = Vector3.zero;
+        newTarget.x = Random.Range(target.x - radius.x, target.x + radius.x);
+        newTarget.y = Random.Range(target.y - radius.y, target.y + radius.y);
+        newTarget.z = Random.Range(target.z - radius.x, target.z + radius.x);
+
+        ShootAtTarget(newTarget);
+    }
+
     public void ShootAtTarget(Vector3 target)
     {
         Vector3 direction = (target - bulletSpawnLocation.position).normalized;

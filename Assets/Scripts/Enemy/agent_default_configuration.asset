@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260deb7bdace20f42bc30d2ce238c7ef, type: 3}
   m_Name: agent_default_configuration
   m_EditorClassIdentifier: 
-  maxTime: 1
-  maxDistance: 2
+  maxDistance: 10
+  maxSightDistance: 15
+  dieForce: 10
+  shootSprayRadius: {x: 0.75, y: 0.5}
