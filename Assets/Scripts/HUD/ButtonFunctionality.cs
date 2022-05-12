@@ -12,12 +12,17 @@ public class ButtonFunctionality : MonoBehaviour
     GameObject reticle;
     public static bool gameIsPaused = false;
 
+    private void Awake()
+    {
+        // find reticle for player
+
+        reticle = GameObject.FindGameObjectWithTag("Reticle");
+    }
     void Start()
     {
-        // Get istances of pause menu and find virtual camera attached to player that is tagged VirtualCam
+        // Get instances of pause menu and Virtual cam
         pause = GameManager.Instance.pause;
-        virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
-        reticle = GameObject.FindGameObjectWithTag("Reticle");
+        virtualCam = GameManager.Instance.virtualCam;
     }
 
 
@@ -44,17 +49,24 @@ public class ButtonFunctionality : MonoBehaviour
         else
         {
             Resume();
+            Debug.Log("Resume entered through pause game");
         }
     }
     public void Resume()
     {
         // Turn Reticle back on
         reticle.SetActive(true);
+
+        // Set Cursor state back to locked and turn visibility off
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         // Resumes time
         Time.timeScale = 1f;
         // Re Enables players ability to look around and disables the Pause menu UI image
+        if (virtualCam == null)
+        {
+            Debug.Log("Virtual Cam is Null");
+        }
         virtualCam.SetActive(true);
         pause.SetActive(false);
         gameIsPaused = false;
