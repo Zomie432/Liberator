@@ -38,12 +38,12 @@ public class AiSensor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scanTimer -= Time.deltaTime;
-        if(scanTimer < 0)
-        {
-            scanTimer += scanInterval;
-            Scan();
-        }
+        //scanTimer -= Time.deltaTime;
+        //if(scanTimer < 0)
+        //{
+        //    scanTimer += scanInterval;
+        //    Scan();
+        //}
     }
 
     public void Scan()
@@ -68,19 +68,27 @@ public class AiSensor : MonoBehaviour
         Vector3 origin = transform.position;
         origin.y *= 0.5f;
         Vector3 dest = obj;
+        //Debug.Log(dest);
         Vector3 direction = (dest - origin).normalized;
+        //Debug.Log(direction);
         //checks if an object is within the height of the sensor
         if(direction.y < 0 || direction.y > height)
         {
             return false;
         }
-        //checks if an object is within the horizontal of the sensor
-        direction.y = 0;
-        float deltaAngle = Vector3.Angle(direction, transform.forward);
-        if (deltaAngle > angle)
-        {
-            return false;
-        }
+
+        //Debug.Log("Angle passed");
+
+        ////checks if an object is within the horizontal of the sensor
+        //direction.y = 0;
+        //float deltaAngle = Vector3.Angle(direction, transform.forward);
+        //if (deltaAngle > angle)
+        //{
+        //    return false;
+        //}
+
+        //Debug.Log("Angle passed");
+
         origin.y += height / 2;
         dest.y = origin.y;
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
@@ -113,6 +121,7 @@ public class AiSensor : MonoBehaviour
 
         //defines the starting point of the wedge at characters origin.
         Vector3 bottomCenter = new Vector3(0, -heightOffsetFromOrigin, 0);
+        //Vector3 bottomCenter = Vector3.zero;
         //defines bottom left with a vector at the negative angle and multiplying it by the agents forward vector and the distance scalar
         //same but with positive to the right
         Vector3 bottomLeft = Quaternion.Euler(0, -angle, 0) * Vector3.forward * distance;

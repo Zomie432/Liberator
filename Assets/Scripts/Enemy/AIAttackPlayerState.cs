@@ -19,7 +19,7 @@ public class AIAttackPlayerState : AIState
         bool inSight = agent.sensor.IsInsight(agent.playerTransform.position);
         if (!inSight)
         {
-            Debug.Log("Exit the shoot method");
+           // Debug.Log("Exit the shoot method");
             agent.stateMachine.ChangeState(AIStateID.ChasePlayer);
         }
 

@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour
     {
         // Updates Slider value to represent the players current health
         slider.value = GameManager.Instance.playerScript.GetCurrentPlayerHealth();
-        Debug.Log("Slider value = " + slider.value);
+        //Debug.Log("Slider value = " + slider.value);
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
