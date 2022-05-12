@@ -56,9 +56,12 @@ public class AiSensor : MonoBehaviour
         for(int i = 0; i < count; ++i)
         {
             GameObject obj = colliders[i].gameObject;
-            if (IsInsight(obj.transform.position))
+            if (obj.tag == "Player")
             {
-                objects.Add(obj);
+                if (IsInsight(obj.transform.position))
+                {
+                    
+                }
             }
         }
     }
@@ -72,22 +75,18 @@ public class AiSensor : MonoBehaviour
         Vector3 direction = (dest - origin).normalized;
         //Debug.Log(direction);
         //checks if an object is within the height of the sensor
-        if(direction.y < 0 || direction.y > height)
-        {
-            return false;
-        }
 
         //Debug.Log("Angle passed");
 
         ////checks if an object is within the horizontal of the sensor
         //direction.y = 0;
-        //float deltaAngle = Vector3.Angle(direction, transform.forward);
-        //if (deltaAngle > angle)
-        //{
-        //    return false;
-        //}
+        float deltaAngle = Vector3.Angle(direction, transform.forward);
+        if (deltaAngle > angle)
+        {
+            return false;
+        }
 
-        //Debug.Log("Angle passed");
+        Debug.Log("Angle passed");
 
         origin.y += height / 2;
         dest.y = origin.y;
