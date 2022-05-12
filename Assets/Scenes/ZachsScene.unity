@@ -303,6 +303,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vrij_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4744336608686545171, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8157646066335396237, guid: 4ea6f39d4cb278146b792dc4b0c2748d, type: 3}
       propertyPath: healthBar
       value: 
