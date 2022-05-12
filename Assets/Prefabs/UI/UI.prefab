@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7534361739822203254}
   m_Layer: 5
   m_Name: UI
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,6 +252,12 @@ MonoBehaviour:
   hostageSecured: {fileID: 0}
   virtualCam: {fileID: 0}
   reticle: {fileID: 0}
+  ui: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthBarScript: {fileID: 0}
+  ShieldBar: {fileID: 0}
+  shieldBarScript: {fileID: 0}
+  buttonFuncScript: {fileID: 0}
 --- !u!1001 &116164056984800445
 PrefabInstance:
   m_ObjectHideFlags: 0

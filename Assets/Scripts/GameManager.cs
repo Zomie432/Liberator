@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public ButtonFunctionality buttonFuncScript;
 
 
+
     private static GameManager instance;
 
     public static GameManager Instance
