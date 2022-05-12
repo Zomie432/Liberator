@@ -349,9 +349,9 @@ public class Player : MonoBehaviour
         DecreasePlayerHealth(damage - shieldDamageFallOff);
         healthBar.UpdateHealthBar();
         shieldBar.UpdateShieldBar();
-        Debug.Log("Damage Taken: " + damage);
-        Debug.Log("Current Health: " + m_CurrentPlayerHealth);
-        Debug.Log("Current Shield: " + m_CurrentPlayerShield);
+        //Debug.Log("Damage Taken: " + damage);
+        //Debug.Log("Current Health: " + m_CurrentPlayerHealth);
+        //Debug.Log("Current Shield: " + m_CurrentPlayerShield);
     }
 
     /*

@@ -7,6 +7,7 @@ public class AiSensor : MonoBehaviour
     public float distance = 10;
     public float angle = 30;
     public float height = 1.0f;
+    public float heightOffsetFromOrigin = 1.0f;
     public Color meshColor = Color.red;
     public int scanFrequency = 30;
     public LayerMask layers;
@@ -65,34 +66,27 @@ public class AiSensor : MonoBehaviour
     public bool IsInsight(Vector3 obj)
     {
         Vector3 origin = transform.position;
-        //Debug.Log(origin);
         origin.y *= 0.5f;
         Vector3 dest = obj;
-        //Debug.Log(dest);
         Vector3 direction = (dest - origin).normalized;
-       // Debug.Log("Entered direction check");
         //checks if an object is within the height of the sensor
         if(direction.y < 0 || direction.y > height)
         {
-            //Debug.Log(direction);
             return false;
         }
-        //Debug.Log("Passed direction check");
-        ////checks if an object is within the horizontal of the sensor
+        //checks if an object is within the horizontal of the sensor
         direction.y = 0;
         float deltaAngle = Vector3.Angle(direction, transform.forward);
         if (deltaAngle > angle)
         {
-            //Debug.Log("Hit angle");
             return false;
         }
-        //Debug.Log("Passed through angle check");
         origin.y += height / 2;
         dest.y = origin.y;
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
-            Debug.Log("Entered raycast line, " + hit.collider.tag);
-            Debug.DrawLine(origin, dest, Color.green, 2f);
+            //Debug.Log("Entered raycast line, " + hit.collider.tag);
+            //Debug.DrawLine(origin, dest, Color.green, 1f);
             if (hit.collider.tag == "Player")
             {
                 return true;
@@ -118,7 +112,7 @@ public class AiSensor : MonoBehaviour
         int[] triangles = new int[numVertices];
 
         //defines the starting point of the wedge at characters origin.
-        Vector3 bottomCenter = Vector3.zero;
+        Vector3 bottomCenter = new Vector3(0, -heightOffsetFromOrigin, 0);
         //defines bottom left with a vector at the negative angle and multiplying it by the agents forward vector and the distance scalar
         //same but with positive to the right
         Vector3 bottomLeft = Quaternion.Euler(0, -angle, 0) * Vector3.forward * distance;

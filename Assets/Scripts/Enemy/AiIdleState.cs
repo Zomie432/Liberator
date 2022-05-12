@@ -12,18 +12,18 @@ public class AIIdleState : AIState
     public void Enter(AIAgent agent)
     {
         agent.currentState = AIStateID.Idle;
+
+        agent.navMeshAgent.isStopped = true;
     }
 
     public void Update(AIAgent agent)
     {
-        agent.mesh.material.color = Color.red * 0.5f;
+        agent.mesh.material.color = Color.red;
+
         //finds the player direction and checks to see if its magnitude is outside
         //the range of the agent sight.
         Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
-        //if(playerDirection.magnitude > agent.config.maxSightDistance)
-        //{
-        //    return;
-        //}
+
         //gets the direction the enemy is pointing.
         Vector3 agentDirection = agent.transform.forward;
 
@@ -41,6 +41,6 @@ public class AIIdleState : AIState
 
     public void Exit(AIAgent agent)
     {
-
+        agent.navMeshAgent.isStopped = false;
     }
 }

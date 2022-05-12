@@ -14,29 +14,40 @@ public class AIChasePlayerScript : AIState
     public void Enter(AIAgent agent)
     {
         gun = agent.GetComponentInChildren<EnemyGun>();
-        agent.mesh.material.color = Color.red * 0.5f;
         agent.currentState = AIStateID.ChasePlayer;
     }
 
     public void Update(AIAgent agent)
     {
+        agent.mesh.material.color = Color.white;
+
         //stops a lot of cost for the enemy.
-        float sqrDistance = (agent.playerTransform.position - agent.navMeshAgent.destination).sqrMagnitude;
-        agent.transform.LookAt(agent.playerTransform);  
-        bool inSight = agent.sensor.IsInsight(agent.playerTransform.localPosition);
-        if (sqrDistance > gun.bulletRange || !inSight)
+        // gets the squared dist from player to enemy
+        float sqrDistance = (agent.playerTransform.position - agent.transform.position).sqrMagnitude;
+        agent.transform.LookAt(agent.playerTransform);
+        bool inSight = agent.sensor.IsInsight(agent.playerTransform.position);
+
+        // checks if player is insight and the distance between them is < the maxdistance the player can see before having to move
+        if (inSight && sqrDistance < (agent.config.maxDistance * agent.config.maxDistance))
         {
-            Debug.Log("Chasing");
-            //constantly sets move target for enemy to the player
-            agent.navMeshAgent.destination = agent.playerTransform.position;
+            Debug.Log("Attack");
+            agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
         }
         else
         {
-            Debug.Log("Entered the shoot method");
-            //agent.navMeshAgent.isStopped = true;
-            agent.stateMachine.ChangeState(AIStateID.AttackPlayer);
+            Debug.Log("Chase");
+            //constantly sets move target for enemy to the player
+            agent.navMeshAgent.destination = agent.playerTransform.position;
+
+            // if the player has left the range of the enemy, make the enemy idle
+            if (sqrDistance > (agent.config.maxSightDistance * agent.config.maxSightDistance))
+            {
+                Debug.Log("Idle");
+                agent.stateMachine.ChangeState(AIStateID.Idle);
+            }
         }
-        
+
+
     }
 
     public void Exit(AIAgent agent)
