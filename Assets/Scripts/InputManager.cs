@@ -22,9 +22,8 @@ public class InputManager : MonoBehaviour
     private Player player;
 
     // button Functionality class
-    public ButtonFunctionality buttonFunc;
+     ButtonFunctionality buttonFunc;
 
-    // Start is called before the first frame update
     void Awake()
     {
         //we want to make sure there is only ever one input manager instance
@@ -78,6 +77,11 @@ public class InputManager : MonoBehaviour
 
         // DEBUG-----------------------------------------------------------------------------------
         onFoot.Test_PlayerDamage.performed += ctx => player.TakeDamageTen();
+    }
+
+    private void Start()
+    {
+        buttonFunc = GameManager.Instance.buttonFuncScript;
     }
 
     // Update is called once per frame

@@ -18,6 +18,9 @@ public class AmmoManager : MonoBehaviour
     /* UI Text to update when ammo has changed */
     TextMeshProUGUI ammoGUI;
 
+    /* Ammo Icon*/
+    public GameObject ammoSprite;
+    
     /* Instance of this object, singleton pattern */
     private static AmmoManager m_AmmoManager;
 
@@ -92,6 +95,7 @@ public class AmmoManager : MonoBehaviour
     public void HideAmmoGUI()
     {
         ammoGUI.enabled = false;
+        ammoSprite.gameObject.SetActive(false);
     }
 
     /*
@@ -100,6 +104,7 @@ public class AmmoManager : MonoBehaviour
     public void ShowAmmoGUI()
     {
         ammoGUI.enabled = true;
+        ammoSprite.gameObject.SetActive(true);
     }
 
     /*

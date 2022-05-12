@@ -26,6 +26,19 @@ public class GameManager : MonoBehaviour
     public GameObject virtualCam;
     [HideInInspector]
     public GameObject reticle;
+    [HideInInspector]
+    public GameObject ui;
+    [HideInInspector]
+    public GameObject healthBar;
+    [HideInInspector]
+    public HealthBar healthBarScript;
+    [HideInInspector]
+    public GameObject ShieldBar;
+    [HideInInspector]
+    public ShieldBar shieldBarScript;
+    [HideInInspector]
+    public ButtonFunctionality buttonFuncScript;
+
 
     private static GameManager instance;
 
@@ -65,6 +78,13 @@ public class GameManager : MonoBehaviour
         hostageSecured.SetActive(false);
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
         reticle = GameObject.FindGameObjectWithTag("Reticle");
+        ui = GameObject.FindGameObjectWithTag("UI");
+        buttonFuncScript = ui.GetComponent<ButtonFunctionality>();
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        healthBarScript = healthBar.GetComponent<HealthBar>();
+        ShieldBar = GameObject.FindGameObjectWithTag("ShieldBar");
+        shieldBarScript = ShieldBar.GetComponent<ShieldBar>();
+
 
         if (player == null)
         {

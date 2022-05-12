@@ -62,7 +62,7 @@ public class ButtonFunctionality : MonoBehaviour
         // Resumes time
         Time.timeScale = 1f;
         // Re Enables players ability to look around and disables the Pause menu UI image
-        if (virtualCam == null)
+        if (reticle == null)
         {
             Debug.Log("Virtual Cam is Null");
         }

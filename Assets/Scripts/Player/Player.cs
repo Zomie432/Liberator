@@ -99,14 +99,16 @@ public class Player : MonoBehaviour
     BaseWeapon m_CurrentEquippedWeapon;
 
     /* Health bar connected to player, in inspector must select health bar from ui to work*/
-    public HealthBar healthBar;
+     HealthBar healthBar;
 
     /* Shield bar connected to player, in inspector must select Shield bar from ui to work*/
-    public ShieldBar shieldBar;
+     ShieldBar shieldBar;
 
     /*Flash bang Count ui */
     public TextMeshProUGUI flashbangUi;
 
+    /* Flash Bang sprite*/
+    public GameObject flashBangSprite;
 
     private void Start()
     {
@@ -114,8 +116,6 @@ public class Player : MonoBehaviour
 
         m_CurrentPlayerHealth = maxPlayerHealth;
         m_CurrentPlayerShield = maxPlayerShield;
-        healthBar.SetMaxHealth();
-        shieldBar.SetMaxShield();
         m_CurrentEquippedWeapon = weapons[m_CurrentWeaponIndex];
 
         m_PlayerMotor = GetComponent<PlayerMotor>();
@@ -123,6 +123,12 @@ public class Player : MonoBehaviour
 
         m_CurrentEquippedWeapon.gameObject.SetActive(true);
         UpdateFlashbangCount();
+
+        healthBar = GameManager.Instance.healthBarScript;
+        shieldBar = GameManager.Instance.shieldBarScript;
+
+        healthBar.SetMaxHealth();
+        shieldBar.SetMaxShield();
 
     }
 
@@ -611,12 +617,15 @@ public class Player : MonoBehaviour
     public void HideFlashbangGUI()
     {
         flashbangUi.gameObject.SetActive(false);
+        flashBangSprite.gameObject.SetActive(false);
     }
 
     public void ShowFlashbangGUI()
     {
         UpdateFlashbangCount();
         flashbangUi.gameObject.SetActive(true);
+        flashBangSprite.gameObject.SetActive(true);
+
     }
 
     public void FlashPlayer()
