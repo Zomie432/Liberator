@@ -228,4 +228,4 @@ MonoBehaviour:
   throwableExplodeTimer: 1
   explodeParticleSystem: {fileID: 2810583383781567452, guid: 699a53451911d334baa749c25d7b1690, type: 3}
   poolTimeAfterExplosion: 1
-  flashSphereRadius: 10
+  flashSphereRadius: 5

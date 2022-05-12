@@ -20,8 +20,11 @@ public class Flashbang : BaseThrowables
         PlayExplodeSFX();
 
         // Do Physics.OverlapSphereNonAlloc here
-        Collider[] colliders = new Collider[20];
-        int collidersCount = Physics.OverlapSphereNonAlloc(transform.position, flashSphereRadius, colliders);
+        Collider[] colliders = new Collider[50];
+        Vector3 origin = transform.position;
+        origin.y += 1f;
+        int collidersCount = Physics.OverlapSphereNonAlloc(origin, flashSphereRadius, colliders);
+        Debug.Log("Flash colliders: " + collidersCount);
         if (collidersCount > 0)
         {
             for (int i = 0; i < collidersCount; i++)
