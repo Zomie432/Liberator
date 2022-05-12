@@ -207,7 +207,7 @@ public class AiSensor : MonoBehaviour
         {
             Gizmos.color = meshColor;
             //draws the sight mesh on the agent transform and position.
-            //Gizmos.DrawMesh(mesh, transform.position, transform.rotation);
+            Gizmos.DrawMesh(mesh, transform.position, transform.rotation);
         }
     }
 }
