@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public GameObject pause;
     [HideInInspector]
     public GameObject hostageSecured;
+    [HideInInspector]
+    public GameObject virtualCam;
 
     private static GameManager instance;
 
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
         pause.SetActive(false);
         hostageSecured = GameObject.FindGameObjectWithTag("HostageSecuredScreen");
         hostageSecured.SetActive(false);
+        virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
 
         if (player == null)
         {
