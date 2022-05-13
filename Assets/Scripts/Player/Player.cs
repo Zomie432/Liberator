@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour, ISpawnable
+public class Player : ISpawnable
 {
     [Header("Weapon Settings")]
 
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour, ISpawnable
 
     }
 
-    public void Spawn()
+    public override void Spawn()
     {
         m_CurrentWeaponIndex = 0;
 
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour, ISpawnable
         shieldBar.SetMaxShield();
     }
 
-    public void Despawn()
+    public override void Despawn()
     {
         gameObject.SetActive(false);
     }

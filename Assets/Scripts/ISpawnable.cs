@@ -1,7 +1,9 @@
 
-public interface ISpawnable
-{
-    void Spawn();
+using UnityEngine;
 
-    void Despawn();
+public abstract class ISpawnable : MonoBehaviour
+{
+    public abstract void Spawn();
+
+    public abstract void Despawn();
 }
