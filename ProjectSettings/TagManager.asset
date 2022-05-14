@@ -17,6 +17,7 @@ TagManager:
   - HealthBar
   - ShieldBar
   - UI
+  - SecureHostageText
   layers:
   - Default
   - TransparentFX

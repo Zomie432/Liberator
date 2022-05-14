@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
     public ShieldBar shieldBarScript;
     [HideInInspector]
     public ButtonFunctionality buttonFuncScript;
-
-
+    [HideInInspector]
+    public GameObject secureHostageTxt;
 
     private static GameManager instance;
 
@@ -85,7 +85,8 @@ public class GameManager : MonoBehaviour
         healthBarScript = healthBar.GetComponent<HealthBar>();
         ShieldBar = GameObject.FindGameObjectWithTag("ShieldBar");
         shieldBarScript = ShieldBar.GetComponent<ShieldBar>();
-
+        secureHostageTxt = GameObject.FindGameObjectWithTag("SecureHostageText");
+        secureHostageTxt.SetActive(false);
 
         if (player == null)
         {
