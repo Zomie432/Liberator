@@ -18,6 +18,8 @@ TagManager:
   - ShieldBar
   - UI
   - SecureHostageText
+  - DoorInteractText
+  - IntelInteractText
   layers:
   - Default
   - TransparentFX

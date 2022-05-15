@@ -538,14 +538,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 780302779524512528, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2204059688583503646, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2433496881653387053, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -553,10 +545,6 @@ PrefabInstance:
     - target: {fileID: 2433496881653387053, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478136302291677206, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5994487195960309196, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_RootOrder
@@ -607,8 +595,8 @@ PrefabInstance:
       value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 5994487195960309199, guid: 70a3515ae83a79440b842a194371f102, type: 3}
-      propertyPath: m_Layer
-      value: 5
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6545341102507089887, guid: 70a3515ae83a79440b842a194371f102, type: 3}
       propertyPath: m_AnchorMax.x

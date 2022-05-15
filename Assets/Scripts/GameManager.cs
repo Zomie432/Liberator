@@ -39,7 +39,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public ButtonFunctionality buttonFuncScript;
     [HideInInspector]
-    public GameObject secureHostageTxt;
+    public GameObject secureHostageText;
+    [HideInInspector]
+    public GameObject doorInteractText;
+    [HideInInspector]
+    public GameObject intelInteractText;
 
     private static GameManager instance;
 
@@ -75,18 +79,28 @@ public class GameManager : MonoBehaviour
         playerCharacterController = player.GetComponent<CharacterController>();
         pause = GameObject.FindGameObjectWithTag("PauseMenu");
         pause.SetActive(false);
+
         hostageSecured = GameObject.FindGameObjectWithTag("HostageSecuredScreen");
         hostageSecured.SetActive(false);
+
         virtualCam = GameObject.FindGameObjectWithTag("VirtualCam");
         reticle = GameObject.FindGameObjectWithTag("Reticle");
         ui = GameObject.FindGameObjectWithTag("UI");
         buttonFuncScript = ui.GetComponent<ButtonFunctionality>();
+
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScript = healthBar.GetComponent<HealthBar>();
         ShieldBar = GameObject.FindGameObjectWithTag("ShieldBar");
         shieldBarScript = ShieldBar.GetComponent<ShieldBar>();
-        secureHostageTxt = GameObject.FindGameObjectWithTag("SecureHostageText");
-        secureHostageTxt.SetActive(false);
+
+        secureHostageText = GameObject.FindGameObjectWithTag("SecureHostageText");
+        secureHostageText.SetActive(false);
+
+        doorInteractText = GameObject.FindGameObjectWithTag("DoorInteractText");
+        doorInteractText.SetActive(false);
+
+        intelInteractText = GameObject.FindGameObjectWithTag("IntelInteractText");
+        intelInteractText.SetActive(false);
 
         if (player == null)
         {
