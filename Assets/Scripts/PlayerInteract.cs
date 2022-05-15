@@ -13,6 +13,7 @@ public class PlayerInteract : MonoBehaviour
     private bool securingHostage = false;
     private GameObject secureHostagePrompt;
     private GameObject doorInteractPrompt;
+    private GameObject intelInteractPrompt;
     private GameObject currentInteractPrompt;
 
     private void Start()
@@ -20,6 +21,7 @@ public class PlayerInteract : MonoBehaviour
         hostageSecureScreen = GameManager.Instance.hostageSecured;
         secureHostagePrompt = GameManager.Instance.secureHostageText;
         doorInteractPrompt = GameManager.Instance.doorInteractText;
+        intelInteractPrompt = GameManager.Instance.intelInteractText;
 
         //intitializing the interact prompt to a value so I don't need a null check condition
         currentInteractPrompt = doorInteractPrompt;
@@ -43,6 +45,12 @@ public class PlayerInteract : MonoBehaviour
                 if (hit.collider.CompareTag("Door"))
                 {
                     currentInteractPrompt = doorInteractPrompt;
+                    currentInteractPrompt.SetActive(true);
+                }
+                //player is looking at intel within interact range
+                else if (hit.collider.CompareTag("Intel"))
+                {
+                    currentInteractPrompt = intelInteractPrompt;
                     currentInteractPrompt.SetActive(true);
                 }
                 //player is looking at a hostage within interact range
@@ -74,10 +82,25 @@ public class PlayerInteract : MonoBehaviour
                 //player interacts with a door
                 if (hit.collider.CompareTag("Door"))
                 {
+                    //access that door's doorController script
                     DoorController doorScript = hit.collider.gameObject.GetComponent<DoorController>();
 
                     //interact method will decide whether that specific door needs to be opened or closed
                     doorScript.Interact();
+
+                    //play a sound
+                    //TO DO----------------------------------------------------
+
+                }
+                //player interacts with a piece of intel
+                else if (hit.collider.CompareTag("Intel"))
+                {
+                    //add currency to the player and maybe play a sound or something
+                    //TO DO----------------------------------------------------
+
+                    //get that instance so we can disable it
+                    GameObject intelInstance = hit.collider.gameObject;
+                    intelInstance.SetActive(false);
                 }
             }
             else //hold interactions go here VVVVVVVVVVVVVVVVVVVVVVVV
@@ -121,6 +144,7 @@ public class PlayerInteract : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0f;
+
             // Disables virtual camera so player can not look around in the pause menu
             GameManager.Instance.virtualCam.SetActive(false);
 

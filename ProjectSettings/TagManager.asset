@@ -20,6 +20,7 @@ TagManager:
   - SecureHostageText
   - DoorInteractText
   - IntelInteractText
+  - Intel
   layers:
   - Default
   - TransparentFX
