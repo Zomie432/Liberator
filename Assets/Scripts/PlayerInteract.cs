@@ -6,12 +6,58 @@ public class PlayerInteract : MonoBehaviour
 {
     [Tooltip("Distance the player can interact with objects from")]
     [SerializeField] private float interactRange = 3f;
+    [Tooltip("How often to update the text prompt on the screen with a raycast")]
+    [SerializeField] private float updateInteractPromptTime = 0.2f;
+    private float updateInteractPromptTimer;
     private GameObject hostageSecureScreen;
     private bool securingHostage = false;
+    private GameObject secureHostagePrompt;
+    private GameObject doorInteractPrompt;
+    private GameObject currentInteractPrompt;
 
     private void Start()
     {
         hostageSecureScreen = GameManager.Instance.hostageSecured;
+        secureHostagePrompt = GameManager.Instance.secureHostageText;
+        doorInteractPrompt = GameManager.Instance.doorInteractText;
+
+        //intitializing the interact prompt to a value so I don't need a null check condition
+        currentInteractPrompt = doorInteractPrompt;
+
+        //timer is the value that counts down, the time is what the countdown gets reset to
+        updateInteractPromptTimer = updateInteractPromptTime;
+    }
+
+    private void Update()
+    {
+        updateInteractPromptTimer -= Time.deltaTime;
+
+        if (updateInteractPromptTimer < 0f)
+        {
+            updateInteractPromptTimer = updateInteractPromptTime;
+            if (Physics.Raycast(transform.position, GameManager.Instance.playerAimVector, out RaycastHit hit, interactRange))
+            {
+                //enters this scope if the raycast hit a collider within the interact range
+
+                //player is looking at a door within interact range
+                if (hit.collider.CompareTag("Door"))
+                {
+                    currentInteractPrompt = doorInteractPrompt;
+                    currentInteractPrompt.SetActive(true);
+                }
+                //player is looking at a hostage within interact range
+                else if (hit.collider.CompareTag("Hostage"))
+                {
+                    currentInteractPrompt = secureHostagePrompt;
+                    currentInteractPrompt.SetActive(true);
+                }
+                else
+                    currentInteractPrompt.SetActive(false);
+
+            }
+            else
+                currentInteractPrompt.SetActive(false);
+        }
     }
 
     public void ProcessInteraction(bool pressOrHoldBehavior)
