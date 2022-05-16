@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = player.transform;
         playerScript = player.GetComponent<Player>();
         playerCharacterController = player.GetComponent<CharacterController>();
         pause = GameObject.FindGameObjectWithTag("PauseMenu");

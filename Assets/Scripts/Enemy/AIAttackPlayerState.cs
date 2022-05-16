@@ -16,7 +16,7 @@ public class AIAttackPlayerState : AIState
     {
         agent.mesh.material.color = Color.blue;
 
-        bool inSight = agent.sensor.IsInsight(agent.playerTransform.position);
+        bool inSight = agent.sensor.IsInsight();
         if (!inSight)
         {
            // Debug.Log("Exit the shoot method");

@@ -23,9 +23,9 @@ public class AIChasePlayerScript : AIState
 
         //stops a lot of cost for the enemy.
         // gets the squared dist from player to enemy
-        float sqrDistance = (agent.playerTransform.position - agent.transform.position).sqrMagnitude;
+        float sqrDistance = (GameManager.Instance.playerTransform.position - agent.transform.position).sqrMagnitude;
         agent.transform.LookAt(agent.playerTransform);
-        bool inSight = agent.sensor.IsInsight(agent.playerTransform.position);
+        bool inSight = agent.sensor.IsInsight();
 
         // checks if player is insight and the distance between them is < the maxdistance the player can see before having to move
         if (inSight && sqrDistance < (agent.config.maxDistance * agent.config.maxDistance))
@@ -37,7 +37,7 @@ public class AIChasePlayerScript : AIState
         {
             //Debug.Log("Chase");
             //constantly sets move target for enemy to the player
-            agent.navMeshAgent.destination = agent.playerTransform.position;
+            agent.navMeshAgent.destination = GameManager.Instance.playerTransform.position;
 
             // if the player has left the range of the enemy, make the enemy idle
             if (sqrDistance > (agent.config.maxSightDistance * agent.config.maxSightDistance))
