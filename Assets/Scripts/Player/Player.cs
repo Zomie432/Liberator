@@ -239,6 +239,7 @@ public class Player : ISpawnable
         IPickable dropWeapon = WeaponSpawnManager.Instance.GetWeaponAlias(m_CurrentEquippedWeapon.GetWeaponID());
         dropWeapon.transform.position = dropLocation.position;
 
+        DeactivateFlashbang();
         DeactivateWeapon(m_CurrentWeaponIndex);
         m_CurrentWeapons[m_CurrentWeaponIndex] = WeaponSpawnManager.Instance.GetWeapon(weaponID, weaponsParent.transform);
         ActivateWeapon(m_CurrentWeaponIndex);
@@ -716,5 +717,10 @@ public class Player : ISpawnable
     {
         //Debug.Log("Playing weapon audio: " + clip);
         weaponAudioSrc.PlayOneShot(clip);
+    }
+
+    public bool CanPickupWeapon()
+    {
+        return m_CurrentEquippedWeapon.CanSwitchWeapon();
     }
 }

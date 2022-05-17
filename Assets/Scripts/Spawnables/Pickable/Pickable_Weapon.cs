@@ -22,8 +22,12 @@ public class Pickable_Weapon : IPickable
 
     public override void OnPickup(GameObject picker)
     {
-        base.OnPickup(picker);
+        //base.OnPickup(picker); don't want it to despawn
 
-        GameManager.Instance.playerScript.Equip(weaponID, transform);
+        if (GameManager.Instance.playerScript.CanPickupWeapon())
+        {
+            Despawn();
+            GameManager.Instance.playerScript.Equip(weaponID, transform);
+        }
     }
 }
