@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5904537738071572409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5904537738071572406}
+  - component: {fileID: 5904537738071572407}
+  m_Layer: 0
+  m_Name: KnifeImpactManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5904537738071572406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904537738071572409}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -15.436789, y: -0.20319238, z: -8.678394}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5904537738071572407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904537738071572409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989ba4cfa582bfc48b21caed447f78b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemBuffer: 5
+  meleeImpacts:
+  - objectTag: Untagged
+    collisionParticleSystem: {fileID: -7308709378478881761, guid: c2505f646b94d494bbdd5f853db29b10, type: 3}
+    impactAudio: {fileID: 8300000, guid: 24c246884d2412b4a83b5dffa62fe470, type: 3}
+  - objectTag: Hitbox
+    collisionParticleSystem: {fileID: 3348676198658618746, guid: c35cab76504166941aaec775941770e7, type: 3}
+    impactAudio: {fileID: 8300000, guid: 019b1cad8d20c6748abcaeabd40d6746, type: 3}

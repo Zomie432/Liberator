@@ -27,7 +27,7 @@ public class EnemyGun : MonoBehaviour
     protected float m_NextTimeToFire;
 
     /* a objectpool that will keep track of spawned bullets automatically */
-    ObjectPool m_BulletPool;
+    string m_BulletPool;
 
     /*
    * Creates the bullet pool 
@@ -36,7 +36,7 @@ public class EnemyGun : MonoBehaviour
     {
         m_CurrentNumOfBullets = maxNumOfBullets;
 
-        m_BulletPool = new ObjectPool(bulletPrefab, maxNumOfBullets);
+        m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
     }
 
     public void Shoot()
@@ -45,7 +45,7 @@ public class EnemyGun : MonoBehaviour
 
         if (Time.time > m_NextTimeToFire)
         {
-            Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
+            Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
             bullet.Spawn(bulletSpawnLocation.position, bulletSpawnLocation.forward, bulletRange, damage);
             m_NextTimeToFire = Time.time + fireRate;
 
@@ -62,7 +62,7 @@ public class EnemyGun : MonoBehaviour
     {
         if(Time.time > m_NextTimeToFire)
         {
-            Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
+            Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
             bullet.Spawn(bulletSpawnLocation.position, forward, bulletRange, damage);
             m_NextTimeToFire = Time.time + fireRate;
 
@@ -93,7 +93,7 @@ public class EnemyGun : MonoBehaviour
 
         if (Time.time > m_NextTimeToFire)
         {
-            Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
+            Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
             bullet.Spawn(bulletSpawnLocation.position, direction, bulletRange, damage);
             m_NextTimeToFire = Time.time + fireRate;
 

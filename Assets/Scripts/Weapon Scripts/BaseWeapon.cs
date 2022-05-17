@@ -1,10 +1,10 @@
-using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(Animator))]
-public abstract class BaseWeapon : MonoBehaviour, IWeapon
+//[RequireComponent(typeof(AudioSource))]
+public class BaseWeapon : ISpawnable //, IWeapon
 {
+    [Header("BaseWeapon")]
+
     [Header("Player Settings")]
 
     /* bool to keep in track if player can hold down the attack button */
@@ -15,54 +15,85 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     [Header("Delays")]
 
-    /* amount of time it takes to attack this weapon again in seconds */
-    [SerializeField] protected float attackDelay = 1.0f;
-
-    [Header("Camera")]
-
-    /* main camera  */
-    [SerializeField] protected Camera fpCamera;
-
-    [Header("Animation Settings")]
-
-    /* string reference to the trigger name set on the animation component to play attack animation */
-    [SerializeField] protected string attackAnimationTriggerName = "Attack";
+    /* amount of this weapon can be attacked in the spawn of 1 second */
+    [SerializeField] [Tooltip("amount of this weapon can be attacked in the spawn of 1 second")] protected float attackRate = 1.0f;
 
     [Header("Weapon Settings")]
 
+    /* origin of the raycast done when this weapon starts attacking */
+    [SerializeField] protected Transform raycastOrigin;
+
     [SerializeField] protected int damage = 25;
+
+    [SerializeField] Vector3 weaponSpawnLocalPositionOffset;
 
     [Header("Audio Settings")]
 
     /* audio clip played when player attacks */
     [SerializeField] AudioClip attackAudioClip;
 
-    /* this weapons animator component */
-    protected Animator m_Animator;
+   // [Header("Animation Speed")]
+
+    //[SerializeField] float attackAnimSpeed = 1.0f;
+
+    protected bool bIsAttacking;
+
+    /* if player has picked up this weapon and its in his inventory */
+    protected bool bIsPickedUp;
 
     /* time when weapon was last fired */
     protected float m_LastAttackTime;
 
-    private AudioSource m_AudioSource;
+    protected Animator m_Animator;
+
+    uint m_WeaponID;
 
     public virtual void Start()
     {
-        m_LastAttackTime = attackDelay * -1;
-
+        attackRate = 1 / attackRate;
+       
         m_Animator = GetComponent<Animator>();
-        m_AudioSource = GetComponent<AudioSource>();
+
+        Spawn();
     }
 
-    public virtual void OnEnable()
+    public override void Spawn()
     {
-        if (m_Animator == null)
-            m_Animator = GetComponent<Animator>();
+        base.Spawn();
+
+        m_LastAttackTime = attackRate * -1;
     }
 
-    public virtual void OnDisable()
+    private void OnEnable()
     {
-
+        OnWeaponEquip();
     }
+
+    private void OnDisable()
+    {
+        OnWeaponUnequip();
+    }
+
+    public virtual void OnPickup(GameObject parent) 
+    {
+        //Debug.Log(parent.name + " just picked up " + name);
+        bIsPickedUp = true;
+
+        transform.parent = parent.transform;
+        transform.localPosition = weaponSpawnLocalPositionOffset; 
+    }
+
+    public virtual void OnDrop(Transform dropLocation)
+    {
+        bIsPickedUp = false;
+
+        transform.parent = null;
+        transform.position = dropLocation.position;
+    }
+
+    public virtual void OnWeaponEquip() { }
+
+    public virtual void OnWeaponUnequip() { }
 
     /*
     * for override purposes
@@ -70,23 +101,23 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public virtual void Update() { }
 
     /*
-     * called when weapon is being switched to another weapon
-     */
-    public virtual void OnWeaponSwitch() { }
-
-    /*
     * updates the last attack time
     */
-    public virtual void Attack()
-    {
-        PlayAttackAudio();
-        UpdateLastAttackTime();
-    }
+    public virtual void StartAttacking() { bIsAttacking = true; }
+
+    public virtual void OnAnimationEvent_AttackStart() { bIsAttacking = true; }
+
+    public virtual void OnAnimationEvent_AttackEnd() { bIsAttacking = false; }
+
+    public virtual void StopAttacking() { bIsAttacking = false; }
 
     /*
     * for override purposes
     */
     public virtual void Reload() { }
+
+    public virtual void OnAnimationEvent_ReloadStart() { }
+    public virtual void OnAnimationEvent_ReloadEnd() { }
 
     /*
     * for override purposes
@@ -103,10 +134,10 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     */
     public virtual void UpdateAmmoGUI() { }
 
-    public void SetAnimFloat(string name, float num)
-    {
-        m_Animator.SetFloat(name, num);
-    }
+    /*
+    * returns if player can switch to another wepaon
+    */
+    public virtual bool CanSwitchWeapon() { return false; }
 
     /*
     * updates the last attack time
@@ -115,15 +146,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         m_LastAttackTime = Time.time;
     }
-
-    /*
-    * returns if player can switch to another wepaon
-    */
-    public virtual bool CanSwitchWeapon()
-    {
-        return false;
-    }
-
+    
     /*
     * returns if the weapon is reloading
     */
@@ -173,14 +196,6 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     }
 
     /*
-    * returns this weapons animator 
-    */
-    public Animator GetAnimator()
-    {
-        return m_Animator;
-    }
-
-    /*
      * Returns if object should take action depending on delay is exceeded
      */
     protected bool TakeAction(float lastTime, float delay)
@@ -196,45 +211,89 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         gameObject.SetActive(isActive);
     }
 
-    /*
-    * returns is any audio is playing
-    */
-    protected bool IsAudioPlaying()
-    {
-        return m_AudioSource.isPlaying;
-    }
+    ///*
+    //* returns is any audio is playing
+    //*/
+    //protected bool IsAudioPlaying()
+    //{
+    //    return m_AudioSource.isPlaying;
+    //}
 
     /*
     * plays the audio 
     */
     protected void PlayAttackAudio()
     {
-        m_AudioSource.clip = attackAudioClip;
-        m_AudioSource.Play();
+        //m_AudioSource.PlayOneShot(attackAudioClip);
+        GameManager.Instance.playerScript.PlayOneShotAudio(attackAudioClip);
     }
+
+    ///*
+    //* plays the audio 
+    //*/
+    //protected void PlayAudio()
+    //{
+    //    m_AudioSource.Play();
+    //}
 
     /*
     * plays the audio 
     */
-    protected void PlayAudio()
+    protected void PlayAudioOneShot(AudioClip clip)
     {
-        m_AudioSource.Play();
+        //m_AudioSource.PlayOneShot(clip);
+        GameManager.Instance.playerScript.PlayOneShotAudio(clip);
     }
 
-    /*
-    * sets the audio clip to be played next time play audio is called
-    */
-    protected void SetAudioClip(AudioClip clip)
-    {
-        m_AudioSource.clip = clip;
-        m_AudioSource.time = 0;
-    }
+    ///*
+    //* sets the audio clip to be played next time play audio is called
+    //*/
+    //protected void SetAudioSourceClip(AudioClip clip)
+    //{
+    //    m_AudioSource.clip = clip;
+    //    m_AudioSource.time = 0;
+    //}
 
     /*
-    * stops the payer audio
-    */
-    public void StopAudio()
+    //* stops the payer audio
+    //*/
+    //public void StopAudio()
+    //{
+    //    m_AudioSource.Stop();
+    //}
+
+    public void SetAnimator(Animator animator)
     {
-        m_AudioSource.Stop();
+        m_Animator = animator;
     }
+
+    public Animator GetAnimator()
+    {
+        return m_Animator;
+    }
+
+    public bool IsAttacking()
+    {
+        return bIsAttacking;
+    }
+
+    public void SetAnimFloat(string name, float num)
+    {
+        m_Animator.SetFloat(name, num);
+    }
+
+    public void SetWeaponID(uint id)
+    {
+        m_WeaponID = id;
+    }
+
+    public uint GetWeaponID()
+    {
+        return m_WeaponID;
+    }
+
+    //public float GetAttackAnimSpeed()
+    //{
+    //    return attackAnimSpeed;
+    //}
 }

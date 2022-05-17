@@ -2,22 +2,24 @@ using UnityEngine;
 
 public class Knife : BaseMelee
 {
-    /* time taken off of attack delay to preform weapon switch */
-    [SerializeField] float switchWeaponDelayTimeOffAttackDelay = 0.5f;
-
     [SerializeField] float knifeHitRange = 0.5f;
 
     /*
     * triggers first attack 
     */
-    public override void Attack()
+    public override void StartAttacking()
     {
-        if (TakeAction(m_LastAttackTime, attackDelay))
+        if (!bIsAttacking)
         {
             PlayAttackAudio();
-            GetAnimator().SetTrigger(attackAnimationTriggerName);
+            GetAnimator().Play("Attack1");
             UpdateLastAttackTime();
         }
+    }
+
+    public override void StopAttacking()
+    {
+        base.StopAttacking();
     }
 
     /*
@@ -25,22 +27,27 @@ public class Knife : BaseMelee
     */
     public override void StartAiming()
     {
-        if (TakeAction(m_LastAttackTime, attackDelay))
+        if (!bIsAttacking)
         {
             PlayAttack2Audio();
-            GetAnimator().SetTrigger(attack2AnimationTriggerName);
+            GetAnimator().Play("Attack2");
             UpdateLastAttackTime();
         }
+    }
+
+    public override void StopAiming()
+    {
+        base.StopAiming();
     }
 
     /*
     * called when the attack animation reaches a certain frame
     */
-    public override void OnAttackAnimationHitEvent()
+    public override void OnAnimationEvent_AttackHit()
     {
         RaycastHit hitInfo;
         //Debug.DrawLine(fpCamera.transform.position, fpCamera.transform.position + fpCamera.transform.forward * knifeHitRange, Color.red, 2f);
-        if (Physics.Raycast(fpCamera.transform.position, fpCamera.transform.forward, out hitInfo, knifeHitRange))
+        if (Physics.Raycast(GameManager.Instance.mainCamera.transform.position, GameManager.Instance.mainCamera.transform.forward, out hitInfo, knifeHitRange))
         {
 
             if (hitInfo.collider.tag == "Hitbox")
@@ -49,8 +56,7 @@ public class Knife : BaseMelee
             MeleeImpactManager.Instance.SpawnMeleeImpact(hitInfo.point, hitInfo.normal, hitInfo.collider.tag);
 
             // Audio
-            SetAudioClip(MeleeImpactManager.Instance.GetAudioClipForImpactFromTag(hitInfo.collider.tag));
-            PlayAudio();
+            PlayAudioOneShot(MeleeImpactManager.Instance.GetAudioClipForImpactFromTag(hitInfo.collider.tag));
         }
     }
 
@@ -59,6 +65,6 @@ public class Knife : BaseMelee
     */
     public override bool CanSwitchWeapon()
     {
-        return TakeAction(m_LastAttackTime, attackDelay - switchWeaponDelayTimeOffAttackDelay);
+        return !IsAttacking();
     }
 }

@@ -56,9 +56,9 @@ public class AiSensor : MonoBehaviour
         for(int i = 0; i < count; ++i)
         {
             GameObject obj = colliders[i].gameObject;
-            if (obj.CompareTag("Player"))
+            if (obj.tag == "Player")
             {
-                if (IsInsight())
+                if (IsInsight(obj.transform.position))
                 {
                     
                 }
@@ -66,20 +66,12 @@ public class AiSensor : MonoBehaviour
         }
     }
 
-    public bool IsInsight()
+    public bool IsInsight(Vector3 obj)
     {
-        //get the agents position in the world
         Vector3 origin = transform.position;
-
-        //look from the enemies midsection
         origin.y *= 0.5f;
-
-        //get player's position in the world from the gamemanager
-        Vector3 dest = GameManager.Instance.playerTransform.position;
-
-        //look for the player's midsection
-        dest.y *= 0.5f;
-
+        Vector3 dest = obj;
+        //Debug.Log(dest);
         Vector3 direction = (dest - origin).normalized;
         //Debug.Log(direction);
         //checks if an object is within the height of the sensor
@@ -89,28 +81,24 @@ public class AiSensor : MonoBehaviour
         ////checks if an object is within the horizontal of the sensor
         //direction.y = 0;
         float deltaAngle = Vector3.Angle(direction, transform.forward);
-
-        //if the player is outside of the enemy FOV
         if (deltaAngle > angle)
         {
             return false;
         }
 
-        //send the raycast from just in front of the enemy so they don't hit their own hitbox
-        origin += Vector3.ClampMagnitude(transform.forward, 0.5f);
-        dest.y = origin.y;
+        //Debug.Log("Angle passed");
 
-        //fire a raycast from the enemy to the player to see if anything obstructs the enemies view
+        origin.y += height / 2;
+        dest.y = origin.y;
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
             //Debug.Log("Entered raycast line, " + hit.collider.tag);
             //Debug.DrawLine(origin, dest, Color.green, 1f);
-
-            //if the player is in range and inside the FOV, with no objects obstructing the enemies view
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.tag == "Player")
             {
                 return true;
             }
+
         }
 
         return false;
@@ -131,8 +119,8 @@ public class AiSensor : MonoBehaviour
         int[] triangles = new int[numVertices];
 
         //defines the starting point of the wedge at characters origin.
-        //Vector3 bottomCenter = new Vector3(0, -heightOffsetFromOrigin, 0);
-        Vector3 bottomCenter = Vector3.zero;
+        Vector3 bottomCenter = new Vector3(0, -heightOffsetFromOrigin, 0);
+        //Vector3 bottomCenter = Vector3.zero;
         //defines bottom left with a vector at the negative angle and multiplying it by the agents forward vector and the distance scalar
         //same but with positive to the right
         Vector3 bottomLeft = Quaternion.Euler(0, -angle, 0) * Vector3.forward * distance;

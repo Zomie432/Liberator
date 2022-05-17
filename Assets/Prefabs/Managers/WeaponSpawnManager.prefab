@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2122450770798764668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122450770798764669}
+  - component: {fileID: 2122450770798764670}
+  m_Layer: 0
+  m_Name: WeaponSpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2122450770798764669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122450770798764668}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.624, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2122450770798764670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122450770798764668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f56de1d077d2d4fa8eb1beeb9ca99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WeaponSlots:
+  - weaponID: 0
+    weapon:
+      weaponPrefab: {fileID: 7127632779786192134, guid: 3fe55f24671da8f4c90fe41d8bf96253, type: 3}
+      weaponAliasPrefab: {fileID: 6395744639976513592, guid: 097bddaae33f8e643bac2c80ab24a31b, type: 3}
+  - weaponID: 1
+    weapon:
+      weaponPrefab: {fileID: 8747229972197352225, guid: 210cbe0ee1a59754ca3587ab0e2d7206, type: 3}
+      weaponAliasPrefab: {fileID: 2055446721109439322, guid: b7250a11fb129694da80019826188c61, type: 3}
+  - weaponID: 2
+    weapon:
+      weaponPrefab: {fileID: 2755654415605225305, guid: 49aaaabaa393e024b80c5e1342432d94, type: 3}
+      weaponAliasPrefab: {fileID: 8491713281380594268, guid: 806b3a19aac922c40ac1245279f0e9da, type: 3}
+  - weaponID: 3
+    weapon:
+      weaponPrefab: {fileID: 1618597011196432241, guid: 90515aa6952b55648bcd002b7ba74683, type: 3}
+      weaponAliasPrefab: {fileID: 8092555426111453982, guid: e287b1bece0d58b4dafaac10cd11c895, type: 3}

@@ -215,6 +215,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AttackReleased"",
+                    ""type"": ""Button"",
+                    ""id"": ""1562614f-deb4-451a-9365-2f14faf6fec1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -591,6 +600,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""HoldInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d443a1a0-b27c-4e92-aa10-be65f7194422"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackReleased"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -620,6 +640,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_HoldInteract = m_OnFoot.FindAction("HoldInteract", throwIfNotFound: true);
         m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
+        m_OnFoot_AttackReleased = m_OnFoot.FindAction("AttackReleased", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -700,6 +721,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_HoldInteract;
     private readonly InputAction m_OnFoot_PauseGame;
+    private readonly InputAction m_OnFoot_AttackReleased;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -725,6 +747,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @HoldInteract => m_Wrapper.m_OnFoot_HoldInteract;
         public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
+        public InputAction @AttackReleased => m_Wrapper.m_OnFoot_AttackReleased;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -797,6 +820,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PauseGame.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
                 @PauseGame.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
                 @PauseGame.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPauseGame;
+                @AttackReleased.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
+                @AttackReleased.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
+                @AttackReleased.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnAttackReleased;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -864,6 +890,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
+                @AttackReleased.started += instance.OnAttackReleased;
+                @AttackReleased.performed += instance.OnAttackReleased;
+                @AttackReleased.canceled += instance.OnAttackReleased;
             }
         }
     }
@@ -891,5 +920,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnHoldInteract(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
+        void OnAttackReleased(InputAction.CallbackContext context);
     }
 }

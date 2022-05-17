@@ -11,7 +11,7 @@ public class AmmoManager : MonoBehaviour
     Dictionary<AmmoType, AmmoSlot> m_StoredAmmo = new Dictionary<AmmoType, AmmoSlot>();
 
     /* player to notify when ammo has changed */
-    [SerializeField] Player player;
+    //[SerializeField] Player player;
 
     [Header("Visuals")]
 
@@ -78,7 +78,7 @@ public class AmmoManager : MonoBehaviour
             m_StoredAmmo[ammoType].ammoAmount += amount;
         }
 
-        player.UpdateAmmoGUI();
+        GameManager.Instance.playerScript.UpdateAmmoGUI();
     }
 
     /*

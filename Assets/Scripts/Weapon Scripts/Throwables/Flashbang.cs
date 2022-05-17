@@ -5,6 +5,7 @@ public class Flashbang : BaseThrowables
 {
 
     [SerializeField] float flashSphereRadius = 50f;
+
     /*
     * Called when flashbang explodes
     *   - Returns after the explode timer                                                         

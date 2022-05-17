@@ -9,8 +9,8 @@ public class BulletImpactManager : MonoBehaviour
     /* list of bullet impacts */
     public List<Impact> bulletImpacts = new List<Impact>();
 
-    /* stores the object pool related to a string */
-    public Dictionary<string, ObjectPool> bulletImpactDictionary = new Dictionary<string, ObjectPool>();
+    /* stores the object pool related to a string, second string is the pool name */
+    public Dictionary<string, string> bulletImpactDictionary = new Dictionary<string, string>();
 
     public Dictionary<string, AudioClip> bulletImpactAudioClipDictionary = new Dictionary<string, AudioClip>();
 
@@ -45,7 +45,7 @@ public class BulletImpactManager : MonoBehaviour
 
         foreach (Impact impact in bulletImpacts)
         {
-            bulletImpactDictionary.Add(impact.objectTag, new ObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
+            bulletImpactDictionary.Add(impact.objectTag, ObjectPoolManager.CreateObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
             bulletImpactAudioClipDictionary.Add(impact.objectTag, impact.impactAudio);
         }
     }
@@ -57,11 +57,11 @@ public class BulletImpactManager : MonoBehaviour
     {
         if (bulletImpactDictionary.ContainsKey(objectTag))
         {
-            UpdateSpawnBulletImpact(position, forward, bulletImpactDictionary[objectTag].SpawnObject());
+            UpdateSpawnBulletImpact(position, forward, ObjectPoolManager.SpawnObject(bulletImpactDictionary[objectTag]));
         }
         else
         {
-            UpdateSpawnBulletImpact(position, forward, bulletImpactDictionary[bulletImpacts[0].objectTag].SpawnObject());
+            UpdateSpawnBulletImpact(position, forward, ObjectPoolManager.SpawnObject(bulletImpactDictionary[bulletImpacts[0].objectTag]));
         }
     }
 

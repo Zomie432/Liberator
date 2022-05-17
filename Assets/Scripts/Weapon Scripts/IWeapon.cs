@@ -3,7 +3,12 @@ public interface IWeapon
     /*
      * triggers weapon attack
      */
-    void Attack();
+    void StartAttacking();
+
+    /*
+     * stops weapon attack
+     */
+    void StopAttacking();
 
     /*
      * triggers weapon reload

@@ -2,28 +2,20 @@ using UnityEngine;
 
 public class BaseMelee : BaseWeapon
 {
-    /* string reference to the trigger name set on the animation component to play second attack animation */
-    [SerializeField] protected string attack2AnimationTriggerName = "Attack2";
-
     /* seconds attack audio clip */
     [SerializeField] protected AudioClip attack2Audio;
 
-    /*
-    * hides the ammo GUI upon a melee weapon equip
-    */
-    public override void OnEnable()
+    public override void Spawn() { }
+
+    public override void Respawn() { }
+
+    public override void OnWeaponEquip()
     {
-        base.OnEnable();
         AmmoManager.Instance.HideAmmoGUI();
     }
 
-    /*
-    * shows the ammo GUI upon a melee weapon unequip
-    */
-
-    public override void OnWeaponSwitch()
+    public override void OnWeaponUnequip()
     {
-        base.OnWeaponSwitch();
         AmmoManager.Instance.ShowAmmoGUI();
     }
 
@@ -41,15 +33,20 @@ public class BaseMelee : BaseWeapon
     /*
     * overriden attack from BaseWeapon class
     */
-    public override void Attack() 
+    public override void StartAttacking() 
     {
-        base.Attack();
+        base.StartAttacking();
+    }
+
+    public override void StopAttacking()
+    {
+        base.StopAttacking();
     }
 
     /*
     * called when the attack animation reaches a certain frame
     */
-    public virtual void OnAttackAnimationHitEvent()
+    public virtual void OnAnimationEvent_AttackHit()
     {
         Debug.Log("Melee Hit");
     }
@@ -59,7 +56,18 @@ public class BaseMelee : BaseWeapon
     */
     public override void StartAiming() 
     {
+        base.StopAiming();
+
+        bIsAttacking = true;
+
         PlayAttack2Audio();
+    }
+
+    public override void StopAiming()
+    {
+        base.StopAiming();
+
+        bIsAttacking = false;
     }
 
     /*
@@ -67,7 +75,11 @@ public class BaseMelee : BaseWeapon
     */
     protected void PlayAttack2Audio()
     {
-        SetAudioClip(attack2Audio);
-        PlayAudio();
+        PlayAudioOneShot(attack2Audio);
+    }
+
+    public override bool CanSwitchWeapon()
+    {
+        return !bIsAttacking;
     }
 }

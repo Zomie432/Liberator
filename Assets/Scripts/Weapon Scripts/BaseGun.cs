@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 [System.Serializable]
@@ -5,41 +6,21 @@ public class BaseGun : BaseWeapon
 {
     [SerializeField] AudioClip reloadAudioClip;
 
-    [Header("Animation Settings")]
-
-    /* string reference to the trigger name set on the animation component to play reload animation */
-    [SerializeField] protected string reloadAnimationTriggerName = "Reload";
-
-    /* string reference to the bool name set on the animation component to play ads animation */
-    [SerializeField] protected string aimDownSightAnimationBoolName = "isAiming";
-
-    [SerializeField] protected string aimingShootAnimationTriggerName = "Shot_Aiming";
-
-    [Header("Delays")]
-
-    /* amount of time it takes to reload this weapon in seconds */
-    [SerializeField] float reloadDelay = 1.0f;
+    //[SerializeField] Transform gunSpawnLocation;
 
     [Header("Visuals")]
 
     /* Muzzle flash VFX played when weapon has been fired */
     [SerializeField] GameObject muzzleFlash;
 
-    [SerializeField] Transform muzzleFlashSpawnLocation;
-
-    [SerializeField] Transform adsMuzzleFlashSpawnLocation;
+    /* time muzzle flash stays for */
+    [SerializeField] float muzzleFlashTime = 0.05f;
 
     [Header("Bullet")]
 
     #region Bullet Stuff
     /* prefab of the bullet that will be spawned in */
     [SerializeField] Bullet bulletPrefab;
-
-    /* location where the bullet will be spawned */
-    [SerializeField] Transform bulletSpawnLocation;
-
-    /* location where the bullet will be spawned when gun is aimed*/
-    [SerializeField] Transform adsBulletSpawnLocation;
 
     /* the max range a bullet can travel before getting destroyed */
     [SerializeField] float bulletRange = 100f;
@@ -53,17 +34,11 @@ public class BaseGun : BaseWeapon
     [SerializeField] AudioClip bulletDropAudioClip;
 
     /* amount of seconds to wait to play bullet drop audio after shooting */
-    [SerializeField] float bulletDropAudioInterval = 0.5f;
+    //[SerializeField] float bulletDropAudioInterval = 0.5f;
 
     /* current number of bullets */
     int m_CurrentNumOfBullets;
     #endregion
-
-    [Header("Reload Settings")]
-
-    [SerializeField]
-    [Tooltip("Amount of seconds that get deducted from the reload delay to update the ammo GUI")]
-    float reloadTimeDeductionForAmmoGUIUpdate = 0.35f;
 
     /* bool to keep in track if weapon is being reloaded */
     protected bool bIsReloading;
@@ -71,11 +46,11 @@ public class BaseGun : BaseWeapon
     /* bool to keep in track if weapon is aimed or not */
     protected bool bIsAiming;
 
-    /* time when weapon reload started */
-    float m_ReloadStartTime;
+    /* time when muzzle flash was shown plus the timer */
+    float m_MuzzleFlashTime;
 
     /* a objectpool that will keep track of spawned bullets automatically */
-    ObjectPool m_BulletPool;
+    string m_BulletPool;
 
     public BaseGun()
     {
@@ -89,28 +64,31 @@ public class BaseGun : BaseWeapon
     {
         base.Start();
 
+        m_BulletPool = ObjectPoolManager.CreateObjectPool(bulletPrefab, maxNumOfBullets);
+    }
+
+    public override void Spawn()
+    {
+        base.Spawn();
+
         m_CurrentNumOfBullets = maxNumOfBullets;
-
-        UpdateAmmoGUI();
-
-        m_BulletPool = new ObjectPool(bulletPrefab, maxNumOfBullets);
-    }
-
-    /*
-    * 
-    */
-    public override void OnEnable()
-    {
-        base.OnEnable();
-
         UpdateAmmoGUI();
     }
 
-    public override void OnDisable()
+    public override void Respawn()
     {
-        base.OnDisable();
+        Spawn();
+    }
 
-        AmmoManager.Instance.HideAmmoGUI();
+    public override void OnWeaponEquip()
+    {
+        AmmoManager.Instance.ShowAmmoGUI();
+        UpdateAmmoGUI();
+    }
+
+    public override void OnWeaponUnequip()
+    {
+        
     }
 
     /*
@@ -120,22 +98,22 @@ public class BaseGun : BaseWeapon
     */
     public override void Update()
     {
-        if (TakeAction(GetReloadStartTime(), GetReloadDelay()))
-            StopReloading();
-
-        if (!HasMoreAmmo() && HasMoreAmmoInPouch())
+        if (!bIsReloading && !HasMoreAmmo() && HasMoreAmmoInPouch())
             Reload();
+
+        if (Time.time > m_MuzzleFlashTime)
+            HideMuzzleFlash();
     }
 
     /*
     * plays the shoot animation and shoots the bullet
     */
-    public override void Attack()
+    public override void StartAttacking()
     {
         if (bIsReloading) return; // dont do anything when gun is being reloaded
         if (!HasMoreAmmo()) return; // need to reload gun, gun doesn't have enough ammo
 
-        if (TakeAction(m_LastAttackTime, attackDelay))
+        if (TakeAction(m_LastAttackTime, attackRate))
         {
             StartShooting();
         }
@@ -146,80 +124,43 @@ public class BaseGun : BaseWeapon
     }
 
     /*
-    * plays reload animation and reloads the gun
+    * Start Weapon Fire
+    * 
+    * Spawns bullet which travels in the direction of @Member Field 'fpCamera' foward vector
+    * Spawn location varies on if weapon is aimed (@Member Field 'fpCamera' position vector is used), if not (@Member Field 'bulletSpawnLocation' position vector is used)
     */
-    public override void Reload()
-    {
-        if (bIsReloading) return; // gun is already reloading
-        if (IsAtMaxAmmo()) return; // doesn't allow reload when gun has full ammo
-        if (!HasMoreAmmoInPouch()) return; // no more ammo left 
-
-        if (GetAnimator() != null)
-            GetAnimator().ResetTrigger(attackAnimationTriggerName);
-        StopAiming();
-        StartWeaponReloading();
-    }
-
-    /*
-    * stops reloading
-    */
-    public void StopReloading()
-    {
-        StopWeaponReloading();
-    }
-
-    /*
-    * starts aiming weapon
-    */
-    public override void StartAiming()
-    {
-        if (!bIsReloading) // if gun isn't reloading allow aim
-            StartWeaponAiming();
-    }
-
-    /*
-    * stops weapon aiming
-    */
-    public override void StopAiming()
-    {
-        StopWeaponAiming();
-    }
-
-    /*
-     * Start Weapon Fire
-     * 
-     * Spawns bullet which travels in the direction of @Member Field 'fpCamera' foward vector
-     * Spawn location varies on if weapon is aimed (@Member Field 'fpCamera' position vector is used), if not (@Member Field 'bulletSpawnLocation' position vector is used)
-     */
     public void StartShooting()
     {
+        bIsAttacking = true;
+
         m_LastAttackTime = Time.time;
         m_CurrentNumOfBullets--;
 
+        if (bIsAiming)
+            GetAnimator().Play("Aim_Attack1");
+        else
+            GetAnimator().Play("Attack1");
+
         ShootBullet();
+
+        //Invoke("HideMuzzleFlash", 0.02f);
+        //Invoke("PlayBulletDropAudio", bulletDropAudioInterval);
+    }
+
+    public override void OnAnimationEvent_AttackStart()
+    {
+        PlayAttackAudio();
 
         muzzleFlash.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
         muzzleFlash.SetActive(true);
-        Invoke("HideMuzzleFlash", 0.02f);
 
-        PlayAttackAudio();
-        Invoke("PlayBulletDropAudio", bulletDropAudioInterval);
+        m_MuzzleFlashTime = Time.time + muzzleFlashTime;
+    }
 
+    public override void OnAnimationEvent_AttackEnd()
+    {
+        PlayBulletDropAudio();
         UpdateAmmoGUI();
-    }
-
-    void PlayBulletDropAudio()
-    {
-        SetAudioClip(bulletDropAudioClip);
-        PlayAudio();
-    }
-
-    /*
-    * plays the muzzle flash animation
-    */
-    void HideMuzzleFlash()
-    {
-        muzzleFlash.SetActive(false);
     }
 
     /*
@@ -235,21 +176,27 @@ public class BaseGun : BaseWeapon
      */
     private void ShootBullet()
     {
-        Bullet bullet = m_BulletPool.SpawnObject() as Bullet;
-        if (bIsAiming)
-        {
-            GetAnimator().Play(aimingShootAnimationTriggerName);
+        Bullet bullet = ObjectPoolManager.SpawnObject(m_BulletPool) as Bullet;
 
-            muzzleFlash.transform.position = adsMuzzleFlashSpawnLocation.position;
-            bullet.Spawn(adsBulletSpawnLocation.position, fpCamera.transform.forward, bulletRange, this);
-        }
-        else
-        {
-            GetAnimator().Play(attackAnimationTriggerName);
+        bullet.Spawn(raycastOrigin.position, GameManager.Instance.mainCamera.transform.forward, bulletRange, GetDamage());
+    }
 
-            muzzleFlash.transform.position = muzzleFlashSpawnLocation.position;
-            bullet.Spawn(bulletSpawnLocation.position, fpCamera.transform.forward, bulletRange, this);
-        }
+    public override void StopAttacking()
+    {
+        bIsAttacking = false;
+    }
+
+    /*
+    * plays reload animation and reloads the gun
+    */
+    public override void Reload()
+    {
+        if (bIsReloading) return; // gun is already reloading
+        if (IsAtMaxAmmo()) return; // doesn't allow reload when gun has full ammo
+        if (!HasMoreAmmoInPouch()) return; // no more ammo left 
+
+        StopAiming();
+        StartWeaponReloading();
     }
 
     /*
@@ -257,55 +204,87 @@ public class BaseGun : BaseWeapon
     */
     public void StartWeaponReloading()
     {
-        m_ReloadStartTime = Time.time;
         bIsReloading = true;
-
-        if (GetAnimator() != null)
-            GetAnimator().SetTrigger(reloadAnimationTriggerName);
-
-        m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
-
-        Invoke("UpdateAmmoGUI", reloadDelay - reloadTimeDeductionForAmmoGUIUpdate);
-
-        // Audio
-        if (IsAudioPlaying())
-            Invoke("PlayRelaodAudio", 0.25f);
-        else
-            PlayRelaodAudio();
+        GetAnimator().SetTrigger("Reload");
     }
 
-    void PlayRelaodAudio()
+    public override void OnAnimationEvent_ReloadStart()
     {
-        SetAudioClip(reloadAudioClip);
-        PlayAudio();
+        m_CurrentNumOfBullets += AmmoManager.Instance.GetAmmo(ammoType, maxNumOfBullets - m_CurrentNumOfBullets);
+        PlayRelaodAudio();
+
+        Debug.Log(name + ": Reloading started");
+    }
+
+    public override void OnAnimationEvent_ReloadEnd()
+    {
+        //Debug.Log(name + ": Reloading ended");
+
+        UpdateAmmoGUI();
+        StopReloading();
     }
 
     /*
-     * Stops Weapon Fire
-     */
-    public void StopWeaponReloading()
+    * stops reloading
+    */
+    public void StopReloading()
     {
         bIsReloading = false;
     }
 
     /*
-     * Starts weapon aim
-     */
-    public void StartWeaponAiming()
+    * starts aiming weapon
+    */
+    public override void StartAiming()
     {
-        if (GetAnimator() != null)
-            GetAnimator().SetBool(aimDownSightAnimationBoolName, true);
-        bIsAiming = true;
+        if (!bIsReloading)
+        {
+            // Debug.LogWarning("uncomment start aiming animation code out");
+            GetAnimator().SetBool("isAiming", true);
+            bIsAiming = true;
+        }
     }
 
     /*
-     * Stops weapon aim
-     */
-    public void StopWeaponAiming()
+    * stops weapon aiming
+    */
+    public override void StopAiming()
     {
-        if (GetAnimator() != null)
-            GetAnimator().SetBool(aimDownSightAnimationBoolName, false);
+        //Debug.LogWarning("uncomment stop aiming animation code out");
+
+        if (bIsAiming)
+
+
+            GetAnimator().SetBool("isAiming", false);
         bIsAiming = false;
+
+        // transform.localPosition = defaultWeaponLocalPosition;
+    }
+
+    /*
+    * returns if player can switch to another wepaon
+    */
+    public override bool CanSwitchWeapon()
+    {
+        return !bIsReloading;
+    }
+
+    void PlayBulletDropAudio()
+    {
+        PlayAudioOneShot(bulletDropAudioClip);
+    }
+
+    /*
+    * plays the muzzle flash animation
+    */
+    void HideMuzzleFlash()
+    {
+        muzzleFlash.SetActive(false);
+    }
+
+    void PlayRelaodAudio()
+    {
+        PlayAudioOneShot(reloadAudioClip);
     }
 
     /*
@@ -348,29 +327,6 @@ public class BaseGun : BaseWeapon
         return m_CurrentNumOfBullets == maxNumOfBullets;
     }
 
-    /*
-    * returns the reload start time
-    */
-    public float GetReloadStartTime()
-    {
-        return m_ReloadStartTime;
-    }
-
-    /*
-    * returns reload delay time
-    */
-    public float GetReloadDelay()
-    {
-        return reloadDelay;
-    }
-
-    /*
-    * returns if player can switch to another wepaon
-    */
-    public override bool CanSwitchWeapon()
-    {
-        return !bIsReloading;
-    }
 
     /*
     * returns if the weapon is reloading or not
@@ -393,7 +349,6 @@ public class BaseGun : BaseWeapon
     */
     public override void UpdateAmmoGUI()
     {
-        if (AmmoManager.Instance != null)
-            AmmoManager.Instance.UpdateAmmoGUI(ammoType, m_CurrentNumOfBullets);
+        AmmoManager.Instance.UpdateAmmoGUI(ammoType, m_CurrentNumOfBullets);
     }
 }

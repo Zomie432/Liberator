@@ -10,8 +10,8 @@ public class MeleeImpactManager : MonoBehaviour
     /* list of Melee impacts */
     public List<Impact> meleeImpacts = new List<Impact>();
 
-    /* stores the object pool related to a string */
-    public Dictionary<string, ObjectPool> meleeImpactDictionary = new Dictionary<string, ObjectPool>();
+    /* stores the object pool related to a string, seconds string is the key to the repective object pool */
+    public Dictionary<string, string> meleeImpactDictionary = new Dictionary<string, string>();
 
     public Dictionary<string, AudioClip> meleeImpactAudioClipDictionary = new Dictionary<string, AudioClip>();
 
@@ -46,7 +46,7 @@ public class MeleeImpactManager : MonoBehaviour
 
         foreach (Impact impact in meleeImpacts)
         {
-            meleeImpactDictionary.Add(impact.objectTag, new ObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
+            meleeImpactDictionary.Add(impact.objectTag, ObjectPoolManager.CreateObjectPool(impact.collisionParticleSystem, particleSystemBuffer));
             meleeImpactAudioClipDictionary.Add(impact.objectTag, impact.impactAudio);
         }
     }
@@ -58,11 +58,11 @@ public class MeleeImpactManager : MonoBehaviour
     {
         if (meleeImpactDictionary.ContainsKey(objectTag))
         {
-            UpdateSpawnMeleeImpact(position, forward, meleeImpactDictionary[objectTag].SpawnObject());
+            UpdateSpawnMeleeImpact(position, forward, ObjectPoolManager.SpawnObject(meleeImpactDictionary[objectTag]));
         }
         else
         {
-            UpdateSpawnMeleeImpact(position, forward, meleeImpactDictionary[meleeImpacts[0].objectTag].SpawnObject());
+            UpdateSpawnMeleeImpact(position, forward, ObjectPoolManager.SpawnObject(meleeImpactDictionary[meleeImpacts[0].objectTag]));
         }
     }
 

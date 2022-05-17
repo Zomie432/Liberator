@@ -21,10 +21,7 @@ public class FlashbangHand : BaseWeapon
     int m_CurrentFlashbangAmount;
 
     /* object pool of flashbangs */
-    private ObjectPool m_FlashbangPool;
-
-    /* if the player is currently throwing the flashbang, animation is still playing */
-    private bool bIsThrowing = false;
+    private string m_FlashbangPool;
 
     public FlashbangHand()
     {
@@ -35,22 +32,18 @@ public class FlashbangHand : BaseWeapon
     {
         base.Start();
 
-        m_FlashbangPool = new ObjectPool(flashbangPrefab, maxFlashbangAmount);
+        m_FlashbangPool = ObjectPoolManager.CreateObjectPool(flashbangPrefab, maxFlashbangAmount);
         m_CurrentFlashbangAmount = maxFlashbangAmount;
 
         GameManager.Instance.playerScript.UpdateFlashbangCount();
-
-        Debug.Log("Start");
     }
 
     /*
     * Hides the ammo GUI
     * Shows the flashbangCount GUI
     */
-    public override void OnEnable()
+    public override void OnWeaponEquip()
     {
-        base.OnEnable();
-
         AmmoManager.Instance.HideAmmoGUI();
         GameManager.Instance.playerScript.ShowFlashbangGUI();
     }
@@ -59,10 +52,8 @@ public class FlashbangHand : BaseWeapon
     * Shows the ammo GUI
     * Hides the flashbangCount GUI
     */
-    public override void OnDisable()
+    public override void OnWeaponUnequip()
     {
-        base.OnDisable();
-
         AmmoManager.Instance.ShowAmmoGUI();
         GameManager.Instance.playerScript.HideFlashbangGUI();
     }
@@ -75,17 +66,15 @@ public class FlashbangHand : BaseWeapon
     *   - Sets the animator to play the throwing animation and updates the last attack time
     *   - Decrements the current amount of flashbangs left
     */
-    public override void Attack()
+    public override void StartAttacking()
     {
         if (!HasMoreFlashbangs()) return;
 
-        if (TakeAction(m_LastAttackTime, attackDelay))
+        if (TakeAction(m_LastAttackTime, attackRate))
         {
-            bIsThrowing = true;
-
             PlayAttackAudio();
 
-            GetAnimator().SetTrigger(attackAnimationTriggerName);
+            GetAnimator().Play("Attack1");
             UpdateLastAttackTime();
 
             m_CurrentFlashbangAmount--;
@@ -98,13 +87,13 @@ public class FlashbangHand : BaseWeapon
     *   - finds the targetpoint the flashbang needs to reach
     *   - calls the flashbangs OnThrowThowable() method to let the flashbang know player is throwing  it
     */
-    public void OnThrowEvent()
+    public void OnAnimationEvent_Throw()
     {
-        Flashbang flashbang = m_FlashbangPool.SpawnObject() as Flashbang;
+        Flashbang flashbang = ObjectPoolManager.SpawnObject(m_FlashbangPool) as Flashbang;
         flashbang.transform.position = flashbangSpawnLocation.position;
         flashbang.transform.forward = flashbangSpawnLocation.forward;
 
-        Vector3 targetPoint = fpCamera.transform.position + fpCamera.transform.forward * distanceFromPlayerMultiplier;
+        Vector3 targetPoint = GameManager.Instance.mainCamera.transform.position + GameManager.Instance.mainCamera.transform.forward * distanceFromPlayerMultiplier;
         Vector3 direction = (targetPoint - flashbangSpawnLocation.position).normalized;
 
         Debug.DrawLine(flashbangSpawnLocation.position, targetPoint, Color.red, 2f);
@@ -113,20 +102,11 @@ public class FlashbangHand : BaseWeapon
     }
 
     /*
-    * Called When The Throw animation ends.
-    *   - sets bIsThrowing to false 
-    */
-    public void OnThrowAnimEnded()
-    {
-        bIsThrowing = false;
-    }
-
-    /*
     * returns if player can switch from the flashbang to another weapon
     */
     public override bool CanSwitchWeapon()
     {
-        return !bIsThrowing;
+        return !bIsAttacking;
     }
 
     /*

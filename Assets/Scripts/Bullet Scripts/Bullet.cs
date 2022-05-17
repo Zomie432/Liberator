@@ -103,7 +103,8 @@ public class Bullet : PoolableObject
         {
             if (hit.collider.tag == "Hitbox")
             {
-                hit.collider.GetComponent<Hitbox>().OnRaycastHit(parentGun, transform.forward);
+                Debug.LogWarning("enemys cannot be hurt as of right now, updated bullet script");
+                //hit.collider.GetComponent<Hitbox>().OnRaycastHit(parentGun, transform.forward);
             }
         }
 
